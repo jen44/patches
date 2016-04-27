@@ -1,0 +1,183 @@
+// @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+
+/*   Fonts   */
+
+@import url("http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900");
+
+
+@font-face {
+    font-family: 'raleway-regular';
+    src: url('../fonts/raleway-regular.eot');
+    src: url('../fonts/raleway-regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-regular.woff') format('woff'),
+         url('../fonts/raleway-regular.ttf') format('truetype'),
+         url('../fonts/raleway-regular.svg#ralewayregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'raleway-bold';
+    src: url('../fonts/raleway-bold.eot');
+    src: url('../fonts/raleway-bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-bold.woff') format('woff'),
+         url('../fonts/raleway-bold.ttf') format('truetype'),
+         url('../fonts/raleway-bold.svg#ralewaybold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+@font-face {
+    font-family: 'raleway-semibold';
+    src: url('../fonts/raleway-semibold.eot');
+    src: url('../fonts/raleway-semibold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/raleway-semibold.woff') format('woff'),
+         url('../fonts/raleway-semibold.ttf') format('truetype'),
+         url('../fonts/raleway-semibold.svg#ralewaysemibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+/*   Reset   */
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    
+}
+
+/* All device and Mobile Breakpoint */
+
+h1, h2 {
+    font-family: 'raleway-bold';
+    font-size: 2em;
+}
+
+h3, h4 {
+    font-family: 'raleway-semibold';
+    font-size: 1.5em;
+}
+
+p {
+    font-family: 'raleway-regular';
+    font-size: 1em;
+}
+
+body {
+    background-image: url('../images/pattern.png');
+    background-repeat: repeat;
+    position: relative;
+}
+
+.sidenav {
+    height: 100vh;
+    width: 3em;
+    position: relative;
+    background-color: #2574A9;
+    box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    
+    .navicons {
+        height: 100%;
+        width: 100%;
+        left: 0;
+        box-sizing: border-box;
+        padding: 0.3em;
+        
+        display: flex;
+        flex-direction: column;
+
+        .icons{
+            text-align: center;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            
+            
+            i {
+                color: white;
+                font-size: 1.5em;
+                cursor: pointer;
+                transition: all ease 0.5s;
+                padding: 0.5em 0;
+                
+
+            }
+            
+            i:hover {
+                transform: translateX(5%);
+            }
+
+        }
+        
+        #top {
+            justify-content: flex-start;
+        }
+        
+        #bottom {
+            justify-content: flex-end;
+        }
+    }
+        
+} /* End of sidenav*/
+    
+
+.slideouts {
+    
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 3.5em;
+    
+    overflow: hidden;
+}
+
+.slideout {
+    height: 100vh;
+    width: 80vw;
+    background-color: #EEEEEE;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    
+    z-index: 1;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/*for phablet - inclusive*/
+@media only screen and (min-width : 24em) {
+    .slideouts {
+        width: 40vw;
+    }
+    
+}
+
+
+/*for tablet - inclusive*/
+@media only screen and (min-width : 44em) {
+    .slideouts {
+        width: 35vw;
+    }
+    
+}
+
+
+/*for destop - inclusive*/
+@media only screen and (min-width : 65em) {
+    .slideouts {
+        width: 20vw;
+    }
+}
+
