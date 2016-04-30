@@ -12,44 +12,21 @@
 <header class="sidenav">
     <nav class="navicons">
         <div class="icons" id="top">
-            <i class="fa fa-paper-plane-o btn" aria-hidden="true" id="home-btn" name="home"></i>
+            <a href="dashboard"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
             
-            <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
+            <i class="fa fa-clone" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
+            
+            <i class="fa fa-info-circle" aria-hidden="true" id="info-btn" name="Board info"></i>
             
             <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
             
             <i class="fa fa-cog btn" aria-hidden="true" id="settings-btn" name="Settings"></i>
-<!--
-            <div id="settings" class="slideout">
-        <ul id="accordion">
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Detail</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo voluptatem, repellendus magnam sit, reiciendis nostrum necessitatibus veniam recusandae ex reprehenderit amet? Sequi pariatur, aut ipsam. Iure natus facilis, reprehenderit libero.</p>
-            </li>
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Description</h2>
-                <p>Aperiam assumenda unde cupiditate quis labore ipsa nulla voluptatum repudiandae alias consequatur, delectus adipisci amet eveniet earum reprehenderit voluptatibus veniam ducimus accusamus cum, nesciunt odit, sint nisi! Quis, ipsam, aliquid.</p>
-            </li>
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Background</h2>
-                <p>Ipsum corporis rem quibusdam, nisi enim numquam ad beatae repudiandae blanditiis maxime consequuntur, omnis tempore suscipit doloribus doloremque totam aut mollitia sed dolorem tenetur nam, ab quod! Eos officiis, laborum.</p>
-            </li>
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> People</h2>
-                <p>Corporis rem fugiat vel officia incidunt temporibus, minima consequuntur provident, dolorum ab laboriosam eos voluptate cupiditate nemo recusandae quos vero modi exercitationem tempora ratione animi error! Beatae quo quidem facere!</p>
-            </li>
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Share this board</h2>
-                <p>Quas maxime hic quisquam voluptatem, quia nam eos repellat veniam saepe quidem quasi sapiente, aut nulla natus, repudiandae porro cumque odit velit autem harum libero voluptates! Vel sequi, aliquam inventore?</p>
-            </li>
-        </ul>
-    </div>
--->
+            
         </div>
         
         
         <div class="icons" id="bottom">
-            <i class="fa fa-user" aria-hidden="true" name="Profile"></i>
+            <i class="fa fa-user" aria-hidden="true" id="profile-btn" name="Profile"></i>
             
             <i class="fa fa-sign-out" aria-hidden="true" name="logout"></i>
             
@@ -68,53 +45,100 @@
         </ul>
     </div>
     
+    <div id="info" class="slideout">
+        <ul>
+            <li>
+
+                <h2>Created By</h2>
+                <p>Username</p>
+
+            </li>
+
+            <li>
+                <h2>Fellow borders</h2>
+                
+                <div class="boarders">
+
+                    <img src="{{asset('images/avatars/3.png')}}" alt="">
+                    <p>Username1</p>
+                    
+                </div>
+                    
+                <div class="boarders">
+
+                    <img src="{{asset('images/avatars/7.png')}}" alt="">
+                    <p>Username2</p>
+                    
+                </div>
+                    
+                <div class="boarders">
+
+                    <img src="{{asset('images/avatars/9.png')}}" alt="">
+                    <p>Username3</p>
+                    
+                </div>
+                    
+                <div class="boarders">
+
+                    <img src="{{asset('images/avatars/5.png')}}" alt="">
+                    <p>Username4</p>
+                    
+                </div>
+                    
+                <div class="boarders">
+
+                    <img src="{{asset('images/avatars/10.png')}}" alt="">
+                    <p>Username5</p>
+                    
+                </div>
+                
+                <div class="clear"></div>
+
+                
+            </li>
+
+            <li>
+               
+                <h2>Total notes</h2>
+                <p>10</p>
+                
+            </li>
+
+            <li>
+               
+                <h2>Created at</h2>
+                <p>00:00 00/00/0000</p>
+                
+            </li>
+
+        </ul>
+    </div>    
     
     <div id="settings" class="slideout">
         <ul id="accordion">
             <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Detail</h2>
-                <div>
-                  <br>
-                   <p>Name</p>
-                   <p>Username</p>
-                   <p>Date</p>
-                    
-                </div>
-                
-            </li>
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Description</h2>
-                <div>
-                   <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis, corporis.</p>
-                </div>
-            </li>
-            
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Board Background</h2>
+                <h2>Board Background</h2>
                 <div class="bgoptions"><!--Flex this -->
                    <br>
-                    <img src="{{asset('images/swirl.png')}}" alt="">
-                    <img src="{{asset('images/wood.png')}}" alt="">
-                    <img src="{{asset('images/woven.png')}}" alt="">
-                    <img src="{{asset('images/triangles.png')}}" alt="">
-                    <img src="{{asset('images/diagnal-fabric.png')}}" alt="">
-                    <img src="{{asset('images/school.png')}}" alt="">
+                    <img src="{{asset('images/backgrounds/pattern.png')}}" class="bgcurrent" data-file="pattern">
+                    <img src="{{asset('images/backgrounds/wood.png')}}" data-file="wood">
+                    <img src="{{asset('images/backgrounds/woven.png')}}" data-file="woven">
+                    <img src="{{asset('images/backgrounds/triangles.png')}}" data-file="triangles">
+                    <img src="{{asset('images/backgrounds/diagnal-fabric.png')}}" alt="diagnal-fabric">
+                    <img src="{{asset('images/backgrounds/school.png')}}" data-file="school">
+                    <img src="{{asset('images/backgrounds/weather.png')}}" data-file="weather">
+                    <img src="{{asset('images/backgrounds/dark_wood.png')}}" data-file="dark_wood">
+                    <img src="{{asset('images/backgrounds/cardboard.png')}}" data-file="cardboard">
+                    <img src="{{asset('images/backgrounds/swirl.png')}}" data-file="swirl">
+                    
                 </div>
+                <div class="clear"></div>
             </li>
             
-            <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Users</h2>
-                <div class="avatars"><!--Flex this -->
-                   <br>
-                    <img src="{{asset('images/avatars/1.png')}}" alt="">
-                    <img src="{{asset('images/avatars/2.png')}}" alt="">
-                    <img src="{{asset('images/avatars/3.png')}}" alt="">
-                </div>
-            </li>
+           
             
             <li>
-                <h2 data-state="close"><i class="fa fa-caret-down" aria-hidden="true"></i> Share this board</h2>
+                <h2>Share this board</h2>
                 <div>
                    <br>
                     <a href="">Facebook</a>
@@ -130,10 +154,29 @@
             <img src="{{asset('images/avatars/4.png')}}" alt="">
         </div>
         <div class="details">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <ul>
+                <li>
+                    <h2>Username</h2> 
+                    <p>Username</p>              
+                </li>
+                
+                <li>
+                    <h2>Name</h2>
+                    <p>Name</p>
+                </li>
+                
+                <li>
+                    <h2>Email</h2>
+                    <p>email@email.com</p>
+                </li>
+                
+                
+                <li>
+                    <h2><a href=""></a>Edit Profile</h2>
+                    
+                </li>
+                
+            </ul>
         </div>
         
     </div>

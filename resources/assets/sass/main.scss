@@ -77,18 +77,21 @@ p {
 }
 
 body {
-    background-image: url('../images/pattern.png');
-    background-repeat: repeat;
+
     position: relative;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+header {
+    z-index: 3;
+}
+
 .sidenav {
     height: 100vh;
-    width: 3.5em;
+    width: 50px;
     position: relative;
-    background-color: #000;
+    background-color: #EFEFEF;
     z-index: 3;
     
     .navicons {
@@ -111,8 +114,8 @@ body {
             i {
                 padding: 1em 0;
                 width: 100%;
-                color: #ddd;
                 font-size: 1.5em;
+                color: #CCC;
                 cursor: pointer;
                 transition: all ease 0.2s;
                 
@@ -120,49 +123,50 @@ body {
             }
             
             i:nth-child(1):hover {
-                color: #E87E04;
+                color: #04a0dd;
             }
             
             i:nth-child(2):hover {
-                color: #8E44AD;
+                color: #EB586F;
             }
             
             i:nth-child(3):hover {
-                color: #DB0A5B;
+                color: #F2910A;
             }
             
             i:nth-child(4):hover {
-                color: #26A65B;
+                color: #B61AAE;
             }
             
             i:nth-child(5):hover {
-                color: #1E8BC3;
-            }
+                color: #00B8A9;
+            } 
+            
             
 
         }
 
         #top {
             justify-content: flex-start;
+            z-index: 3;
         }
         
         #bottom {
             justify-content: flex-end;
+            z-index: 2;
         }
     }
         
 } /* End of sidenav*/
 
-.slideouts {
-    position: fixed;
-    top: 0;
-}
+
 
 .slideout {
     
-    position: absolute;
+    position: fixed;
     top: 0;
     left: -17em;
+    
     
     height: 100vh;
     width: 80vw;
@@ -173,20 +177,24 @@ body {
     
     
     background: #f7f8f9;
-    border-right: 1px solid #ddd;
+    background-image: url('../images/backgrounds/pattern.png');
+    background-repeat: repeat;
     
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.1);
-    transition: all ease-out 0.5s;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+    transition: all ease-out 0.2s;
     
     opacity: 0;
     
     color: #4d4d4d;
+    
+    
     
     ul {
         height: 100vh;
         overflow-y: auto;
         
         li {
+            background-color: #f7f8f9;
             border-bottom: 1px solid #DDD;
             padding: 2em;
             vertical-align: middle;
@@ -201,60 +209,202 @@ body {
                 
             }
             
-            div{
-                height:0;
-                overflow: hidden;
-                transition: all ease-out 0.3s;
+          
+
+        }
+        
+        
+    }
+    
+}
+
+#info {
+    ul {
+        
+        li {
+            
+            padding: 2em;
+            background-color: #f7f8f9;
+            border-bottom: 1px solid #DDD;
+            
+            .boarders {
+                margin: 0.5em;
+                display: block;
+                float: left;
+                height: 100%;
+                text-align: center;
+                
+                img {
+        
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                }
+                
                 p {
-                    font-size: 0.8em;
+                    font-family: 'open-sans',sans-serif;
+                }
+                
+            }
+
+            h2 {
+                padding-bottom: 1em;
+                color: #F2910A;
+            }
+        }
+    }
+    
+    
+}
+
+#settings {
+    #accordion {
+        
+        li {
+            cursor: pointer;
+            
+            padding-right: 0;
+            
+            h2 {
+                color: #00B8A9;
+            }
+            
+            .bgoptions {
+                float: left;
+                
+
+                img {
+                    
+                    
+                    border: 3px solid #f7f8f9;
+                    height: 5em;
+                    width: 5em;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    transition: all ease 0.2s;
+
+                }
+                
+                img.bgcurrent {
+                    border: 3px solid #00B8A9;
                 }
             }
-
-            div.open{
-                height: 10em;
-            }
-
-        }
-        
-        
-    }
     
-    #accordion>li>h2 {
-        color: #1E824C;
-    }
-    
-    .bgoptions {
-        display: flex;
-        flex-wrap:wrap;
-        overflow-y: scroll;
-        
-        img {
-//            padding: 0.2em;
-            
-            height: 50px;
-            width: 50px;
-            border-radius: 5px;
-            
-        }
-    }
-    
-    .avatars {
-        display: flex;
-        flex-wrap: wrap;
-        
-        img {
-            height: 50px;
-            width: 50px;
-            border-radius: 50%;
             
         }
     }
 }
 
+#profile {
+    
+    
+    .banner {
+        position: relative;
+        height: 20vh;
+        width: 100%;
+        
+        background-color: #04a0dd;
+        
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            
+            height: 12vh;
+            width: 12vh;
+            
+            border-radius: 50%;
+            border: 3px solid #eee;
+            box-shadow: 1px rgba(0,0,0,0.5);
+        }
+        
+
+        
+    }
+    
+    h2 {
+        
+        color: #03C1EB;
+    }
+    
+}
+
+.logobox {
+    
+    p {
+
+        color: #111;
+        font-size: 5em;
+    }
+}
+
+.main {
+    position: fixed;
+    top: 0;
+    z-index: 0;
+    height: 100vh;
+    width: 100vw;
+    
+    #help {
+
+        position: fixed;
+        right: 0.5em;
+        bottom: 0.5em;
+        
+        i {
+
+            z-index: 5;
+            font-size: 3em;
+
+            height: 50px;
+            width: 50px;
+            color: #1C9970;
+            
+        }
+    }
+  
+    
+}
+
+
+.front {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    
+    div {
+        width: 10em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        display: block;
+    }
+}
+
+#dashboard {
+    z-index: 0;
+    
+   
+    
+}
+
+#board {
+    background-image: url('../images/backgrounds/diagnal-fabric.png');
+    background-repeat: repeat;
+    z-index: 0;
+    
+}
+
+
+
+
 
 
 .open {
-    left: 3.65em;
+    left: 50px;
     opacity: 1;
 }
 
@@ -264,9 +414,18 @@ body {
     display: none;
 }
 
+.clear {
+    clear: both;
+}
+
+.button {
+    
+    
+}
+
 
 /*for phablet - inclusive*/
-@media only screen and (min-width : 24em) {
+@media only screen and (min-width : 26em) {
     .slideout {
         width: 40vw;
     }
@@ -275,7 +434,7 @@ body {
 
 
 /*for tablet - inclusive*/
-@media only screen and (min-width : 44em) {
+@media only screen and (min-width : 45em) {
     .slideout {
         width: 35vw;
     }
@@ -286,7 +445,7 @@ body {
 /*for destop - inclusive*/
 @media only screen and (min-width : 65em) {
     .slideout {
-        width: 18vw;
+        width: 16vw;
     }
 }
 

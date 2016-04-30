@@ -15,7 +15,7 @@ Route::get('dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/', function () {
+Route::get('login', function () {
     return view('login');
 });
 
@@ -23,10 +23,7 @@ Route::get('register', function () {
     return view('register');
 });
 
-Route::get('profile', function () {
-    return view('profile');
-});
 
-Route::get('page', function () {
-    return view('page');
+Route::get('board', function () {
+    return view('board');
 });

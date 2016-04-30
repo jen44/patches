@@ -1,9 +1,9 @@
-@extends('withnav')
+@extends('nonav')
 
 @section('content')
 
 
-<section class="main">
+<section class="main" id="dashboard">
         
 </section>
 
