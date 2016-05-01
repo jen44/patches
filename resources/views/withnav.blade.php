@@ -38,26 +38,18 @@
 
     <div id="myboards" class="slideout">
         <ul>
-            <li>
-                <a href="board/id">Board 1</a>
-                <h2>Created by:</h2>
-                <p>username</p>
-                <p>Board Description...</p>
-            </li>
+           
+            @foreach(App\Models\Board::all() as $board)
             
             <li>
-                <a href="board/id">Board 2</a>
+                <a href="board/{{$board->id}}">{{$board->name}}</a>
                 <h2>Created by:</h2>
-                <p>username</p>
-                <p>Board Description...</p>   
+                <p></p>
+                <p>{{$board->description}}</p>
             </li>
             
-            <li>
-                <a href="board/id">Board 3</a>
-                <h2>Created by:</h2>
-                <p>username</p>
-                <p>Board Description...</p>
-            </li>
+            @endforeach
+            
         </ul>
     </div>
     
@@ -72,59 +64,33 @@
 
             <li>
                 <h2>Fellow borders</h2>
-                
+                @foreach(App\Models\User::all() as $user)
+
                 <div class="boarders">
 
-                    <img src="{{asset('images/avatars/3.png')}}" alt="">
-                    <p>Username1</p>
-                    
-                </div>
-                    
-                <div class="boarders">
+                    <img src="{{asset('images/avatars/'.$user->avatar)}}" alt="">
+                    <p>{{$user->username}}</p>
 
-                    <img src="{{asset('images/avatars/7.png')}}" alt="">
-                    <p>Username2</p>
-                    
-                </div>
-                    
-                <div class="boarders">
-
-                    <img src="{{asset('images/avatars/9.png')}}" alt="">
-                    <p>Username3</p>
-                    
-                </div>
-                    
-                <div class="boarders">
-
-                    <img src="{{asset('images/avatars/5.png')}}" alt="">
-                    <p>Username4</p>
-                    
-                </div>
-                    
-                <div class="boarders">
-
-                    <img src="{{asset('images/avatars/10.png')}}" alt="">
-                    <p>Username5</p>
-                    
                 </div>
                 
+                @endforeach
+
                 <div class="clear"></div>
 
-                
             </li>
 
             <li>
-               
+
                 <h2>Total notes</h2>
                 <p>10</p>
-                
+
             </li>
 
             <li>
-               
+
                 <h2>Created at</h2>
                 <p>00:00 00/00/0000</p>
-                
+
             </li>
 
         </ul>
@@ -167,23 +133,23 @@
     
     <div id="profile" class="slideout">
         <div class="banner">
-            <img src="{{asset('images/avatars/4.png')}}" alt="">
+            <img src="{{asset('images/avatars/'.$user->avatar)}}" alt="">
         </div>
         <div class="details">
             <ul>
                 <li>
                     <h2>Username</h2> 
-                    <p>Username</p>              
+                    <p>{{$user->username}}</p>              
                 </li>
                 
                 <li>
                     <h2>Name</h2>
-                    <p>Name</p>
+                    <p>{{$user->name}}</p>
                 </li>
                 
                 <li>
                     <h2>Email</h2>
-                    <p>email@email.com</p>
+                    <p>{{$user->email}}</p>
                 </li>
                 
                 
@@ -208,6 +174,8 @@
     @yield('content')
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<!--    <script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js"></script>-->
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>

@@ -22,12 +22,12 @@
          <div class="draggables">
              
               <div class="note">
-                  <p>This will be a draggable note...</p>
+                  <p>This is a draggable note...</p>
 
               </div>
 
               <div class="note">
-                  <p>This will be a draggable note...</p>
+                  <p>This is a draggable note...</p>
 
               </div>
              

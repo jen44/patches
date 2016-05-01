@@ -1,5 +1,14 @@
 $(function(){
     
+    
+/*
+|--------------------------------------------------------------------------
+| All Slide outs
+|--------------------------------------------------------------------------
+|
+*/
+    
+    
     /* My Boards slide out*/
    
     $('#myboards-btn').on('click',function(){
@@ -85,7 +94,9 @@ $(function(){
 	});
     
     
+    
     /* Settings slide out*/
+    
      $('#settings-btn').on('click',function(){
     
     
@@ -181,6 +192,14 @@ $(function(){
     });
     
     
+/*
+|--------------------------------------------------------------------------
+| Settings: Background border toggle
+|--------------------------------------------------------------------------
+|
+*/
+    
+    
     /* Background option toggle current */
     
     $('.bgoptions img').on('click', function(){
@@ -200,44 +219,32 @@ $(function(){
         
     });
     
-
-	///--------------accordion sliding
-
-//	$('#accordion li').on('click',function(){
-//        
-//		if(($(this).find('h2')).data('state') == 'close'){
-//			//open the P
-//			($(this).find('h2')).next().addClass('open');
-//
-//			($(this).find('h2')).next().one('transitionend',function(){
-//
-//				($(this).find('h2')).prev().find('i')
-//							.removeClass('fa-caret-down')
-//			 				.addClass('fa-caret-up');
-//			});
-//
-//			$(this).find('h2').data('state','open'); // updating Dom state
-//
-//		}else{
-//
-//			//close the P
-//			($(this).find('h2')).next().removeClass('open');
-//
-//			($(this).find('h2')).next().one('transitionend',function(){
-//
-//				$(this).prev().find('i')
-//							.removeClass('fa-caret-up')
-//			 				.addClass('fa-caret-down');
-//			});
-//
-//			($(this).find('h2')).data('state','close'); // updating Dom state
-//		}
-//		
-//	});
     
     
+    
+    
+    
+/*
+|--------------------------------------------------------------------------
+| All Notes
+|--------------------------------------------------------------------------
+|
+*/
+    
+
     /* Note Draggable */
-//    
-//    $('.note').draggable();
+
+    $('.note').draggable();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 });

@@ -12,12 +12,12 @@
     <section class="front" id="loginpage">
             <div id='loginbox'>
                <h1>Hey, Beautiful!</h1>
-                {!! Form::open(['url' => 'login', 'class' => 'form']) !!}
+                {!! Form::open(['url' => 'login']) !!}
                     {{form::label('username', 'Username')}}
                     {{form::text('username')}}
                     
                     {{form::label('password', 'Password')}}
-                    {{form::text('password')}}
+                    {{form::password('password')}}
                     
                     {{form::submit('Login')}}
                 {!! Form::close() !!}<br>
@@ -27,7 +27,8 @@
             
     </section>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+    <script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js"></script>
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>

@@ -1,0 +1,72 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'noty' ]
+2 info using npm@2.15.0
+3 info using node@v4.4.2
+4 verbose install initial load of C:\xampp\htdocs\patches\package.json
+5 verbose installManyTop reading scoped package data from C:\xampp\htdocs\patches\node_modules\bootstrap-sass\package.json
+6 verbose installManyTop reading scoped package data from C:\xampp\htdocs\patches\node_modules\gulp\package.json
+7 verbose installManyTop reading scoped package data from C:\xampp\htdocs\patches\node_modules\laravel-elixir\package.json
+8 verbose readDependencies loading dependencies from C:\xampp\htdocs\patches\package.json
+9 silly cache add args [ 'noty', null ]
+10 verbose cache add spec noty
+11 silly cache add parsed spec Result {
+11 silly cache add   raw: 'noty',
+11 silly cache add   scope: null,
+11 silly cache add   name: 'noty',
+11 silly cache add   rawSpec: '',
+11 silly cache add   spec: 'latest',
+11 silly cache add   type: 'tag' }
+12 silly addNamed noty@latest
+13 verbose addNamed "latest" is being treated as a dist-tag for noty
+14 info addNameTag [ 'noty', 'latest' ]
+15 silly mapToRegistry name noty
+16 silly mapToRegistry using default registry
+17 silly mapToRegistry registry https://registry.npmjs.org/
+18 silly mapToRegistry data Result {
+18 silly mapToRegistry   raw: 'noty',
+18 silly mapToRegistry   scope: null,
+18 silly mapToRegistry   name: 'noty',
+18 silly mapToRegistry   rawSpec: '',
+18 silly mapToRegistry   spec: 'latest',
+18 silly mapToRegistry   type: 'tag' }
+19 silly mapToRegistry uri https://registry.npmjs.org/noty
+20 verbose addNameTag registry:https://registry.npmjs.org/noty not in flight; fetching
+21 verbose request uri https://registry.npmjs.org/noty
+22 verbose request no auth needed
+23 info attempt registry request try #1 at 10:32:14 AM
+24 verbose request id f6517b793830ebfe
+25 http request GET https://registry.npmjs.org/noty
+26 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxy proxy:3128
+27 info attempt registry request try #2 at 10:32:26 AM
+28 http request GET https://registry.npmjs.org/noty
+29 info retry will retry, error on last attempt: Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxy proxy:3128
+30 info attempt registry request try #3 at 10:33:29 AM
+31 http request GET https://registry.npmjs.org/noty
+32 verbose stack Error: tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxy proxy:3128
+32 verbose stack     at ClientRequest.onError (C:\Program Files\nodejs\node_modules\npm\node_modules\request\node_modules\tunnel-agent\index.js:176:17)
+32 verbose stack     at ClientRequest.g (events.js:260:16)
+32 verbose stack     at emitOne (events.js:77:13)
+32 verbose stack     at ClientRequest.emit (events.js:169:7)
+32 verbose stack     at Socket.socketErrorListener (_http_client.js:256:9)
+32 verbose stack     at emitOne (events.js:77:13)
+32 verbose stack     at Socket.emit (events.js:169:7)
+32 verbose stack     at connectErrorNT (net.js:996:8)
+32 verbose stack     at nextTickCallbackWith2Args (node.js:442:9)
+32 verbose stack     at process._tickCallback (node.js:356:17)
+33 verbose cwd C:\xampp\htdocs\patches
+34 error Windows_NT 10.0.10586
+35 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "noty"
+36 error node v4.4.2
+37 error npm  v2.15.0
+38 error code ECONNRESET
+39 error network tunneling socket could not be established, cause=getaddrinfo ENOTFOUND proxy proxy:3128
+39 error network This is most likely not a problem with npm itself
+39 error network and is related to network connectivity.
+39 error network In most cases you are behind a proxy or have bad network settings.
+39 error network
+39 error network If you are behind a proxy, please make sure that the
+39 error network 'proxy' config is set properly.  See: 'npm help config'
+40 verbose exit [ 1, true ]

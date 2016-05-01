@@ -23,11 +23,11 @@
                     {{form::text('email')}}
                     
                     {{form::label('password', 'Password')}}
-                    {{form::text('password')}}
+                    {{form::password('password')}}
                     
                     
                     {{form::label('password_confirmation', 'Confirm Password')}}
-                    {{form::text('password_confirmation')}}
+                    {{form::password('password_confirmation')}}
                     
                     {{form::submit('Register')}}
                 {!! Form::close() !!}<br>
