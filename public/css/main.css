@@ -27,7 +27,6 @@
   margin: 0;
   list-style-type: none; }
 
-/* All device and Mobile Breakpoint */
 h1, h2 {
   font-family: 'sans-serif', sans-serif;
   font-size: 0.75em;
@@ -94,6 +93,16 @@ header {
         color: #B61AAE; }
       .sidenav .navicons .icons i:nth-child(5):hover {
         color: #00B8A9; }
+      .sidenav .navicons .icons i.active-btn:nth-child(1) {
+        color: #04a0dd !important; }
+      .sidenav .navicons .icons i.active-btn:nth-child(2) {
+        color: #EB586F !important; }
+      .sidenav .navicons .icons i.active-btn:nth-child(3) {
+        color: #F2910A !important; }
+      .sidenav .navicons .icons i.active-btn:nth-child(4) {
+        color: #B61AAE !important; }
+      .sidenav .navicons .icons i.active-btn:nth-child(5) {
+        color: #00B8A9 !important; }
     .sidenav .navicons #top {
       -webkit-justify-content: flex-start;
       -ms-flex-pack: start;
@@ -130,11 +139,36 @@ header {
       padding: 2em;
       vertical-align: middle; }
       .slideout ul li h2 {
-        transition: all ease 0.5s; }
+        transition: all ease 0.5s;
+        padding-bot: 0.5em; }
       .slideout ul li h2:hover {
-        color: #2574a9;
-        cursor: pointer; }
+        color: #2574a9; }
+      .slideout ul li p {
+        font-family: 'open-sans',sans-serif;
+        font-size: 0.8em; }
 
+/* End Slideout Universal style*/
+/* My boards slideout style */
+#myboards ul li h2 {
+  color: #EB586F;
+  padding: 0.5em 0; }
+
+#myboards ul li a {
+  transition: all ease 0.3s;
+  color: #cc4b5e;
+  font-size: 1em;
+  font-family: 'raleway-regular', sans-serif; }
+
+#myboards ul li a:visited {
+  color: #cc4b5e; }
+
+#myboards ul li a:hover {
+  color: #EB586F; }
+
+#myboards ul li p {
+  padding-bottom: 1em; }
+
+/* Info slideout style */
 #info ul li {
   padding: 2em;
   background-color: #f7f8f9;
@@ -148,15 +182,13 @@ header {
     #info ul li .boarders img {
       height: 50px;
       width: 50px;
-      border-radius: 50%; }
-    #info ul li .boarders p {
-      font-family: 'open-sans',sans-serif; }
+      border-radius: 50%;
+      padding-bot: 0.5em; }
   #info ul li h2 {
     padding-bottom: 1em;
     color: #F2910A; }
 
 #settings #accordion li {
-  cursor: pointer;
   padding-right: 0; }
   #settings #accordion li h2 {
     color: #00B8A9; }
@@ -172,6 +204,7 @@ header {
     #settings #accordion li .bgoptions img.bgcurrent {
       border: 3px solid #00B8A9; }
 
+/* profile slideout style */
 #profile .banner {
   position: relative;
   height: 20vh;
@@ -190,8 +223,10 @@ header {
     box-shadow: 1px rgba(0, 0, 0, 0.5); }
 
 #profile h2 {
-  color: #03C1EB; }
+  color: #03C1EB;
+  padding-bottom: 0.5em; }
 
+/* Dashboard Logo*/
 .logobox p {
   color: #111;
   font-size: 5em; }
@@ -199,19 +234,12 @@ header {
 .main {
   position: fixed;
   top: 0;
+  left: 0;
   z-index: 0;
   height: 100vh;
   width: 100vw; }
-  .main #help {
-    position: fixed;
-    right: 0.5em;
-    bottom: 0.5em; }
-    .main #help i {
-      z-index: 5;
-      font-size: 3em;
-      height: 50px;
-      width: 50px;
-      color: #1C9970; }
+  .main .container {
+    padding-left: 50px; }
 
 .front {
   height: 100vh;
@@ -233,7 +261,27 @@ header {
 #board {
   background-image: url("../images/backgrounds/diagnal-fabric.png");
   background-repeat: repeat;
-  z-index: 0; }
+  position: absolute;
+  top: 0; }
+  #board .container #help {
+    position: fixed;
+    right: 0.5em;
+    bottom: 0.5em; }
+    #board .container #help i {
+      z-index: 5;
+      font-size: 3em;
+      height: 50px;
+      width: 50px;
+      color: #1C9970; }
+  #board .container .draggables .note {
+    z-index: 3;
+    width: 20vh;
+    min-height: 20vh;
+    background-color: #F8D098;
+    border-radius: 5px;
+    box-shadow: 1px 5px 5px 1px rgba(0, 0, 0, 0.1);
+    margin: 0.5em;
+    padding: 1em; }
 
 .open {
   left: 50px;
@@ -258,6 +306,9 @@ header {
 /*for destop - inclusive*/
 @media only screen and (min-width: 65em) {
   .slideout {
-    width: 16vw; } }
+    width: 16vw; }
+  #board .draggables .note {
+    width: 20vh;
+    min-height: 20vh; } }
 
 /*# sourceMappingURL=main.css.map */

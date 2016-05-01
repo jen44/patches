@@ -14,9 +14,9 @@
         <div class="icons" id="top">
             <a href="dashboard"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
             
-            <i class="fa fa-clone" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
+            <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
             
-            <i class="fa fa-info-circle" aria-hidden="true" id="info-btn" name="Board info"></i>
+            <i class="fa fa-info-circle btn" aria-hidden="true" id="info-btn" name="Board info"></i>
             
             <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
             
@@ -26,9 +26,9 @@
         
         
         <div class="icons" id="bottom">
-            <i class="fa fa-user" aria-hidden="true" id="profile-btn" name="Profile"></i>
+            <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
             
-            <i class="fa fa-sign-out" aria-hidden="true" name="logout"></i>
+            <i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i>
             
         </div>
     </nav>
@@ -37,11 +37,27 @@
 <section class="slideouts">
 
     <div id="myboards" class="slideout">
-        <h3>My boards</h3>
         <ul>
-            <li><a href="">Board 1</a></li>
-            <li><a href="">Board 2</a></li>
-            <li><a href="">Board 3</a></li>
+            <li>
+                <a href="board/id">Board 1</a>
+                <h2>Created by:</h2>
+                <p>username</p>
+                <p>Board Description...</p>
+            </li>
+            
+            <li>
+                <a href="board/id">Board 2</a>
+                <h2>Created by:</h2>
+                <p>username</p>
+                <p>Board Description...</p>   
+            </li>
+            
+            <li>
+                <a href="board/id">Board 3</a>
+                <h2>Created by:</h2>
+                <p>username</p>
+                <p>Board Description...</p>
+            </li>
         </ul>
     </div>
     

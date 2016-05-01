@@ -56,7 +56,7 @@
     
 }
 
-/* All device and Mobile Breakpoint */
+//////////////* All device and Mobile Breakpoint *////////////////
 
 h1, h2 {
     font-family: 'sans-serif', sans-serif;
@@ -86,6 +86,9 @@ body {
 header {
     z-index: 3;
 }
+
+///////////////////* Side nav style */////////////////////////
+
 
 .sidenav {
     height: 100vh;
@@ -143,6 +146,25 @@ header {
             } 
             
             
+            i.active-btn:nth-child(1) {
+                color: #04a0dd !important;
+            }
+            
+            i.active-btn:nth-child(2) {
+                color: #EB586F !important;
+            }
+            
+            i.active-btn:nth-child(3) {
+                color: #F2910A !important;
+            }
+            
+            i.active-btn:nth-child(4) {
+                color: #B61AAE !important;
+            }
+            
+            i.active-btn:nth-child(5) {
+                color: #00B8A9 !important;
+            } 
 
         }
 
@@ -160,6 +182,9 @@ header {
 } /* End of sidenav*/
 
 
+
+
+///////////////* Slideout Universal style *////////////////
 
 .slideout {
     
@@ -201,22 +226,71 @@ header {
             
             h2{
                 transition: all ease 0.5s;
+                padding-bot: 0.5em;
             }
             
             h2:hover {
                 color: #2574a9;
-                cursor: pointer;
                 
             }
             
-          
+            p {
+                font-family: 'open-sans',sans-serif;
+                font-size: 0.8em;
+
+            }
 
         }
         
         
     }
     
+} /* End Slideout Universal style*/
+
+
+/* My boards slideout style */
+
+#myboards {
+    
+    ul {
+        
+        li {
+            
+
+            h2 {
+                color: #EB586F;
+                padding: 0.5em 0;
+            }
+
+            a {
+                transition: all ease 0.3s;
+                
+                color: #cc4b5e;
+                font-size: 1em;
+                font-family: 'raleway-regular', sans-serif;
+
+            }
+            
+            a:visited {
+                color: #cc4b5e;
+                
+            }
+            
+            a:hover {
+                
+                color: #EB586F;
+            }
+            
+            p {
+                padding-bottom: 1em;
+            }
+        }
+    }
+    
 }
+
+
+/* Info slideout style */
 
 #info {
     ul {
@@ -226,6 +300,8 @@ header {
             padding: 2em;
             background-color: #f7f8f9;
             border-bottom: 1px solid #DDD;
+            
+            
             
             .boarders {
                 margin: 0.5em;
@@ -239,11 +315,10 @@ header {
                     height: 50px;
                     width: 50px;
                     border-radius: 50%;
+                    padding-bot: 0.5em;
                 }
                 
-                p {
-                    font-family: 'open-sans',sans-serif;
-                }
+                
                 
             }
 
@@ -251,6 +326,9 @@ header {
                 padding-bottom: 1em;
                 color: #F2910A;
             }
+            
+            
+            
         }
     }
     
@@ -261,7 +339,6 @@ header {
     #accordion {
         
         li {
-            cursor: pointer;
             
             padding-right: 0;
             
@@ -295,6 +372,10 @@ header {
     }
 }
 
+
+
+/* profile slideout style */
+
 #profile {
     
     
@@ -319,16 +400,28 @@ header {
             box-shadow: 1px rgba(0,0,0,0.5);
         }
         
-
         
     }
     
     h2 {
-        
         color: #03C1EB;
+        padding-bottom: 0.5em;
+    }
+    
+    p {
+        
     }
     
 }
+
+
+
+////////* Main page style *///////////
+
+
+
+
+/* Dashboard Logo*/
 
 .logobox {
     
@@ -342,26 +435,14 @@ header {
 .main {
     position: fixed;
     top: 0;
+    left: 0;
     z-index: 0;
     height: 100vh;
     width: 100vw;
     
-    #help {
-
-        position: fixed;
-        right: 0.5em;
-        bottom: 0.5em;
+    .container {
+        padding-left: 50px;
         
-        i {
-
-            z-index: 5;
-            font-size: 3em;
-
-            height: 50px;
-            width: 50px;
-            color: #1C9970;
-            
-        }
     }
   
     
@@ -394,7 +475,47 @@ header {
 #board {
     background-image: url('../images/backgrounds/diagnal-fabric.png');
     background-repeat: repeat;
-    z-index: 0;
+    position: absolute;
+    top: 0;
+    
+    .container {
+        
+         #help {
+
+            position: fixed;
+            right: 0.5em;
+            bottom: 0.5em;
+
+            i {
+
+                z-index: 5;
+                font-size: 3em;
+
+                height: 50px;
+                width: 50px;
+                color: #1C9970;
+
+            }
+        }
+        
+        .draggables {
+            
+            
+            .note {
+                z-index: 3;
+                width: 20vh;
+                min-height: 20vh;
+                background-color: #F8D098;
+                border-radius: 5px;
+                box-shadow: 1px 5px 5px 1px rgba(0,0,0,0.1);
+                margin: 0.5em;
+                padding: 1em;
+            }
+            
+        }
+        
+        
+    }
     
 }
 
@@ -438,7 +559,16 @@ header {
     .slideout {
         width: 35vw;
     }
-    
+    #board {
+        
+        .draggables {
+            
+            .note {
+                
+                
+            }
+        }
+    }
 }
 
 
@@ -446,6 +576,19 @@ header {
 @media only screen and (min-width : 65em) {
     .slideout {
         width: 16vw;
+    }
+    
+    #board {
+        
+        .draggables {
+            
+            .note {
+                
+                width: 20vh;
+                min-height: 20vh;
+                
+            }
+        }
     }
 }
 

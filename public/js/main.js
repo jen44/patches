@@ -1,39 +1,84 @@
 $(function(){
-
-    //Side Nav slide out
     
-    
-	var isOpen = false;
+    /* My Boards slide out*/
+   
+    $('#myboards-btn').on('click',function(){
 
+		if($('#myboards').hasClass('open') == false){
+			//open slider
+            
+            if($('#settings').hasClass('open')){
+                
+                $('#settings-btn').removeClass('active-btn');
+                $('#settings').removeClass('open');
+            
+            }
+            
+            if($('#profile').hasClass('open')){
+                
+                $('#profile-btn').removeClass('active-btn');
+                $('#profile').removeClass('open');
+            
+            }
+            
+            if($('#info').hasClass('open')){
+                
+                $('#info-btn').removeClass('active-btn');
+                $('#info').removeClass('open');
+            
+            }
+            
+            $('#myboards-btn').addClass('active-btn');
+			$('#myboards').addClass('open');
+			
+    
+		}else{
+            
+			//close slider
+            $('#myboards-btn').removeClass('active-btn');
+			$('#myboards').removeClass('open');
+
+		}
+        
+	});
     
     /* Board info slide out*/
    
     $('#info-btn').on('click',function(){
 
-		if(isOpen == false){
+		if($('#info').hasClass('open') == false){
 			//open slider
             
-            $('#info-btn').addClass('new');
+            if($('#settings').hasClass('open')){
+                
+                $('#settings-btn').removeClass('active-btn');
+                $('#settings').removeClass('open');
+            
+            }
+            
+            if($('#myboards').hasClass('open')){
+                
+                $('#myboards-btn').removeClass('active-btn');
+                $('#myboards').removeClass('open');
+            
+            }
+            
+            if($('#profile').hasClass('open')){
+                
+                $('#profile-btn').removeClass('active-btn');
+                $('#profile').removeClass('open');
+            
+            }
+            
+            $('#info-btn').addClass('active-btn');
 			$('#info').addClass('open');
-//            console.log('blah');
-//			$('#settings').one('transitionend', function(){
-//                console.log('blah');
-//				$('#settings-btn').addClass('new');
-//			});						
 			
     
-            
-			isOpen = true;
-
 		}else{
+            
 			//close slider
-            $('#info-btn').removeClass('new');
+            $('#info-btn').removeClass('active-btn');
 			$('#info').removeClass('open');
-//			$('#settings').one('transitionsend',function(){
-//                    
-//				$('#settings-btn').removeClass('new');
-//			});	
-			isOpen = false;
 
 		}
         
@@ -41,50 +86,99 @@ $(function(){
     
     
     /* Settings slide out*/
+     $('#settings-btn').on('click',function(){
     
-	$('#settings-btn').on('click',function(){
-
-		if(isOpen == false){
-            
-            $('#settings-btn').addClass('new');
-			$('#settings').addClass('open');
     
-            
-			isOpen = true;
+        if($('#settings').hasClass('open') == false){
+                //open slider
 
-		}else{
-            
-            $('#settings-btn').removeClass('new');
-			$('#settings').removeClass('open');
-            
-			isOpen = false;
+                if($('#profile').hasClass('open')){
 
-		}
-        
-	});
+                    $('#profile-btn').removeClass('active-btn');
+                    $('#profile').removeClass('open');
+
+                }
+
+                if($('#myboards').hasClass('open')){
+
+                    $('#myboards-btn').removeClass('active-btn');
+                    $('#myboards').removeClass('open');
+
+                }
+
+                if($('#info').hasClass('open')){
+
+                    $('#info-btn').removeClass('active-btn');
+                    $('#info').removeClass('open');
+
+                }
+
+                $('#settings-btn').addClass('active-btn');
+                $('#settings').addClass('open');
+
+            }else{
+
+                //close slider
+                $('#settings-btn').removeClass('active-btn');
+                $('#settings').removeClass('open');
+
+            }
+     });
     
     /* Profile Slide out */
     
     $('#profile-btn').on('click',function(){
 
-		if(isOpen == false){
-            
-            $('#profile-btn').addClass('new');
-			$('#profile').addClass('open');
-    
-            
-			isOpen = true;
+		
+        if($('#profile').hasClass('open') == false){
+                //open slider
 
-		}else{
-            
-            $('#profile-btn').removeClass('new');
-			$('#profile').removeClass('open');
-            
-			isOpen = false;
+            if($('#settings').hasClass('open')){
 
-		}
-        
+                $('#settings-btn').removeClass('active-btn');
+                $('#settings').removeClass('open');
+
+            }
+
+            if($('#info').hasClass('open')){
+
+                $('#info-btn').removeClass('active-btn');
+                $('#info').removeClass('open');
+
+            }
+            
+            if($('#myboards').hasClass('open')){
+                
+                $('#myboards-btn').removeClass('active-btn');
+                $('#myboards').removeClass('open');
+            
+            }
+
+            $('#profile-btn').addClass('active-btn');
+            $('#profile').addClass('open');
+
+
+        }else{
+
+            //close slider
+            $('#profile-btn').removeClass('active-btn');
+            $('#profile').removeClass('open');
+
+        }
+
 	});
+    
+    
+    /* Close all slides on board click */
+    
+    $('#board').on('click', function(){
+        
+        if($('.slideout').hasClass('open')){
+            $('.slideout').removeClass('open');
+            $('.btn').removeClass('active-btn');
+        }
+        
+    });
     
     
     /* Background option toggle current */
@@ -141,6 +235,9 @@ $(function(){
 //		
 //	});
     
-
+    
+    /* Note Draggable */
+//    
+//    $('.note').draggable();
 
 });
