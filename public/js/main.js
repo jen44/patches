@@ -194,7 +194,7 @@ $(function(){
     
 /*
 |--------------------------------------------------------------------------
-| Settings: Background border toggle
+| Settings: Background toggle
 |--------------------------------------------------------------------------
 |
 */
@@ -203,6 +203,8 @@ $(function(){
     /* Background option toggle current */
     
     $('.bgoptions img').on('click', function(){
+        
+        console.log($(this));
         
         if($(this).hasClass('bgcurrent') == false){
             
@@ -215,9 +217,37 @@ $(function(){
             
         }
         
-          
+    
+    /* Background image toggle */
+        
+        
+        $('#board').css('background-image','url('+$(this).attr('src')+')');
+        
+//        
+//        console.log($(this).attr('data-file'));
+        
+        var newbg = $(this).attr('data-file');
+        
+        
+        $.ajax({
+            type: 'POST',
+            url: '../resources/views/board.blade.php',
+            data: {background: newbg}
+            
+        }).done(function(){
+            
+            
+        });
+    
+        
         
     });
+    
+
+    
+    
+   
+    
     
     
     
@@ -241,7 +271,7 @@ $(function(){
     
     
     
-    
+
     
     
     

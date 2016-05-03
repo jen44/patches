@@ -49,6 +49,21 @@ body {
 header {
   z-index: 3; }
 
+::-webkit-scrollbar {
+  width: 5px; }
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px; }
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #BBB; }
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: #AAA; }
+
 .sidenav {
   height: 100vh;
   width: 50px;
@@ -311,7 +326,7 @@ header {
 /*for destop - inclusive*/
 @media only screen and (min-width: 65em) {
   .slideout {
-    width: 16vw; }
+    width: 20vw; }
   #board .draggables .note {
     width: 20vh;
     min-height: 20vh; } }

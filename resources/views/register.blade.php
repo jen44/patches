@@ -9,12 +9,14 @@
 </head>
 <body>
     <section class="front" id="registerpage">
-            <div id='registerbox'>
+            <div id='registerbox' class="row">
                <h1>One of us!</h1>
                <p>Just a few more things...</p>
-                {!! Form::open(['url' => 'register', 'class' => 'form']) !!}
-                    {{form::label('username', 'Username')}}
-                    {{form::text('username')}}
+                {!! Form::open(['url' => 'register', 'class' => 'col s6']) !!}
+                   <div class="input-field col s6">
+                        {{form::label('username', 'Username')}}
+                        {{form::text('username', '', ['class' => 'validate', 'placeholder' => 'Username'])}}
+                    </div>
                     
                     {{form::label('name', 'Name')}}
                     {{form::text('name')}}
@@ -37,7 +39,9 @@
             
     </section>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>

@@ -20,11 +20,7 @@ class BoardController extends Controller
 //         $this->middleware('auth.user', ['except' => ['showPosts', 'showIndivPosts']]);
 //    }
     
-    public function showBoards() {
-        $boards = Board::all();
-//        $boards = Board::orderBy('id')->get();
-//        return view('boards', compact('boards'));
-    }
+
     
     public function showCreationForm() {
         //
@@ -44,18 +40,14 @@ class BoardController extends Controller
 //        return redirect('board');
     }
     
-    public function showIndivBoards($id) {
+    public function showIndivBoard() {
         //
-        $boards = Board::find($id);
-        return view('board', compact('board'));
+//        $boards = Board::find($id);
+//        return view('board/{id}', compact('board'));
+        return view('board');
         
     }
     
-    public function edit($id) {
-        //
-        return view('board/'.$id.'/edit');
-    }
-
     /**
      * Update the specified resource in storage.
      *

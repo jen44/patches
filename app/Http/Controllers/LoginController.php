@@ -23,7 +23,7 @@ class LoginController extends Controller
         
         if(\Auth::attempt($credential)){
             
-            return redirect('success');
+            return redirect('board');
             
         } else {
             

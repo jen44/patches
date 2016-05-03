@@ -28,7 +28,7 @@
         <div class="icons" id="bottom">
             <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
             
-            <i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i>
+            <a href="logout"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
             
         </div>
     </nav>
@@ -102,16 +102,16 @@
                 <h2>Board Background</h2>
                 <div class="bgoptions"><!--Flex this -->
                    <br>
-                    <img src="{{asset('images/backgrounds/pattern.png')}}" class="bgcurrent" data-file="pattern">
-                    <img src="{{asset('images/backgrounds/wood.png')}}" data-file="wood">
-                    <img src="{{asset('images/backgrounds/woven.png')}}" data-file="woven">
-                    <img src="{{asset('images/backgrounds/triangles.png')}}" data-file="triangles">
+                    <img src="{{asset('images/backgrounds/pattern.png')}}" class="bgcurrent" data-file="pattern.png">
+                    <img src="{{asset('images/backgrounds/wood.png')}}" data-file="wood.png">
+                    <img src="{{asset('images/backgrounds/woven.png')}}" data-file="woven.png">
+                    <img src="{{asset('images/backgrounds/triangles.png')}}" data-file="triangles.png">
                     <img src="{{asset('images/backgrounds/diagnal-fabric.png')}}" alt="diagnal-fabric">
-                    <img src="{{asset('images/backgrounds/school.png')}}" data-file="school">
-                    <img src="{{asset('images/backgrounds/weather.png')}}" data-file="weather">
-                    <img src="{{asset('images/backgrounds/dark_wood.png')}}" data-file="dark_wood">
-                    <img src="{{asset('images/backgrounds/cardboard.png')}}" data-file="cardboard">
-                    <img src="{{asset('images/backgrounds/swirl.png')}}" data-file="swirl">
+                    <img src="{{asset('images/backgrounds/school.png')}}" data-file="school.png">
+                    <img src="{{asset('images/backgrounds/weather.png')}}" data-file="weather.png">
+                    <img src="{{asset('images/backgrounds/dark_wood.png')}}" data-file="dark_wood.png">
+                    <img src="{{asset('images/backgrounds/cardboard.png')}}" data-file="cardboard.png">
+                    <img src="{{asset('images/backgrounds/swirl.png')}}" data-file="swirl.png">
                     
                 </div>
                 <div class="clear"></div>
@@ -133,23 +133,23 @@
     
     <div id="profile" class="slideout">
         <div class="banner">
-            <img src="{{asset('images/avatars/'.$user->avatar)}}" alt="">
+            <img src="{{asset('images/avatars/'.Auth::User()->avatar)}}" alt="">
         </div>
         <div class="details">
             <ul>
                 <li>
                     <h2>Username</h2> 
-                    <p>{{$user->username}}</p>              
+                    <p>{{Auth::User()->username}}</p>              
                 </li>
                 
                 <li>
                     <h2>Name</h2>
-                    <p>{{$user->name}}</p>
+                    <p>{{Auth::User()->name}}</p>
                 </li>
                 
                 <li>
                     <h2>Email</h2>
-                    <p>{{$user->email}}</p>
+                    <p>{{Auth::User()->email}}</p>
                 </li>
                 
                 
@@ -161,6 +161,31 @@
             </ul>
         </div>
         
+        <div class="details">
+            <ul>
+                <li>
+                    <h2>Username</h2> 
+                    <p>{{Auth::User()->username}}</p>              
+                </li>
+                
+                <li>
+                    <h2>Name</h2>
+                    <p>{{Auth::User()->name}}</p>
+                </li>
+                
+                <li>
+                    <h2>Email</h2>
+                    <p>{{Auth::User()->email}}</p>
+                </li>
+                
+                
+                <li>
+                    <h2><a href=""></a>Edit Profile</h2>
+                    
+                </li>
+                
+            </ul>
+        </div>
     </div>
 
     <div id="alertout" class="slideout"><!-- Maybe do an alert? -->
@@ -174,8 +199,8 @@
     @yield('content')
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<!--    <script type="text/javascript" src="js/noty/packaged/jquery.noty.packaged.min.js"></script>-->
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>

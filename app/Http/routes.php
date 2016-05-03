@@ -22,25 +22,8 @@ Route::get('dashboard', function() {
     return view('dashboard');
 });
 
-Route::get('board', function() {
-    return view('board');
-});
 
-Route::get('success', function() {
-    return view('success');
-});
 
-Route::get('testshowusers', function() {
-    return view('testshowusers', compact('users'));
-});
-
-Route::get('testshowboards', function() {
-    return view('testshowboards', compact('boards'));
-});
-
-Route::get('testshownotes', function() {
-    return view('testshownotes', compact('notes'));
-});
     
 
 
@@ -87,6 +70,9 @@ Route::group(['middleware' => ['web']], function () {
                                 Board
                             **********/
     
+    
+    Route::get('board', 'boardController@showIndivBoard');
+
 
     
     
