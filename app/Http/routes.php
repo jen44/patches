@@ -14,13 +14,27 @@
 */
 
 
-Route::get('/', function() {
-    return view('login');
-});
+  
 
-Route::get('dashboard', function() {
-    return view('dashboard');
-});
+//show register form
+Route::get('register', 'UserController@showRegisterForm');
+
+//process register
+Route::post('register', 'UserController@createUser');
+
+//Show Login Form
+Route::get('login', 'LoginController@showLoginForm');
+
+//Show Login Form
+Route::get('login', 'LoginController@showLoginForm');
+
+//Process Logout
+Route::get('logout', 'LoginController@logout');
+
+//Test board note show
+//Route::get('board', function(){
+//    return view('board', compact('board'));
+//});
 
 
 
@@ -43,26 +57,14 @@ Route::group(['middleware' => ['web']], function () {
                             /**********
                                 User
                             **********/
-    
-   
-    //show register form
-    Route::get('register', 'UserController@showRegisterForm');
-    
-    //process register
-    Route::post('register', 'UserController@createUser');
-    
-    
-    
-    //Show Login Form
-    Route::get('login', 'LoginController@showLoginForm');
-    
+  
     
     //Process Login
     Route::post('login', 'LoginController@processLogin');
     
+    //After login, show Dashboard
+    Route::get('dashboard/{id}', 'LoginController@showDashboard');
     
-    //Process Logout
-    Route::get('logout', 'LoginController@logout');
     
     
 
@@ -71,7 +73,7 @@ Route::group(['middleware' => ['web']], function () {
                             **********/
     
     
-    Route::get('board', 'boardController@showIndivBoard');
+    Route::get('board/{id}', 'boardController@showIndivBoard');
 
 
     

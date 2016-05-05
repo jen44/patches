@@ -11,6 +11,12 @@ use Auth;
 
 class LoginController extends Controller
 {
+    
+    
+    public function __construct(){
+         $this->middleware('auth.user', ['only' => ['showDashboard']]);
+    }
+    
     //Show login form
     public function showLoginForm(){
         
@@ -23,14 +29,22 @@ class LoginController extends Controller
         
         if(\Auth::attempt($credential)){
             
-            return redirect('board');
+        $user = Auth::User();
+        return redirect('dashboard/'.$user->id);
             
         } else {
             
-            return redirect('login')->with('message', 'Login information invalid');
+            return redirect('/')->with('message', 'Login information invalid');
         
         }
         
+    }
+    
+    public function showDashboard($id){
+        
+
+        $user = Auth::User();
+        return view('dashboard', compact('board'));
     }
     
     

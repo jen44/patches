@@ -16,9 +16,9 @@ class BoardController extends Controller
 {
     //
 //    
-//    public function __construct(){
-//         $this->middleware('auth.user', ['except' => ['showPosts', 'showIndivPosts']]);
-//    }
+    public function __construct(){
+         $this->middleware('auth.user', ['only' => ['update','destroy']]);
+    }
     
 
     
@@ -40,11 +40,11 @@ class BoardController extends Controller
 //        return redirect('board');
     }
     
-    public function showIndivBoard() {
+    public function showIndivBoard($id) {
         //
-//        $boards = Board::find($id);
-//        return view('board/{id}', compact('board'));
-        return view('board');
+        $board = Board::find($id);
+        return view('board', compact('board'));
+        
         
     }
     

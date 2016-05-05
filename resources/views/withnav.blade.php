@@ -12,7 +12,7 @@
 <header class="sidenav">
     <nav class="navicons">
         <div class="icons" id="top">
-            <a href="dashboard"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
+            <a href="../dashboard/{{Auth::User()->id}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
             
             <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
             
@@ -28,7 +28,7 @@
         <div class="icons" id="bottom">
             <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
             
-            <a href="logout"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
+            <a href="../logout"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
             
         </div>
     </nav>
@@ -38,12 +38,25 @@
 
     <div id="myboards" class="slideout">
         <ul>
-           
-            @foreach(App\Models\Board::all() as $board)
+           <h2>My Boards</h2>
+            @foreach(Auth::User()->boards as $board)
             
             <li>
-                <a href="board/{{$board->id}}">{{$board->name}}</a>
+                <a href="../board/{{$board->id}}">{{$board->name}}</a>
                 <h2>Created by:</h2>
+                <p></p>
+                <p>{{$board->description}}</p>
+            </li>
+            
+            @endforeach
+            
+            <h2>Following Boards</h2>
+            
+             @foreach(Auth::User()->boards as $board)
+            
+            <li>
+                <a href="../board/{{$board->id}}">{{$board->name}}</a>
+                <h2>Created by: </h2>
                 <p></p>
                 <p>{{$board->description}}</p>
             </li>
@@ -56,9 +69,9 @@
     <div id="info" class="slideout">
         <ul>
             <li>
-
+                
                 <h2>Created By</h2>
-                <p>Username</p>
+                <p>{{Auth::User()->username}}</p>
 
             </li>
 
@@ -89,7 +102,7 @@
             <li>
 
                 <h2>Created at</h2>
-                <p>00:00 00/00/0000</p>
+                <p>{{$board->created_at}}</p>
 
             </li>
 
@@ -139,53 +152,27 @@
             <ul>
                 <li>
                     <h2>Username</h2> 
-                    <p>{{Auth::User()->username}}</p>              
+                    <p>{{Auth::User()->username}}</p> 
+                    <i class="fa fa-pencil" aria-hidden="true"></i>             
                 </li>
                 
                 <li>
                     <h2>Name</h2>
                     <p>{{Auth::User()->name}}</p>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </li>
                 
                 <li>
                     <h2>Email</h2>
                     <p>{{Auth::User()->email}}</p>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </li>
                 
-                
-                <li>
-                    <h2><a href=""></a>Edit Profile</h2>
-                    
-                </li>
                 
             </ul>
         </div>
         
-        <div class="details">
-            <ul>
-                <li>
-                    <h2>Username</h2> 
-                    <p>{{Auth::User()->username}}</p>              
-                </li>
-                
-                <li>
-                    <h2>Name</h2>
-                    <p>{{Auth::User()->name}}</p>
-                </li>
-                
-                <li>
-                    <h2>Email</h2>
-                    <p>{{Auth::User()->email}}</p>
-                </li>
-                
-                
-                <li>
-                    <h2><a href=""></a>Edit Profile</h2>
-                    
-                </li>
-                
-            </ul>
-        </div>
+        
     </div>
 
     <div id="alertout" class="slideout"><!-- Maybe do an alert? -->

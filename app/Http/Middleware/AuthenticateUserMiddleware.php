@@ -16,6 +16,8 @@ class AuthenticateUserMiddleware
      */
     public function handle($request, Closure $next)
     {
+        
+     
         if(Auth::user()->id != $request->route('id')){
         // not the right user
             return view('noaccess');

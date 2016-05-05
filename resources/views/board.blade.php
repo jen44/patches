@@ -5,31 +5,20 @@
 
 <section class="main" id="board">
       <div class="container">
-         
-         
-          <div id="help" class="hidden">
-               <i class="fa fa-question-circle" aria-hidden="true"></i>
-               <div class="helpinfo hidden">
-                  <!-- This will be a pop up -->
-                   <h2>Need some help?</h2>
-                   <p><em>Double-click</em> on the board to create a new note! You can click again to edit/delete the note you created.</p>
-                   <p><em>Oh! Also...</em><br>Try clicking on the settings button on the right! You can change the background of your board.</p>
-                   <h3>Have fun! :)</h3>
-               </div>
-           </div><!-- End of help -->
 
          
          <div class="draggables">
+            
+            @foreach($board->notes as $note)
              
               <div class="note">
-                  <p>This is a draggable note...</p>
+                 <h2>{{$note->title}}</h2>
+                 <h3>Post by {{$note->user->username}}</h3>
+                 <p>{{$note->content}}</p>
 
               </div>
-
-              <div class="note">
-                  <p>This is a draggable note...</p>
-
-              </div>
+              
+            @endforeach
              
          </div><!-- End of draggables -->
           

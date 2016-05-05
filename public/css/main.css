@@ -49,6 +49,27 @@ body {
 header {
   z-index: 3; }
 
+.container {
+  padding: 2em; }
+
+.boardslink {
+  width: 20em; }
+  .boardslink a {
+    font-family: 'sans-serif', sans-serif;
+    font-size: 0.75em;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #444;
+    transition: all ease 0.3s; }
+  .boardslink a:visited {
+    text-decoration: none;
+    color: #444; }
+  .boardslink a:hover {
+    color: #000; }
+  .boardslink p {
+    padding: 1em 0; }
+
 ::-webkit-scrollbar {
   width: 5px; }
 
@@ -246,6 +267,17 @@ header {
   color: #03C1EB;
   padding-bottom: 0.5em; }
 
+#profile li {
+  position: relative; }
+  #profile li i {
+    color: #777;
+    transition: all ease 0.3s;
+    position: absolute;
+    right: 2em;
+    top: 50%; }
+  #profile li i:hover {
+    color: #04a0dd; }
+
 /* Dashboard Logo*/
 .logobox p {
   color: #111;
@@ -282,26 +314,36 @@ header {
   background-image: url("../images/backgrounds/diagnal-fabric.png");
   background-repeat: repeat;
   position: absolute;
-  top: 0; }
-  #board .container #help {
-    position: fixed;
-    right: 0.5em;
-    bottom: 0.5em; }
-    #board .container #help i {
-      z-index: 5;
-      font-size: 3em;
-      height: 50px;
-      width: 50px;
-      color: #1C9970; }
-  #board .container .draggables .note {
-    z-index: 3;
-    width: 20vh;
-    min-height: 20vh;
-    background-color: #F8D098;
-    border-radius: 5px;
-    box-shadow: 1px 5px 5px 1px rgba(0, 0, 0, 0.1);
-    margin: 0.5em;
-    padding: 1em; }
+  top: 0;
+  height: 100vh; }
+  #board .container {
+    padding-top: 0; }
+    #board .container #help {
+      position: fixed;
+      right: 0.5em;
+      bottom: 0.5em; }
+      #board .container #help i {
+        z-index: 5;
+        font-size: 3em;
+        height: 50px;
+        width: 50px;
+        color: #1C9970; }
+    #board .container .draggables {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      #board .container .draggables .note {
+        z-index: 3;
+        width: 20vh;
+        min-height: 20vh;
+        background-color: #F8D098;
+        border-radius: 5px;
+        box-shadow: 1px 5px 5px 1px rgba(0, 0, 0, 0.1);
+        margin: 0.5em;
+        padding: 1em; }
 
 .open {
   left: 50px;

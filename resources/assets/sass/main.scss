@@ -88,6 +88,49 @@ header {
     z-index: 3;
 }
 
+/////////////////////////* Dashboard Style *///////////////////////////
+
+.container {
+    
+    padding: 2em;
+    
+}
+
+.boardslink {
+
+    width: 20em;
+
+    a {
+        font-family: 'sans-serif', sans-serif;
+        font-size: 0.75em;
+        font-weight: bold;
+        text-transform: uppercase;
+        cursor: pointer;
+        color: #444;
+        transition: all ease 0.3s;
+
+
+    }
+
+
+    a:visited {
+        text-decoration: none;
+        color: #444;
+
+    }
+
+    a:hover {
+        color: #000;
+
+    }
+
+    p {
+        padding: 1em 0;
+    }
+
+}
+
+
 /////////////////////////* scroll bar style */////////////////////////
 
 
@@ -455,6 +498,27 @@ header {
         
     }
     
+    li {
+        position: relative;
+        i {
+            color: #777;
+            transition: all ease 0.3s;
+
+            position: absolute;
+            right: 2em;
+            top: 50%;
+//            transform: translateY(-50%);
+
+        }
+
+        i:hover {
+                color: #04a0dd;
+        }
+    
+    }
+    
+    
+    
 }
 
 
@@ -520,8 +584,11 @@ header {
     background-repeat: repeat;
     position: absolute;
     top: 0;
+    height: 100vh; 
+    
     
     .container {
+        padding-top: 0;
         
          #help {
 
@@ -542,6 +609,8 @@ header {
         }
         
         .draggables {
+            display: flex;
+            flex-wrap: wrap;
             
             
             .note {

@@ -231,14 +231,13 @@ $(function(){
         
         $.ajax({
             type: 'POST',
-            url: '../resources/views/board.blade.php',
+            url: '',
             data: {background: newbg}
             
         }).done(function(){
-            
+            alert('Successfully changed the background!');
             
         });
-    
         
         
     });
