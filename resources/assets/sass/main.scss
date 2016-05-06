@@ -87,6 +87,222 @@ body {
 header {
     z-index: 3;
 }
+/////////////////////////* Log in, Register *///////////////////////////
+
+
+
+#loginpage {
+    background-image: url('../images/backgrounds/diagnal-fabric.png');
+    background-repeat: repeat;
+       
+    .inputbox {
+            width: 15em;
+            height: auto;
+            margin: auto;
+            margin-top: 10%;
+
+        input {
+            border: none;
+            background: #f7f8f9;
+            font-family: 'Lato', sans-serif;
+            font-weight:700 ;
+
+            display: block;
+
+            height: 2.5em;
+
+            outline: none;
+
+            width: 15em;
+            margin: auto;
+
+            padding: 0.5em 1em 0.5em 1em;
+
+        }
+
+
+        input[type="text"] {
+            border-radius: 7px 7px 0px 0px ;
+            border-bottom: 1px solid #DDD;
+        }
+
+        input[type="password"] {
+            border-radius: 0px 0px 7px 7px ;
+        }
+
+
+        .forgot_link {
+            color: #25A55F;
+            text-decoration: none;
+            font-size: 11px;
+            margin: 2em;
+        }
+
+         input[type="submit"] {
+            color: #EEE;
+            border-radius: 7px 7px 7px 7px;
+            width: 17em;
+            background-color: #2aaabb; 
+            transition: all ease 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            color: #222;
+            background-color: #3EC1D3; 
+            transition: all ease 0.3s;
+        }
+        
+        input[type="submit"]:active {
+            color: #222;
+            background-color: #2aaabb; 
+            transition: all ease 0.3s;
+        }
+
+        a {
+            color: #3EC1D3;
+            transition: all ease 0.3s;
+
+        }
+        
+        a:active {
+            color: #2aaabb;
+        }
+
+        a:hover {
+            color: #2aaabb;
+
+        }
+
+        a:visted {
+            color: #3EC1D3;
+
+        }
+    }
+
+}
+
+#registerpage {
+    background-image: url('../images/backgrounds/diagnal-fabric.png');
+    background-repeat: repeat;
+    
+    
+    .inputbox {
+            width: 15em;
+            height: auto;
+            margin: auto;
+            margin-top: 10%;
+
+        input {
+            border: none;
+            background: #f7f8f9;
+            font-family: 'Lato', sans-serif;
+            font-weight:700 ;
+
+            display: block;
+
+            height: 2.5em;
+
+            outline: none;
+
+            width: 15em;
+            margin: auto;
+
+            padding: 6px 12px 6px 12px;
+
+        }
+
+
+        input:nth-child(2) {
+            border-radius: 7px 7px 0px 0px;
+            border-bottom: 1px solid #DDD;
+        }
+        
+        input:nth-child(3) {
+            border-radius: 0px;
+            border-bottom: 1px solid #DDD;
+        }
+        
+        input:nth-child(4) {
+            border-radius: 0px;
+            border-bottom: 1px solid #DDD;
+        }
+        
+        input:nth-child(5) {
+            border-radius: 0px;
+            border-bottom: 1px solid #DDD;
+        }
+        
+        input:nth-child(6) {
+            border-radius: 0px 0px 7px 7px ;
+        }
+
+        
+
+
+        .forgot_link {
+            color: #25A55F;
+            text-decoration: none;
+            font-size: 11px;
+            margin: 2em;
+        }
+
+          input[type="submit"] {
+            color: #EEE;
+            border-radius: 7px 7px 7px 7px;
+            width: 17em;
+            background-color: #2aaabb; 
+            transition: all ease 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            color: #222;
+            background-color: #3EC1D3; 
+            transition: all ease 0.3s;
+        }
+        
+        input[type="submit"]:active {
+            color: #222;
+            background-color: #2aaabb; 
+            transition: all ease 0.3s;
+        }
+
+        a {
+            color: #3EC1D3;
+            transition: all ease 0.3s;
+
+        }
+        
+        a:active {
+            color: #2aaabb;
+        }
+
+        a:hover {
+            color: #2aaabb;
+
+        }
+
+        a:visted {
+            color: #3EC1D3;
+
+        }
+        
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /////////////////////////* Dashboard Style *///////////////////////////
 
@@ -334,6 +550,15 @@ header {
     
     ul {
         
+        
+        .subtitle {
+            padding: 3em 3em 0;
+            color: #c93047;
+            background-color: #f7f8f9;
+//            border-bottom: 1px solid #c93047;
+        }
+        
+        
         li {
             
 
@@ -469,7 +694,9 @@ header {
         position: relative;
         height: 20vh;
         width: 100%;
-        
+        background-image: url('../images/banner.png');
+        background-repeat: none;
+        background-size: cover;
         background-color: #04a0dd;
         
         img {

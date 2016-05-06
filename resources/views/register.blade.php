@@ -1,37 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notes</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
-	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-</head>
-<body>
+@extends('nonav')
+
+@section('content')
+
     <section class="front" id="registerpage">
-            <div id='registerbox' class="row">
-               <h1>One of us!</h1>
-               <p>Just a few more things...</p>
-                {!! Form::open(['url' => 'register', 'class' => 'col s6']) !!}
-                   <div class="input-field col s6">
-                        {{form::label('username', 'Username')}}
-                        {{form::text('username', '', ['class' => 'validate', 'placeholder' => 'Username'])}}
-                    </div>
+            <div id='registerbox' class="inputbox">
+                {!! Form::open(['url' => 'register']) !!}
+                    {{form::text('username', null, ['placeholder' => 'Username'])}}
                     
-                    {{form::label('name', 'Name')}}
-                    {{form::text('name')}}
+                    {{form::text('name', null, ['placeholder' => 'Name'])}}
                     
-                    {{form::label('email', 'Email')}}
-                    {{form::text('email')}}
+                    {{form::text('email', null, ['placeholder' => 'example@email.com'])}}
                     
-                    {{form::label('password', 'Password')}}
-                    {{form::password('password')}}
+                    {{form::password('password', ['placeholder' => 'Password'])}}
                     
+                    {{form::password('password_confirmation', ['placeholder' => 'Confirm password'])}}
                     
-                    {{form::label('password_confirmation', 'Confirm Password')}}
-                    {{form::password('password_confirmation')}}
+                    <br>
                     
                     {{form::submit('Register')}}
+                    
                 {!! Form::close() !!}<br>
                 
                 <p>Already done this before? Login <a href="login">here</a>!</p>
@@ -39,10 +26,4 @@
             
     </section>
     
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-    <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
-    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
-</body>
-</html>
+@stop

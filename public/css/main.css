@@ -49,6 +49,121 @@ body {
 header {
   z-index: 3; }
 
+#loginpage {
+  background-image: url("../images/backgrounds/diagnal-fabric.png");
+  background-repeat: repeat; }
+  #loginpage .inputbox {
+    width: 15em;
+    height: auto;
+    margin: auto;
+    margin-top: 10%; }
+    #loginpage .inputbox input {
+      border: none;
+      background: #f7f8f9;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      display: block;
+      height: 2.5em;
+      outline: none;
+      width: 15em;
+      margin: auto;
+      padding: 0.5em 1em 0.5em 1em; }
+    #loginpage .inputbox input[type="text"] {
+      border-radius: 7px 7px 0px 0px;
+      border-bottom: 1px solid #DDD; }
+    #loginpage .inputbox input[type="password"] {
+      border-radius: 0px 0px 7px 7px; }
+    #loginpage .inputbox .forgot_link {
+      color: #25A55F;
+      text-decoration: none;
+      font-size: 11px;
+      margin: 2em; }
+    #loginpage .inputbox input[type="submit"] {
+      color: #EEE;
+      border-radius: 7px 7px 7px 7px;
+      width: 17em;
+      background-color: #2aaabb;
+      transition: all ease 0.3s; }
+    #loginpage .inputbox input[type="submit"]:hover {
+      color: #222;
+      background-color: #3EC1D3;
+      transition: all ease 0.3s; }
+    #loginpage .inputbox input[type="submit"]:active {
+      color: #222;
+      background-color: #2aaabb;
+      transition: all ease 0.3s; }
+    #loginpage .inputbox a {
+      color: #3EC1D3;
+      transition: all ease 0.3s; }
+    #loginpage .inputbox a:active {
+      color: #2aaabb; }
+    #loginpage .inputbox a:hover {
+      color: #2aaabb; }
+    #loginpage .inputbox a:visted {
+      color: #3EC1D3; }
+
+#registerpage {
+  background-image: url("../images/backgrounds/diagnal-fabric.png");
+  background-repeat: repeat; }
+  #registerpage .inputbox {
+    width: 15em;
+    height: auto;
+    margin: auto;
+    margin-top: 10%; }
+    #registerpage .inputbox input {
+      border: none;
+      background: #f7f8f9;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      display: block;
+      height: 2.5em;
+      outline: none;
+      width: 15em;
+      margin: auto;
+      padding: 6px 12px 6px 12px; }
+    #registerpage .inputbox input:nth-child(2) {
+      border-radius: 7px 7px 0px 0px;
+      border-bottom: 1px solid #DDD; }
+    #registerpage .inputbox input:nth-child(3) {
+      border-radius: 0px;
+      border-bottom: 1px solid #DDD; }
+    #registerpage .inputbox input:nth-child(4) {
+      border-radius: 0px;
+      border-bottom: 1px solid #DDD; }
+    #registerpage .inputbox input:nth-child(5) {
+      border-radius: 0px;
+      border-bottom: 1px solid #DDD; }
+    #registerpage .inputbox input:nth-child(6) {
+      border-radius: 0px 0px 7px 7px; }
+    #registerpage .inputbox .forgot_link {
+      color: #25A55F;
+      text-decoration: none;
+      font-size: 11px;
+      margin: 2em; }
+    #registerpage .inputbox input[type="submit"] {
+      color: #EEE;
+      border-radius: 7px 7px 7px 7px;
+      width: 17em;
+      background-color: #2aaabb;
+      transition: all ease 0.3s; }
+    #registerpage .inputbox input[type="submit"]:hover {
+      color: #222;
+      background-color: #3EC1D3;
+      transition: all ease 0.3s; }
+    #registerpage .inputbox input[type="submit"]:active {
+      color: #222;
+      background-color: #2aaabb;
+      transition: all ease 0.3s; }
+    #registerpage .inputbox a {
+      color: #3EC1D3;
+      transition: all ease 0.3s; }
+    #registerpage .inputbox a:active {
+      color: #2aaabb; }
+    #registerpage .inputbox a:hover {
+      color: #2aaabb; }
+    #registerpage .inputbox a:visted {
+      color: #3EC1D3; }
+
 .container {
   padding: 2em; }
 
@@ -185,6 +300,11 @@ header {
 
 /* End Slideout Universal style*/
 /* My boards slideout style */
+#myboards ul .subtitle {
+  padding: 3em 3em 0;
+  color: #c93047;
+  background-color: #f7f8f9; }
+
 #myboards ul li h2 {
   color: #EB586F;
   padding: 0.5em 0; }
@@ -250,6 +370,9 @@ header {
   position: relative;
   height: 20vh;
   width: 100%;
+  background-image: url("../images/banner.png");
+  background-repeat: none;
+  background-size: cover;
   background-color: #04a0dd; }
   #profile .banner img {
     position: absolute;

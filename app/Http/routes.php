@@ -13,8 +13,11 @@
 |
 */
 
-
-  
+//Landing page
+Route::get('/', function(){
+    return view('welcome');
+    
+});  
 
 //show register form
 Route::get('register', 'UserController@showRegisterForm');
@@ -30,6 +33,8 @@ Route::get('login', 'LoginController@showLoginForm');
 
 //Process Logout
 Route::get('logout', 'LoginController@logout');
+
+
 
 //Test board note show
 //Route::get('board', function(){

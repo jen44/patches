@@ -38,25 +38,23 @@
 
     <div id="myboards" class="slideout">
         <ul>
-           <h2>My Boards</h2>
+           <h2 class="subtitle">My Boards</h2>
             @foreach(Auth::User()->boards as $board)
             
             <li>
                 <a href="../board/{{$board->id}}">{{$board->name}}</a>
-                <h2>Created by:</h2>
+                <h2>Created by: me</h2>
                 <p></p>
                 <p>{{$board->description}}</p>
             </li>
             
             @endforeach
             
-            <h2>Following Boards</h2>
-            
              @foreach(Auth::User()->boards as $board)
             
             <li>
                 <a href="../board/{{$board->id}}">{{$board->name}}</a>
-                <h2>Created by: </h2>
+                <h2>Created by: Others</h2>
                 <p></p>
                 <p>{{$board->description}}</p>
             </li>
