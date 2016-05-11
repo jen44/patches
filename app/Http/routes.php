@@ -19,6 +19,12 @@ Route::get('/', function(){
     
 });  
 
+//No access
+Route::get('noaccess', function(){
+    return view('noaccess');
+    
+});
+
 //show register form
 Route::get('register', 'UserController@showRegisterForm');
 
@@ -68,7 +74,7 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('login', 'LoginController@processLogin');
     
     //After login, show Dashboard
-    Route::get('dashboard/{id}', 'LoginController@showDashboard');
+    Route::get('dashboard/{id}', 'BoardController@showDashboard');
     
     
     
@@ -77,12 +83,14 @@ Route::group(['middleware' => ['web']], function () {
                                 Board
                             **********/
     
-    
-    Route::get('board/{id}', 'boardController@showIndivBoard');
+    //Show board    
+    Route::get('board/{id}', 'BoardController@showIndivBoard');
 
-
+    //Create new board
+    Route::post('boards', 'BoardController@createBoard');
     
-    
+    //Update board background
+    Route::put('board/{id}', 'BoardController@updateBoardBg');
     
     
 
@@ -91,7 +99,8 @@ Route::group(['middleware' => ['web']], function () {
                             **********/
     
     
-    
+    //Update note
+    Route::put('notes/{id}', 'NoteController@editNote');
     
     
     

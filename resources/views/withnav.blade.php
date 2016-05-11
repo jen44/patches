@@ -11,8 +11,11 @@
     
 <header class="sidenav">
     <nav class="navicons">
+       
+   @if(isset($hasNav))
         <div class="icons" id="top">
-            <a href="../dashboard/{{Auth::User()->id}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
+           
+            <a href="{{url('dashboard/'.Auth::User()->id)}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
             
             <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
             
@@ -22,19 +25,46 @@
             
             <i class="fa fa-cog btn" aria-hidden="true" id="settings-btn" name="Settings"></i>
             
+         
+           
+           
+            
         </div>
         
         
         <div class="icons" id="bottom">
             <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
             
-            <a href="../logout"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
+            <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
             
         </div>
+        
+    @else
+    
+     <div class="icons" id="top">
+           
+            <a href="{{url('/')}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
+            
+            <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
+            
+        </div>
+        
+        
+        <div class="icons" id="bottom">
+            
+            <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
+            
+        </div>
+        
+        @endif
+    
+    
     </nav>
 </header>
     
 <section class="slideouts">
+    
+    
 
     <div id="myboards" class="slideout">
         <ul>
@@ -42,8 +72,8 @@
             @foreach(Auth::User()->boards as $board)
             
             <li>
-                <a href="../board/{{$board->id}}">{{$board->name}}</a>
-                <h2>Created by: me</h2>
+                <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
+                <h2>Created by: {{Auth::User()->username}}</h2>
                 <p></p>
                 <p>{{$board->description}}</p>
             </li>
@@ -53,7 +83,7 @@
              @foreach(Auth::User()->boards as $board)
             
             <li>
-                <a href="../board/{{$board->id}}">{{$board->name}}</a>
+                <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
                 <h2>Created by: Others</h2>
                 <p></p>
                 <p>{{$board->description}}</p>
@@ -70,6 +100,15 @@
                 
                 <h2>Created By</h2>
                 <p>{{Auth::User()->username}}</p>
+                
+
+            </li>
+            
+            <li>
+                
+                <h2>Board description</h2>
+                <p>{{$board->description}}</p>
+                
 
             </li>
 
@@ -105,7 +144,7 @@
             </li>
 
         </ul>
-    </div>    
+    </div>
     
     <div id="settings" class="slideout">
         <ul id="accordion">
@@ -113,16 +152,9 @@
                 <h2>Board Background</h2>
                 <div class="bgoptions"><!--Flex this -->
                    <br>
-                    <img src="{{asset('images/backgrounds/pattern.png')}}" class="bgcurrent" data-file="pattern.png">
-                    <img src="{{asset('images/backgrounds/wood.png')}}" data-file="wood.png">
-                    <img src="{{asset('images/backgrounds/woven.png')}}" data-file="woven.png">
-                    <img src="{{asset('images/backgrounds/triangles.png')}}" data-file="triangles.png">
-                    <img src="{{asset('images/backgrounds/diagnal-fabric.png')}}" alt="diagnal-fabric">
-                    <img src="{{asset('images/backgrounds/school.png')}}" data-file="school.png">
-                    <img src="{{asset('images/backgrounds/weather.png')}}" data-file="weather.png">
-                    <img src="{{asset('images/backgrounds/dark_wood.png')}}" data-file="dark_wood.png">
-                    <img src="{{asset('images/backgrounds/cardboard.png')}}" data-file="cardboard.png">
-                    <img src="{{asset('images/backgrounds/swirl.png')}}" data-file="swirl.png">
+                   @foreach(App\Models\Background::all() as $background)
+                    <img src="{{asset('images/backgrounds/'.$background->filename)}}" class="" data-file="{{$background->filename}}">
+                    @endforeach
                     
                 </div>
                 <div class="clear"></div>
@@ -173,13 +205,25 @@
         
     </div>
 
-    <div id="alertout" class="slideout"><!-- Maybe do an alert? -->
-        <p>Logging out now. Are you sure?</p>
-        <button>Yep!</button>
-        <button>Actually, no.</button>
-    </div>
+
 
 </section>
+   
+<section class="modal">
+       <div id="modalbox" class="">
+            <h2>Create a new board</h2>
+            {!! Form::open(['url' => 'boards', 'method' => 'POST']) !!}
+                {{form::text('name', null, ['required' => 'required', 'placeholder' => 'Board name'])}}
+                
+                {{form::textarea('description', null, ['required' => 'required', 'placeholder' => 'What will this board be about?'])}}
+                
+            <br>
+                {{form::submit('Create')}}
+         {!! Form::close() !!}
+
+        </div>    
+       
+   </section>
     
     @yield('content')
     

@@ -27,7 +27,6 @@ class CreateBoardRequest extends Request
             //
             'name'=>'required',
             'description'=>'required',
-            'background'=>'required',
             
         ];
     }

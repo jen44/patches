@@ -9,7 +9,9 @@
         <div class="inputbox">
                {!! Form::open(['url' => 'login']) !!}
                 {{form::text('username', null, ['required' => 'required', 'placeholder' => 'Username'])}}
+                {!! $errors->first('username')!!}
                 {{form::password('password', ['required' => 'required', 'placeholder' => 'Password'])}}
+                {!! $errors->first('password')!!}
                 
             <br>
                

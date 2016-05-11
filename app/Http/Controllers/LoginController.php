@@ -29,23 +29,18 @@ class LoginController extends Controller
         
         if(\Auth::attempt($credential)){
             
-        $user = Auth::User();
-        return redirect('dashboard/'.$user->id);
+            $user = Auth::User();
+            return redirect('dashboard/'.$user->id);
             
         } else {
             
-            return redirect('/')->with('message', 'Login information invalid');
+            return redirect('login')->with('message', 'Login information invalid');
         
         }
         
     }
     
-    public function showDashboard($id){
-        
-
-        $user = Auth::User();
-        return view('dashboard', compact('board'));
-    }
+  
     
     
     //Logout
@@ -53,6 +48,6 @@ class LoginController extends Controller
         
         \Auth::logout();
         
-        return redirect('login');
+        return redirect('/');
     }
 }

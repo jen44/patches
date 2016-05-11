@@ -10,6 +10,9 @@ use App\Models\Board;
 
 use App\Http\Requests\CreateBoardRequest;
 use App\Http\Requests\EditBoardRequest;
+
+use App\Http\Requests\EditBackgroundRequest;
+
 use Auth;
 
 class BoardController extends Controller
@@ -17,33 +20,43 @@ class BoardController extends Controller
     //
 //    
     public function __construct(){
+         $this->middleware('auth');
          $this->middleware('auth.user', ['only' => ['update','destroy']]);
     }
     
-
-    
-    public function showCreationForm() {
-        //
-//        return view('createBoard');
-    }
     
      public function createBoard(CreateBoardRequest $request) {
         //
         $board = board::create($request->all());
+        $board->user_id = Auth::User()->id;
 //        
 //        $file = $request->file('background');
 //        $newName = 'background'.$post->id.'.jpg';
 //        $file->move('background', $newName);
-//        $post->background = $newName;
+         
+        $background = 'diagnal-fabric.png';
+        $board->background = $background;
         $board->save();
+         
+        return redirect('board/'.$board->id);
+         
+         //add success message
         
-//        return redirect('board');
+    }
+    
+      public function showDashboard($id){
+        
+
+        $user = Auth::User();
+        $boards = Board::paginate(3);
+        return view('dashboard', compact('board'));
     }
     
     public function showIndivBoard($id) {
         //
         $board = Board::find($id);
-        return view('board', compact('board'));
+        $hasNav = true;
+        return view('board', compact('board','hasNav'));
         
         
     }
@@ -55,8 +68,12 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EditPostRequest $request, $id) {
-        //
+    public function updateBoardBg(EditBackgroundRequest $request, $id) {
+        
+        $board = Board::find($id);
+        $board->fill($request->all());
+        $board->save();
+        
     }
 
     /**

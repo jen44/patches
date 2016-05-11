@@ -13,7 +13,7 @@ class EditNoteRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,8 @@ class EditNoteRequest extends Request
     {
         return [
             //
+            'pos_x' => 'required',
+            'pos_y' => 'required'
         ];
     }
 }

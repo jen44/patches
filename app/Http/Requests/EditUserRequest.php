@@ -13,7 +13,7 @@ class EditUserRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class EditUserRequest extends Request
     {
         return [
             //
-            'username' => 'required|unique:users,username,'.$this->route("id"),
+            'username' => 'required|unique',
             'name'=>'required',
             'email'=>'required',
             'password'=>'required|confirmed'
