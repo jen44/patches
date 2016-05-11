@@ -1438,9 +1438,42 @@ header {
 @media only screen and (min-width : 65em) {
     .slideout {
         
-        width: 25vw;
+        width: 20vw;
         
     }
+    
+    #dashboard {
+        
+        .container {
+            
+            
+            .sidebar {
+                width: 20vw !important;
+                
+                .details {
+                    
+                    ul {
+
+                        height: 100%;
+                    }
+                }
+            } //End of .sidebar
+            
+            
+            
+            .maincontent {
+                position: absolute;
+                left: calc(50px + 21vw);
+                width: 60vw;
+                
+                
+                
+                
+            } //End of .maincontent
+            
+        } //End of .container
+        
+    }//End of #dashboard
     
     #modalbox {
             

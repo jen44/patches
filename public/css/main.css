@@ -762,7 +762,15 @@ header {
 /*for destop - inclusive*/
 @media only screen and (min-width: 65em) {
   .slideout {
-    width: 25vw; }
+    width: 20vw; }
+  #dashboard .container .sidebar {
+    width: 20vw !important; }
+    #dashboard .container .sidebar .details ul {
+      height: 100%; }
+  #dashboard .container .maincontent {
+    position: absolute;
+    left: calc(50px + 21vw);
+    width: 60vw; }
   #modalbox {
     width: 20em !important;
     height: 12em !important; }
