@@ -5,14 +5,13 @@
     <title>Notes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('css/avatar.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
     
 <header class="sidenav">
     <nav class="navicons">
-       
-   @if(isset($hasNav))
         <div class="icons" id="top">
            
             <a href="{{url('dashboard/'.Auth::User()->id)}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
@@ -38,25 +37,6 @@
             <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
             
         </div>
-        
-    @else
-    
-     <div class="icons" id="top">
-           
-            <a href="{{url('/')}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
-            
-            <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
-            
-        </div>
-        
-        
-        <div class="icons" id="bottom">
-            
-            <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
-            
-        </div>
-        
-        @endif
     
     
     </nav>
@@ -152,9 +132,23 @@
                 <h2>Board Background</h2>
                 <div class="bgoptions"><!--Flex this -->
                    <br>
-                   @foreach(App\Models\Background::all() as $background)
-                    <img src="{{asset('images/backgrounds/'.$background->filename)}}" class="" data-file="{{$background->filename}}">
-                    @endforeach
+                   
+               @foreach(App\Models\Background::all() as $background)
+                   
+                    @if($board->background == $background->filename)
+                        <img src="{{asset('images/backgrounds/'.$background->filename)}}" class="bgcurrent" data-file="{{$background->filename}}">
+
+
+                    @else 
+
+                        <img src="{{asset('images/backgrounds/'.$background->filename)}}" class="" data-file="{{$background->filename}}">
+
+                    @endif
+                @endforeach
+                    <div id="dropzonebox">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        
+                    </div>
                     
                 </div>
                 <div class="clear"></div>
@@ -171,12 +165,31 @@
                     <a href="">Twitter</a>
                 </div>
             </li>
+            
+            <li>
+                <h2>Clear all notes</h2>
+                <br>
+                <a href="{{url('board/'.$board->id.'/clear')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear board contents</a>
+                
+            </li>
+            
+            <li>
+                <h2>Delete Board</h2>
+                <br>
+                <a href="{{url('board/'.$board->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete board</a>
+                
+            </li>
         </ul>
     </div>
     
     <div id="profile" class="slideout">
         <div class="banner">
-            <img src="{{asset('images/avatars/'.Auth::User()->avatar)}}" alt="">
+           <div class="avatar-upload" data-id="{{Auth::User()->id}}">
+               
+                <img src="{{asset('images/avatars/'.Auth::User()->avatar)}}" alt="">
+               
+            </div>
+           
         </div>
         <div class="details">
             <ul>
@@ -208,6 +221,8 @@
 
 
 </section>
+  
+      @yield('content')
    
 <section class="modal">
        <div id="modalbox" class="">
@@ -225,7 +240,11 @@
        
    </section>
     
-    @yield('content')
+  
+    
+    
+<div id="public" class="hidden">{{url('/')}}</div>
+<div id="token" class="hidden">{{csrf_token()}}</div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>

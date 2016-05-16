@@ -10,35 +10,49 @@ use App\Models\Note;
 
 use App\Http\Requests\CreateNoteRequest;
 use App\Http\Requests\EditNoteRequest;
+use App\Http\Requests\EditNoteXYRequest;
 use Auth;
 
 class NoteController extends Controller
 {
     //
-//    public function createNote(CreateNoteRequest $request) {
-//
-//        $note = board::create($request->all());
-//        $note->user_id = Auth::User()->id;
-//        
-//        $note->save();
-//
+    public function createNote(CreateNoteRequest $request) {
 
-        //add success message
+        $note = Note::create($request->all());
+        $note->user_id = Auth::User()->id;
+        $currentboardid = $board->id;
+        $note->board_id = $currentboardid;
+        
+        $note->save();
 
+    }
     
     
     
      public function editNote(EditNoteRequest $request, $id) {
         //
         $note = Note::find($id);
-//        $note->pos_x = $request->get("pos_x");
-//        $note->pos_y = $request->get("pos_y");
          $note->fill($request->all());
         $note->save();
          
-        return 'saved';
     }
     
+    
+     public function editNoteXY(EditNoteXYRequest $request, $id) {
+        //
+        $note = Note::find($id);
+         $note->fill($request->all());
+        $note->save();
+         
+    }
+    
+    
+    public function deleteNote($id) {
+        //
+        $note = Note::find($id);
+        $note->delete();
+         
+    }
 }
 
 ?>

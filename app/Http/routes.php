@@ -76,6 +76,9 @@ Route::group(['middleware' => ['web']], function () {
     //After login, show Dashboard
     Route::get('dashboard/{id}', 'BoardController@showDashboard');
     
+    //upload avatar
+    Route::post('user/avatar/{id}', 'UserController@uploadAvatar');
+    
     
     
 
@@ -93,16 +96,30 @@ Route::group(['middleware' => ['web']], function () {
     Route::put('board/{id}', 'BoardController@updateBoardBg');
     
     
+    //Delete board
+    Route::get('board/{id}/delete', 'BoardController@deleteBoard');
+    
+    //Clear board
+    Route::get('board/{id}/clear', 'BoardController@clearBoard');
+    
+    
 
                             /**********
                                 Note
                             **********/
     
     
-    //Update note
+    //create note
+    Route::post('notes', 'NoteController@createNote');    
+    
+    //Update note content
     Route::put('notes/{id}', 'NoteController@editNote');
     
+    //Update note position
+    Route::put('notes/{id}', 'NoteController@editNoteXY');
     
+    //Delete note
+    Route::get('notes/{id}/delete', 'NoteController@deleteNote');
     
     
     

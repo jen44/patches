@@ -7,20 +7,64 @@
    <div class="container">
        
        <header>
-           <ul>
-              @if(Auth::check())
-               <li><a href="{{url('dashboard/'.Auth::User()->id)}}">Dashboard</a></li>  
-               <li><a href="{{url('logout')}}">Logout</a></li>            
-              @else
-               <li><a href="{{url('login')}}">Login</a></li>
-               <li><a href="{{url('register')}}">Register</a></li>
-              @endif
+           <div class="logo">
+               <h1>Note.</h1>
+           </div>
+           
+           <div class="hamburger">
+              <button class="hamburger-icon">
+                <span class="hamburger-layer"></span>
+              </button>
+            </div>
+           
                
-           </ul>
+               <div class="dropdown">
+                   <ul id="navmenu">
+                      @if(Auth::check())
+                       <li>
+                           <a href="{{url('about')}}">About</a>
+                       </li> 
+                       
+                       <li>
+                           <a href="{{url('dashboard/'.Auth::User()->id)}}">Dashboard</a>
+                       </li> 
+                         
+                       <li>
+                           <a href="{{url('logout')}}">Logout</a>
+                       </li>
+                       
+                        <li>
+                           <a href="{{url('contact')}}">Contact</a>
+                       </li>                      
+                                               
+                      @else
+                       <li>
+                           <a href="{{url('about')}}">About</a>
+                       </li> 
+                       
+                       <li>
+                           <a href="{{url('register')}}">Register</a>
+                       </li>
+                      
+                       <li>
+                           <a href="{{url('login')}}">Login</a>
+                       </li>
+                       
+                        <li>
+                           <a href="{{url('contact')}}">Contact</a>
+                       </li> 
+                      @endif
+
+                   </ul>
+               
+               </div>
+       
+           
        </header>
        
         <div class="headingtext">
-            <h1>Header</h1>
+            <h1>Note.</h1>
+            <h2>A little idea-sharing playground for everyone.</h2>
         </div>
     </div>
 </section>
@@ -32,7 +76,7 @@
    
     <div class="container">
         <div class="innertext">
-            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</h3>
+            <h3></h3>
         </div>
     </div>
     
@@ -44,6 +88,34 @@
         <img src="" alt="">
     </div>
 </section>
+
+
+<footer>
+    <div class="container">
+           <h1 id="footerText">Keep in touch!</h1>
+           
+            <ul class="social">
+                
+              <li>
+                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
+              </li>
+
+              <li>
+                  <i class="fa fa-twitter" aria-hidden="true"></i>
+              </li>
+
+              <li>
+                  <i class="fa fa-google-plus" aria-hidden="true"></i>
+              </li>
+                
+                
+            </ul>
+            
+            
+            <p class="copyright">Copyright &copy; Note 2016</p>
+    </div>
+    
+</footer>
 
 
 @stop

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Requests\CreateUserRequest;
 use App\Http\Requests\EditUserRequest;
+use App\Http\Requests\UploadAvatarRequest;
 use App\Models\User;
 use Auth;
 
@@ -14,8 +15,8 @@ class UserController extends Controller
 {
     
     public function __construct(){
-         $this->middleware('auth', ['except' => ['showRegisterForm', 'createUser']]);
-         $this->middleware('auth.user', ['except' => ['showRegisterForm', 'createUser']]);
+//         $this->middleware('auth', ['except' => ['showRegisterForm', 'createUser']]);
+//         $this->middleware('auth.user', ['except' => ['showRegisterForm', 'createUser']]);
     }
     
     
@@ -35,7 +36,7 @@ class UserController extends Controller
         $user->save();
         
         Auth::loginUsingId($user->id);
-        return redirect('success');
+        return redirect('dashboard/'.$user->id);
         
     }
     
@@ -63,6 +64,22 @@ class UserController extends Controller
     }
     
 
+    //Upload avatar 
+    public function uploadAvatar(UploadAvatarRequest $request, $id){
+        $user = User::find($id);
+        
+        $newName = "avatar-user-".$user->id.time().".jpg";
+        $request->file("upload")->move("images/avatars",$newName);
+
+       $user->avatar = $newName;
+        $user->save();
+        return $request->file('upload')->getClientOriginalExtension();
+        //return $request->input("upload");
+        
+    }
+    
+    
+    
     
     
     

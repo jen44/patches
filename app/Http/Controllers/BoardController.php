@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Models\Board;
+use App\Models\Note;
 
 use App\Http\Requests\CreateBoardRequest;
 use App\Http\Requests\EditBoardRequest;
@@ -21,7 +22,7 @@ class BoardController extends Controller
 //    
     public function __construct(){
          $this->middleware('auth');
-         $this->middleware('auth.user', ['only' => ['update','destroy']]);
+         $this->middleware('auth.user', ['only' => ['showDashboard']]);
     }
     
     
@@ -34,7 +35,7 @@ class BoardController extends Controller
 //        $newName = 'background'.$post->id.'.jpg';
 //        $file->move('background', $newName);
          
-        $background = 'diagnal-fabric.png';
+        $background = 'grey-line.jpg';
         $board->background = $background;
         $board->save();
          
@@ -57,6 +58,7 @@ class BoardController extends Controller
         $board = Board::find($id);
         $hasNav = true;
         return view('board', compact('board','hasNav'));
+//        return $board->id;
         
         
     }
@@ -75,6 +77,14 @@ class BoardController extends Controller
         $board->save();
         
     }
+    
+    public function uploadBoardBg(UploadBackgroundRequest $request, $id) {
+        
+        $board = Board::find($id);
+        $board->fill($request->all());
+        $board->save();
+        
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -82,7 +92,29 @@ class BoardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function deleteBoard($id)
+    {
         //
+        $board = Board::find($id);
+        foreach($board->notes as $note){
+            $note->delete();
+        }
+        $board->delete();
+        
+        //alert deleted with noty
+        return redirect('dashboard/'.Auth::User()->id);
+
+    }
+    
+    public function clearBoard($id)
+    {
+        //
+        $board = Board::find($id);
+        foreach($board->notes as $note){
+            $note->delete();
+        }
+        //alert delete with noty
+        return redirect(URL::previous());
+
     }
 }

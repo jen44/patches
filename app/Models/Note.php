@@ -9,7 +9,7 @@ class Note extends Model
     //
     
     protected $fillable = [
-        'title', 'content', 'file', 'pos_x', 'pos_y',
+        'user_id', 'title', 'content', 'file', 'pos_x', 'pos_y', 'board_id'
     ];
     
     

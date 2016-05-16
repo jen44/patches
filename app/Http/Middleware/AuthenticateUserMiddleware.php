@@ -20,7 +20,7 @@ class AuthenticateUserMiddleware
      
         if(Auth::user()->id != $request->route('id')){
         // not the right user
-            return redirect('noaccess');
+            return redirect('login');
         
         } else {
             

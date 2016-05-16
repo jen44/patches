@@ -15,4 +15,10 @@ class Board extends Model
     public function notes(){
         return $this->hasMany('App\Models\Note');
     }
+    
+    public function follower(){
+        
+        return $this->belongsToMany('');
+        
+    }
 }

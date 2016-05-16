@@ -34,9 +34,11 @@ class User extends Authenticatable
     
     }
     
-    public function followingBoards(){
+    
+    
+    public function following(){
         
-        return $this->belongsToMany('App\Models\Board_user');
+        return $this->hasMany('');
         
     }
 }

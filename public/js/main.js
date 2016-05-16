@@ -1,6 +1,46 @@
 $(function(){
     
     
+    /* Main menu hamburger */
+
+    $('.hamburger-icon').on("click", function() {
+        var el = $(".hamburger-layer");
+        var menu = $('.dropdown');
+
+        
+        if(el.hasClass("hamburger-to-cross") ) {
+            el.removeClass("hamburger-to-cross");
+            el.addClass("hamburger-from-cross");
+            menu.removeClass('showNav');
+
+        } else {
+
+            el.removeClass("hamburger-from-cross");
+            el.addClass("hamburger-to-cross");
+            menu.addClass('showNav');
+        }
+        
+        
+    /* Toggle with hitting of ESC */
+        
+        $(document).keyup(function(e) {
+            if(e.keyCode == 27) {
+                menu.removeClass('showNav');
+                el.addClass("hamburger-from-cross");
+                el.removeClass("hamburger-to-cross");
+            }
+        });
+    
+        
+    });
+
+    
+    
+    
+    
+    
+    
+    
 /*
 |--------------------------------------------------------------------------
 | All Slide outs
@@ -305,6 +345,10 @@ $(function(){
             
         }
         
+        
+        
+    
+        
     
     /* Background image toggle */
         
@@ -322,29 +366,9 @@ $(function(){
                       _method: 'PUT'
 
                     };
-//        
-//        var jpg = ".jpg";
-//        var png = ".png";
-//        console.log(newbg.indexOf(jpg));
-//        
-//        
-//        if(newbg.indexOf(jpg) != -1){
-//            
-//            $('#board').addClass('jpg');
-//            $('#board').removeClass('png');
-//            
-//        }
-//        
-//        if(newbg.indexOf(png) != -1){
-//            
-//            $('#board').addClass('png');            
-//            $('#board').removeClass('jpg');
-//            
-//        }
-//        
+     
         $.post(url, data,function(res){
 
-            console.log(res);
         }); 
 
         
@@ -355,10 +379,25 @@ $(function(){
            
     
     
-
-    /* */
+    /* Background Dropzone */
     
-   
+    
+    var board_id = $("#dropzonebox").attr('data-id');
+    
+    $("#dropzonebox").dropzone({url: $("#public").html() + "/board/" + board_id + "/bg", _token: $('#token').html()} );
+    
+    
+
+    /* Avatar Upload */
+    
+   var user_id = $('.avatar-upload').attr('data-id'); 
+        
+        new AvatarUpload({
+            el: document.querySelector('.avatar-upload'),
+            uploadUrl: $("#public").html()+'/user/avatar/' + user_id,
+            uploadData :{_token : $('#token').html()}
+            
+        });
     
     
     
@@ -374,6 +413,77 @@ $(function(){
 */
     
     
+
+    /* Create note on double click */
+    
+    
+    $('#board').on('dblclick',function(e){
+        
+         if (e.target !== this){
+            return; 
+         }
+        
+        
+        var page_x = e.pageX;
+        var page_y = e.pageY;
+        var user_id = $('#userid').html();
+        var username = $('#username').html();
+        var board_id = $('#boardid').html();
+        var ele = '<div class="note" style="position: absolute; top:' + page_y + 'px; left: ' + page_x + 'px;"><h2 class="noteTitle">New note</h2><h3>Post by '+ username + '</h3><p class="noteContent">New note content</p></div>';
+
+        $('.draggables').append(ele);
+        
+        
+        var noteTitle = $(ele).find('.noteTitle').html();
+        var noteContent = $(ele).find('.noteContent').html();
+        
+        
+        var url = $('#public').html() + '/notes/create';
+        var data = {
+                        user_id: user_id,
+                        title: noteTitle,
+                        content: noteContent,
+                        pos_x: page_x,
+                        pos_y: page_y,
+                        board_id: board_id,
+                        _token: $('#token').html(),
+                        _method: 'POST'
+                   };
+        
+//        console.log(data);
+        
+        $.post(url, data, function(res){
+            
+        });
+        
+        
+        
+        $('.note').draggable({
+            
+          containment: "#board",
+          helper: "original",
+            start: function(event, ui){
+                $(this).addClass("draggable-helper");
+                $('#trash').addClass('hover');
+
+            },
+
+            stop: function(event, ui){
+
+                $(this).removeClass("draggable-helper");
+                
+                $('#trash').removeClass('hover');
+
+            }
+            
+            
+        }); //End of note draggable
+        
+        
+    }); //End of board double click make note function
+    
+    
+    
     /* Note Draggable and add class on drag start*/
 
     $(".note").draggable(
@@ -381,20 +491,18 @@ $(function(){
           helper: "original",
             start: function(event, ui){
                 $(this).addClass("draggable-helper");
+                $('#trash').addClass('hover');
 
             },
 
             stop: function(event, ui){
 
                 $(this).removeClass("draggable-helper");
+                
+                $('#trash').removeClass('hover');
 
                 var pos_x = ui.offset.left;
                 var pos_y = ui.offset.top;
-//
-//                console.log(pos_x);
-//                console.log(pos_y);
-//
-//                console.log($(this).data('id'));
 
                 var url = $('#public').html() + '/notes/' + $(this).data('id');
 
@@ -413,15 +521,46 @@ $(function(){
 
 
     });
-
-
-    /* Create note on double click */
     
-//    $('#board').dblclick(function(){
-//        
-//        $('<div class="note"><h2>{{$note->title}}</h2><h3>Post by {{$note->user->username}}</h3><p>{{$note->content}}</p></div>')
-//    
-//    }).appendTo('.draggables');
+
+
+    
+    /* Note click to edit */
+    
+//    $('.note').find('h2').on('dblclick', function(e){});
+    
+    
+    
+    
+    
+    
+    
+     
+    /* Trash can : Delete note */
+    
+    $('#trash').find('.container').droppable({
+        tolerance: "touch",
+        hoverClass: "droppableActive",
+        drop: function(e,ui){
+            var url = $('#public').html() + '/notes/' + $(ui.draggable).data('id') + '/delete';
+            
+            
+            var data =  {   _token: $('#token').html(),
+                         _method: 'DELETE',
+
+                          };
+            
+            $.get(url, data,function(res){
+                console.log(res);
+            }); 
+
+            
+            ui.draggable.remove();
+        }
+        
+    });
         
     
 });
+
+

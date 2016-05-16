@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateNoteRequest extends Request
+class UploadAvatarRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class CreateNoteRequest extends Request
     {
         return [
             //
-            'title'=>'required',
+            //'avatar' =>'required',
             //
         ];
     }

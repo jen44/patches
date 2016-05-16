@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Board_user extends Model
+class Following extends Model
 {
     //
-    public function followedByUser(){
-        
+    public function following(){
         return $this->hasMany('App\Models\User');
+        
     }
 }
