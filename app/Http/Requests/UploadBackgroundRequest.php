@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class EditBoardRequest extends Request
+class UploadBackgroundRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class EditBoardRequest extends Request
     public function rules()
     {
         return [
-            //
+            'filename' => 'required',
         ];
     }
 }

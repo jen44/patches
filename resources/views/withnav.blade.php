@@ -24,6 +24,14 @@
             
             <i class="fa fa-cog btn" aria-hidden="true" id="settings-btn" name="Settings"></i>
             
+           @if(Auth::User()->id !== $board->user_id)
+               
+            <i class="fa fa-heart btn" aria-hidden="true" id="follow-btn" name="Follow"></i>
+               
+           
+           @endif
+            
+            
          
            
            
@@ -49,24 +57,24 @@
     <div id="myboards" class="slideout">
         <ul>
            <h2 class="subtitle">My Boards</h2>
-            @foreach(Auth::User()->boards as $board)
+            @foreach(Auth::User()->boards as $myboard)
             
             <li>
-                <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
+                <a href="{{url('board/'.$myboard->id)}}">{{$myboard->name}}</a>
                 <h2>Created by: {{Auth::User()->username}}</h2>
                 <p></p>
-                <p>{{$board->description}}</p>
+                <p>{{$myboard->description}}</p>
             </li>
             
             @endforeach
             
-             @foreach(Auth::User()->boards as $board)
+             @foreach(Auth::User()->boards as $myboard)
             
             <li>
-                <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
+                <a href="{{url('board/'.$myboard->id)}}">{{$myboard->name}}</a>
                 <h2>Created by: Others</h2>
                 <p></p>
-                <p>{{$board->description}}</p>
+                <p>{{$myboard->description}}</p>
             </li>
             
             @endforeach
@@ -79,7 +87,7 @@
             <li>
                 
                 <h2>Created By</h2>
-                <p>{{Auth::User()->username}}</p>
+                <p>{{$board->user_id}}</p>
                 
 
             </li>
@@ -112,7 +120,7 @@
             <li>
 
                 <h2>Total notes</h2>
-                <p>10</p>
+                <p>{{$board->notes->count()}}</p>
 
             </li>
 
@@ -128,12 +136,46 @@
     
     <div id="settings" class="slideout">
         <ul id="accordion">
+           
+           @if(Auth::User()->id !== $board->user_id)
+           
+            <li>
+                <h2>Share this board</h2>
+                <div>
+                   <br>
+                   
+                      <i class="fa fa-facebook-square" aria-hidden="true">
+
+                          <a href=""></a>
+
+                       </i>
+
+
+                      <i class="fa fa-twitter" aria-hidden="true">
+
+                        <a href=""></a>
+
+                      </i>
+
+
+                      <i class="fa fa-google-plus" aria-hidden="true">
+
+                            <a href=""></a>
+
+                      </i>
+                </div>
+            </li>
+            
+            
+            @else
+            
             <li>
                 <h2>Board Background</h2>
                 <div class="bgoptions"><!--Flex this -->
                    <br>
                    
                @foreach(App\Models\Background::all() as $background)
+                  
                    
                     @if($board->background == $background->filename)
                         <img src="{{asset('images/backgrounds/'.$background->filename)}}" class="bgcurrent" data-file="{{$background->filename}}">
@@ -145,26 +187,73 @@
 
                     @endif
                 @endforeach
+                   
                     <div id="dropzonebox">
                         <i class="fa fa-plus" aria-hidden="true"></i>
-                        
                     </div>
-                    
+
                 </div>
+                
+                
                 <div class="clear"></div>
             </li>
             
-           
             
             <li>
+                
+                <h2>Edit Board Name</h2>
+                <br>
+                {!! Form::open(['url' => 'board/'.$board->id.'/update', 'method' => 'PUT']) !!}
+                    {{Form::text('name', $board->name, ['class' => 'editInput'])}}
+                    {{Form::submit('Save')}}
+                {!! Form::close() !!}
+                
+
+            </li>
+            
+            
+            <li>
+                
+                <h2>Edit Board description</h2>
+                <br>
+                {!! Form::open(['url' => 'board/'.$board->id.'/update', 'method' => 'PUT']) !!}
+                    {{Form::textarea('description', $board->description, ['class' => 'editInput'])}}
+                    {{Form::submit('Save')}}
+                {!! Form::close() !!}
+                
+                
+
+            </li>
+           
+            
+             <li>
                 <h2>Share this board</h2>
                 <div>
                    <br>
-                    <a href="">Facebook</a>
-                    <a href="">Google+</a>
-                    <a href="">Twitter</a>
+                   
+                      <i class="fa fa-facebook-square" aria-hidden="true">
+
+                          <a href=""></a>
+
+                       </i>
+
+
+                      <i class="fa fa-twitter" aria-hidden="true">
+
+                        <a href=""></a>
+
+                      </i>
+
+
+                      <i class="fa fa-google-plus" aria-hidden="true">
+
+                            <a href=""></a>
+
+                      </i>
                 </div>
             </li>
+            
+            
             
             <li>
                 <h2>Clear all notes</h2>
@@ -179,6 +268,8 @@
                 <a href="{{url('board/'.$board->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete board</a>
                 
             </li>
+            
+            @endif
         </ul>
     </div>
     
@@ -247,8 +338,8 @@
 <div id="token" class="hidden">{{csrf_token()}}</div>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>

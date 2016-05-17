@@ -92,9 +92,14 @@ Route::group(['middleware' => ['web']], function () {
     //Create new board
     Route::post('boards', 'BoardController@createBoard');
     
-    //Update board background
-    Route::put('board/{id}', 'BoardController@updateBoardBg');
+    //Edit board info
+    Route::put('board/{id}/update', 'BoardController@editBoard');
     
+    //Update board background
+    Route::put('board/{id}/update/background', 'BoardController@updateBoardBg');
+    
+    //Upload board background
+    Route::post('board/{id}/upload/background', 'BoardController@uploadBoardBg');
     
     //Delete board
     Route::get('board/{id}/delete', 'BoardController@deleteBoard');
@@ -110,13 +115,13 @@ Route::group(['middleware' => ['web']], function () {
     
     
     //create note
-    Route::post('notes', 'NoteController@createNote');    
+    Route::post('notes/create', 'NoteController@createNote');    
     
     //Update note content
-    Route::put('notes/{id}', 'NoteController@editNote');
+    Route::put('notes/{id}/update', 'NoteController@editNote');
     
     //Update note position
-    Route::put('notes/{id}', 'NoteController@editNoteXY');
+    Route::put('notes/{id}/update/position', 'NoteController@editNoteXY');
     
     //Delete note
     Route::get('notes/{id}/delete', 'NoteController@deleteNote');

@@ -14,7 +14,7 @@ class LoginController extends Controller
     
     
     public function __construct(){
-         $this->middleware('auth.user', ['only' => ['showDashboard']]);
+         $this->middleware('auth.user', ['except' => ['showLoginForm', 'processLogin']]);
     }
     
     //Show login form

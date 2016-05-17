@@ -25,8 +25,6 @@ class EditNoteRequest extends Request
     {
         return [
             //
-            'title' => 'required',
-            'content' => 'required'
         ];
     }
 }

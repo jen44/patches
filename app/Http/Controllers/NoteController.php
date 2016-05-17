@@ -15,25 +15,30 @@ use Auth;
 
 class NoteController extends Controller
 {
+     public function __construct(){
+         $this->middleware('auth');
+    }
+    
+    
     //
     public function createNote(CreateNoteRequest $request) {
 
         $note = Note::create($request->all());
-        $note->user_id = Auth::User()->id;
-        $currentboardid = $board->id;
-        $note->board_id = $currentboardid;
         
         $note->save();
+        
+        return $note->id;
 
     }
     
     
     
      public function editNote(EditNoteRequest $request, $id) {
-        //
+        
         $note = Note::find($id);
-         $note->fill($request->all());
+        $note->fill($request->all());
         $note->save();
+        
          
     }
     

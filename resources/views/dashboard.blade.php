@@ -209,6 +209,11 @@
          </div>
          
          
+         
+         
+      </section>
+      
+      <section class="sidepanel">
       </section>
       
       

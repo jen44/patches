@@ -3,23 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 
 use App\Http\Requests;
 
 use App\Models\Board;
+use App\Models\Background;
 use App\Models\Note;
 
 use App\Http\Requests\CreateBoardRequest;
 use App\Http\Requests\EditBoardRequest;
-
+use App\Http\Requests\UploadBackgroundRequest;
 use App\Http\Requests\EditBackgroundRequest;
 
 use Auth;
 
 class BoardController extends Controller
 {
-    //
-//    
+    
     public function __construct(){
          $this->middleware('auth');
          $this->middleware('auth.user', ['only' => ['showDashboard']]);
@@ -27,14 +28,9 @@ class BoardController extends Controller
     
     
      public function createBoard(CreateBoardRequest $request) {
-        //
+        
         $board = board::create($request->all());
-        $board->user_id = Auth::User()->id;
-//        
-//        $file = $request->file('background');
-//        $newName = 'background'.$post->id.'.jpg';
-//        $file->move('background', $newName);
-         
+        $board->user_id = Auth::User()->id;         
         $background = 'grey-line.jpg';
         $board->background = $background;
         $board->save();
@@ -54,22 +50,14 @@ class BoardController extends Controller
     }
     
     public function showIndivBoard($id) {
-        //
+        
         $board = Board::find($id);
-        $hasNav = true;
-        return view('board', compact('board','hasNav'));
+        return view('board', compact('board'));
 //        return $board->id;
         
         
     }
     
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function updateBoardBg(EditBackgroundRequest $request, $id) {
         
         $board = Board::find($id);
@@ -80,21 +68,38 @@ class BoardController extends Controller
     
     public function uploadBoardBg(UploadBackgroundRequest $request, $id) {
         
+        return "hi";
+//        
+//        $background = Background::create();
+//        $newName = "background-".$user->id."-".time().".jpg";
+//        $request->file('file') = $newName;
+//        $background->filename = $newName;
+//        $background->save();
+//        
+//        
+//        $board = Board::find($id);
+//        $request->file("file")->move("images/backgrounds",$newName);
+//        $board->background = $newName;
+//        
+//        $board->save();
+        
+    }
+
+    public function editBoard(EditBoardRequest $request, $id){
+        
         $board = Board::find($id);
         $board->fill($request->all());
         $board->save();
         
+        return redirect(URL::previous());
+        
+        
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
+    
     public function deleteBoard($id)
     {
-        //
+        
         $board = Board::find($id);
         foreach($board->notes as $note){
             $note->delete();
@@ -108,13 +113,13 @@ class BoardController extends Controller
     
     public function clearBoard($id)
     {
-        //
+        
         $board = Board::find($id);
         foreach($board->notes as $note){
             $note->delete();
         }
         //alert delete with noty
-        return redirect(URL::previous());
+        return redirect(url::previous());
 
     }
 }

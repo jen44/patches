@@ -15,8 +15,8 @@ class UserController extends Controller
 {
     
     public function __construct(){
-//         $this->middleware('auth', ['except' => ['showRegisterForm', 'createUser']]);
-//         $this->middleware('auth.user', ['except' => ['showRegisterForm', 'createUser']]);
+         $this->middleware('auth', ['except' => ['showRegisterForm', 'createUser']]);
+         $this->middleware('auth.user', ['except' => ['showRegisterForm', 'createUser']]);
     }
     
     
@@ -40,20 +40,6 @@ class UserController extends Controller
         
     }
     
-    //Show user detail
-    public function showUserDetail($id){
-        
-        $user = User::find($id);
-        return view('userdetail', compact('user'));
-    
-    }
-
-    //Show user edit
-    public function showUserEditForm($id){
-        
-        return view('user/'.$user->id.'/edit', compact('user'));
-    
-    }
     
     //Process Edit user
     public function editUser(EditUserRequest $request, $id){

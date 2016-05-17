@@ -1,9 +1,27 @@
 $(function(){
     
+    /* Scroll animations */
+
+    $(document).scroll(function() {
+
+        $('.headingtext').css('opacity', function() {
+            return 1 - ($(window).scrollTop() / 700);
+        });
+
+      var dHeight = $(window).height();
+        
+      if (dHeight >= $(this).scrollTop()) {
+          
+        $('.navbar').css('background', 'rgba(216, 151, 58,' + $(this).scrollTop() / dHeight + ')');
+          
+      }
+        
+    });
+    
     
     /* Main menu hamburger */
 
-    $('.hamburger-icon').on("click", function() {
+    $('.hamburger').on("click", function() {
         var el = $(".hamburger-layer");
         var menu = $('.dropdown');
 
@@ -359,7 +377,7 @@ $(function(){
         
         var board_id = $('#board').attr('data-id');
         
-        var url = $('#public').html() + '/board/' + board_id;
+        var url = $('#public').html() + '/board/' + board_id + '/update/background';
         
         var data =  { background: newbg,
                       _token: $('#token').html(),
@@ -381,13 +399,44 @@ $(function(){
     
     /* Background Dropzone */
     
+//    
+//    var board_id = $("#boardid").html();
+//    
+//    if($('#settings')){
+//        
+//        
+//        $('div#dropzonebox').find('i').dropzone({ 
+//            url: $("#public").html() + "/board/" + board_id + "/upload/background",
+//            filename: 'file'
+//            });
+//
+//    } else {
+//        
+//        
+//    };
+//    
     
-    var board_id = $("#dropzonebox").attr('data-id');
     
-    $("#dropzonebox").dropzone({url: $("#public").html() + "/board/" + board_id + "/bg", _token: $('#token').html()} );
+    
     
     
 
+    
+    
+    
+    
+/*
+|--------------------------------------------------------------------------
+| Profile : 
+|--------------------------------------------------------------------------
+|
+*/
+        
+    
+    
+    
+    
+    
     /* Avatar Upload */
     
    var user_id = $('.avatar-upload').attr('data-id'); 
@@ -398,6 +447,56 @@ $(function(){
             uploadData :{_token : $('#token').html()}
             
         });
+    
+    
+    
+     
+    /* profile double click element to edit */
+    
+//
+//    var originalVal;
+//    $('.fa-pencil').on('click', function(){
+//        
+//        originalVal = $(this).text();
+//        $(this).text('');
+//        $('<input class="" type="text">').html(originalVal).appendTo(this).focus();
+//        
+//        
+//        
+//    });
+//    
+//    $('.note').on('focusout', 'h2 > input', function(){
+//        var note = $(this).parent().parent();
+//        var ele = $(this);
+//        var newTitle = ele.text();
+//        var newContent = note.find('p').text();
+//        var url = $('#public').html() + '/notes/' + note.attr('data-id');
+//        
+//        
+//        ele.parent().text(ele.val() || originalVal);
+//        
+//        var data = {
+//                        title: newTitle,
+//                        content: newContent,
+//                        _token: $('#token').html(),
+//                        _method: 'PUT'
+//                   };
+//        
+//        
+//        $.post(url, data, function(res){
+//            
+//        });
+//        
+//        
+//        ele.remove();
+//        
+//        
+//        
+//    });
+    
+    
+    
+    
     
     
     
@@ -414,7 +513,7 @@ $(function(){
     
     
 
-    /* Create note on double click */
+    /////////////* Create note on double click *////////////////
     
     
     $('#board').on('dblclick',function(e){
@@ -429,9 +528,9 @@ $(function(){
         var user_id = $('#userid').html();
         var username = $('#username').html();
         var board_id = $('#boardid').html();
-        var ele = '<div class="note" style="position: absolute; top:' + page_y + 'px; left: ' + page_x + 'px;"><h2 class="noteTitle">New note</h2><h3>Post by '+ username + '</h3><p class="noteContent">New note content</p></div>';
+        var ele = '<div class="note noselect" style="position: absolute; top:' + page_y + 'px; left: ' + page_x + 'px;" data-id=""><h2 class="noteTitle">New note</h2><h3>Post by '+ username + '</h3><p class="noteContent">New note content</p></div>';
 
-        $('.draggables').append(ele);
+//        $('.draggables').append(ele);
         
         
         var noteTitle = $(ele).find('.noteTitle').html();
@@ -450,41 +549,65 @@ $(function(){
                         _method: 'POST'
                    };
         
-//        console.log(data);
         
-        $.post(url, data, function(res){
+        $.post(url, data, function(id){
             
+             var ele = '<div class="note noselect" style="position: absolute; top:' + page_y + 'px; left: ' + page_x + 'px;" data-id="'+id+'"><h2 class="noteTitle">New note</h2><h3>Post by '+ username + '</h3><p class="noteContent">New note content</p></div>';
+
+            $(ele).draggable({
+            
+                  containment: "#board",
+                  helper: "original",
+                    start: function(event, ui){
+                        $(this).addClass("draggable-helper");
+                        $('#trash').addClass('hover');
+
+                    },
+
+                    stop: function(event, ui){
+
+                        $(this).removeClass("draggable-helper");
+
+                        $('#trash').removeClass('hover');
+
+
+                        var pos_x = ui.offset.left;
+                        var pos_y = ui.offset.top;
+
+                        var url = $('#public').html() + '/notes/' + $(this).data('id') + '/update/position';
+
+                        var data =  { pos_x: pos_x, 
+                                    pos_y: pos_y,
+                                    _token: $('#token').html(),
+                                    _method: 'PUT'
+
+                                  };
+                        $.post( url, data,function(res){
+
+                        }); 
+
+                    }
+
+
+                }).appendTo('.draggables');
         });
         
-        
-        
-        $('.note').draggable({
-            
-          containment: "#board",
-          helper: "original",
-            start: function(event, ui){
-                $(this).addClass("draggable-helper");
-                $('#trash').addClass('hover');
-
-            },
-
-            stop: function(event, ui){
-
-                $(this).removeClass("draggable-helper");
-                
-                $('#trash').removeClass('hover');
-
-            }
-            
-            
-        }); //End of note draggable
         
         
     }); //End of board double click make note function
     
     
     
-    /* Note Draggable and add class on drag start*/
+    
+    
+    
+    
+   /////* Note Draggable  save position and add class on drag start*///////
+    
+    
+    
+    
+    
 
     $(".note").draggable(
         { containment: "#board",
@@ -504,8 +627,7 @@ $(function(){
                 var pos_x = ui.offset.left;
                 var pos_y = ui.offset.top;
 
-                var url = $('#public').html() + '/notes/' + $(this).data('id');
-
+                var url = $('#public').html() + '/notes/' + $(this).data('id') + '/update/position';
                 var data =  { pos_x: pos_x, 
                             pos_y: pos_y,
                             _token: $('#token').html(),
@@ -523,20 +645,219 @@ $(function(){
     });
     
 
+    
+    
+    
+    
 
     
-    /* Note click to edit */
-    
-//    $('.note').find('h2').on('dblclick', function(e){});
+    ///////////////* Note double click h2 to edit *///////////////
     
     
+    
+    
+    
+    
+
+    var originalVal;
+    $('.note').on('dblclick', 'h2', function(e){
+        
+        e.stopPropagation();
+        originalVal = $(this).text();
+        $(this).text('');
+        
+        $('<input class="noteEdit" type="text">').val(originalVal).appendTo(this).focus();
+        
+        
+    });
+    
+    
+    
+    /* On Enter */
+    
+    
+    $('.note').on('keypress', 'h2 > input', function(e){
+        
+        if(e.which == 13) {
+            // enter pressed
+            
+            e.stopPropagation();
+            var note = $(this).parent().parent();
+            var ele = $(this);
+            var h2 = ele.parent();
+
+            var newTitle = ele.val();
+
+            var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+
+            h2.text(newTitle);
+
+
+
+            var data = {
+                            title: newTitle,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+
+            $.post(url, data, function(res){
+                
+            });
+
+
+            ele.remove(); 
+            
+        }
+       
+        
+    });
+    
+    
+    
+    /* On focusout */
+    
+    $('.note').on('focusout', 'h2 > input', function(){
+        
+        
+        var note = $(this).parent().parent();
+        var ele = $(this);
+        var h2 = ele.parent();
+        var newTitle = ele.val();
+        var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+        
+        h2.text(newTitle);
+        
+        
+        
+        var data = {
+                        title: newTitle,
+                        _token: $('#token').html(),
+                        _method: 'PUT'
+                   };
+        
+        
+        $.post(url, data, function(res){
+            
+        });
+        
+        
+        ele.remove();
+        
+        
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+    ///////////////* Note double click p to edit *///////////////
+    
+    
+    
+    
+    
+    $('.note').on('dblclick', 'p', function(e){
+        
+        e.stopPropagation();
+        originalVal = $(this).text();
+        $(this).text('');
+        
+        $('<input class="noteEdit" type="textarea">').val(originalVal).appendTo(this).focus();
+        
+        
+    });
+    
+    
+    
+    /* On Enter */
+    
+    
+    $('.note').on('keypress', 'p > input', function(e){
+        
+        if(e.which == 13) {
+            // enter pressed
+            
+            e.stopPropagation();
+            var note = $(this).parent().parent();
+            var ele = $(this);
+            var p = ele.parent();
+
+            var newContent = ele.val();
+
+            var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+
+            p.text(newContent);
+
+
+
+            var data = {
+                            content: newContent,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+
+            $.post(url, data, function(res){
+                
+            });
+
+
+            ele.remove(); 
+            
+        }
+       
+        
+    });
+    
+    
+    
+    /* On focusout */
+    
+    $('.note').on('focusout', 'p > input', function(){
+        
+        
+        var note = $(this).parent().parent();
+        var ele = $(this);
+        var p = ele.parent();
+        var newContent = ele.val();
+        var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+        
+        p.text(newContent);
+        
+        
+        
+        var data = {
+                        content: newContent,
+                        _token: $('#token').html(),
+                        _method: 'PUT'
+                   };
+        
+        
+        $.post(url, data, function(res){
+            
+        });
+        
+        
+        ele.remove();
+        
+        
+    });
     
     
     
     
     
      
-    /* Trash can : Delete note */
+    //////////////////////* Trash can : Delete note *//////////////////////
+    
+    
+    
     
     $('#trash').find('.container').droppable({
         tolerance: "touch",
@@ -545,13 +866,13 @@ $(function(){
             var url = $('#public').html() + '/notes/' + $(ui.draggable).data('id') + '/delete';
             
             
-            var data =  {   _token: $('#token').html(),
+            var data =  { _token: $('#token').html(),
                          _method: 'DELETE',
 
                           };
             
             $.get(url, data,function(res){
-                console.log(res);
+                
             }); 
 
             

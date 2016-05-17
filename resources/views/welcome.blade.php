@@ -7,17 +7,25 @@
    <div class="container">
        
        <header>
-           <div class="logo">
-               <h1>Note.</h1>
+          
+          
+          <div class="navbar">
+             
+              
+                
            </div>
            
+           <div class="logo">
+               <a href="{{url('/')}}" class="noselect">Note.</a>
+           </div>
+
            <div class="hamburger">
               <button class="hamburger-icon">
                 <span class="hamburger-layer"></span>
               </button>
             </div>
-           
-               
+
+
                <div class="dropdown">
                    <ul id="navmenu">
                       @if(Auth::check())
@@ -76,9 +84,13 @@
    
     <div class="container">
         <div class="innertext">
-            <h3></h3>
+            <h3>Create boards, make notes, link stuff, whatever!</h3>
         </div>
+        
+        
     </div>
+    
+    
     
 </section>
 
@@ -112,7 +124,7 @@
             </ul>
             
             
-            <p class="copyright">Copyright &copy; Note 2016</p>
+            <p class="copyright">Copyright &copy; Note. 2016</p>
     </div>
     
 </footer>

@@ -5,7 +5,6 @@
 
 <section class="main" id="board" data-id="{{$board->id}}" style="background-image: url('../images/backgrounds/{{$board->background}}' )">
       <div class="container">
-
          
          <div class="draggables">
             
@@ -21,7 +20,7 @@
               
               @else
               
-              <div class="note" data-id='{{$note->id}}' style="position: absolute; top:{{$note->pos_y}}px; left: {{$note->pos_x}}px;">
+              <div class="note noselect" data-id='{{$note->id}}' style="position: absolute; top:{{$note->pos_y}}px; left: {{$note->pos_x}}px;">
                  <h2 class="noteTitle">{{$note->title}}</h2>
                  <h3>Post by {{$note->user->username}}</h3>
                  <p class="noteContent">{{$note->content}}</p>
