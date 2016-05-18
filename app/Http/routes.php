@@ -20,15 +20,11 @@ Route::get('/', function(){
 });  
 
 //No access
-Route::get('noaccess', function(){
-    return view('noaccess');
+Route::get('whoops', function(){
+    return view('whoops');
     
 });
 
-Route::get('newdash', function(){
-    return view('newdash');
-    
-});
 
 //show register form
 Route::get('register', 'UserController@showRegisterForm');
@@ -84,6 +80,8 @@ Route::group(['middleware' => ['web']], function () {
     //upload avatar
     Route::post('user/avatar/{id}', 'UserController@uploadAvatar');
     
+    //update user
+    Route::put('user/{id}/update', 'UserController@updateUser');
     
     
 

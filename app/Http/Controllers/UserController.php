@@ -42,11 +42,10 @@ class UserController extends Controller
     
     
     //Process Edit user
-    public function editUser(EditUserRequest $request, $id){
+    public function updateUser(EditUserRequest $request, $id){
         $user = User::find($id);
         $user->fill($request->all());
         $user->save();
-        return redirect('dashboard/'.$user->$id);
     }
     
 

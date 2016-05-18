@@ -84,7 +84,7 @@
    
     <div class="container">
         <div class="innertext">
-            <h3>Create boards, make notes, link stuff, whatever!</h3>
+            <p>Create boards, make notes, link stuff and more!</p>
         </div>
         
         

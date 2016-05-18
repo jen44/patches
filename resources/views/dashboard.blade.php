@@ -70,20 +70,20 @@
                 <ul>
                     <li>
                         <h2>Username</h2> 
-                        <p>{{Auth::User()->username}}</p> 
-                        <i class="fa fa-pencil" aria-hidden="true"></i>             
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i> 
+                        <p>{{Auth::User()->username}}</p>             
                     </li>
 
                     <li>
                         <h2>Name</h2>
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
                         <p>{{Auth::User()->name}}</p>
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </li>
 
                     <li>
                         <h2>Email</h2>
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
                         <p>{{Auth::User()->email}}</p>
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
                     </li>
 
 
@@ -139,6 +139,42 @@
                     </div> 
                 
                     @endif 
+                    
+                    
+                    <!-- Following boards -->
+                    
+                    <h3>Following</h3>
+                   
+                    @if(Auth::User()->boards()->count() == 0)
+               
+                        <span class="nothing">You are not following any board yet!</span>
+               
+                    @else
+                    
+                    <div class="boardslinkdiv">
+               
+                        @foreach(Auth::User()->boards as $board)
+
+                       <div class="boardslink">
+                            <div class="boardoverlay">
+                                <a href="{{url('board/'.$board->id.'/delete')}}">
+                                    <i class="fa fa-trash-o" aria-hidden="true">
+                                    </i>
+                                </a>
+
+                            </div>
+                            <img src="{{asset('images/backgrounds/'.$board->background)}}" alt="">
+
+                            <br>
+                            <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
+                        </div>
+
+                        @endforeach  
+                    
+                    </div>
+                
+                    @endif 
+                    
                     
                 </div>
                 
@@ -197,43 +233,6 @@
                     
                 </div>
                 
-                 <div class="column3" id="userFollowing">
-                    <!-- Following boards -->
-                    
-                    <h3>Following</h3>
-                   
-                    @if(Auth::User()->boards()->count() == 0)
-               
-                        <span class="nothing">You are not following any board yet!</span>
-               
-                    @else
-                    
-                    <div class="boardslinkdiv">
-               
-                        @foreach(Auth::User()->boards as $board)
-
-                       <div class="boardslink">
-                            <div class="boardoverlay">
-                                <a href="{{url('board/'.$board->id.'/delete')}}">
-                                    <i class="fa fa-trash-o" aria-hidden="true">
-                                    </i>
-                                </a>
-
-                            </div>
-                            <img src="{{asset('images/backgrounds/'.$board->background)}}" alt="">
-
-                            <br>
-                            <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
-                        </div>
-
-                        @endforeach  
-                    
-                    </div>
-                
-                    @endif 
-                    
-                </div>
-                
                 
                 
             @else <!-- end of if not admin -->
@@ -268,6 +267,28 @@
                             <a href="{{url('board/'.$board->id)}}">{{$board->name}}</a>
                         </div>
 
+                        @endforeach
+                        
+                    </div>
+                        
+                    @endif
+                    
+<!--                     All Users -->
+                    <h3>All Users</h3>
+                    
+                    
+                    @if(App\Models\User::all()->count() == 0)
+               
+                        <span class="nothing">There are no Users</span>
+                    
+                    @else   
+                    
+                    <div class="usersdiv">
+                       
+                        @foreach(App\Models\User::all() as $eachuser)
+                        <div class="popupProfile">
+                            <p>{{$eachuser->username}}</p>
+                        </div>
                         @endforeach
                         
                     </div>
@@ -311,32 +332,6 @@
                     
                 </div>
                 
-                
-                
-                <div class="column3" id="adminUsers">
-                    <!-- All Users -->
-                    <h3>All Users</h3>
-                    
-                    
-                    @if(App\Models\User::all()->count() == 0)
-               
-                        <span class="nothing">There are no Users</span>
-                    
-                    @else   
-                    
-                    <div class="usersdiv">
-                       
-                        @foreach(App\Models\User::all() as $eachuser)
-                        <div class="popupProfile">
-
-                        </div>
-                        @endforeach
-                        
-                    </div>
-                        
-                    @endif
-                </div>
-                
             @endif <!-- End of if admin -->
                       
             </div>
@@ -345,6 +340,7 @@
         
     </section>
 
+    <div id="userid" class="hidden">{{Auth::user()->id}}</div>
     <div id="public" class="hidden">{{url('/')}}</div>
     <div id="token" class="hidden">{{csrf_token()}}</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

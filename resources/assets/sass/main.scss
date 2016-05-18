@@ -442,10 +442,11 @@ header {
         .innertext {
             text-align: center;
             
-            h3 {
+            p {
+                font-family: 'lato', sans-serif;
                 color: #444;
                 font-size: 2em;
-                font-weight: 700;
+                font-weight: 500;
             }
             
             
@@ -777,7 +778,40 @@ footer {
 
 
 /////////////////////////* Dashboard Style *///////////////////////////
+.details{
+   
+    
+     h2 {
+            color: #03C1EB;
+            margin-bottom: 1em;
+            display: inline;
+        }
 
+        i {
+            font-size: 0.8em;
+            color: #04a0dd;
+            transition: all ease 0.3s;
+            padding-left: 0.5em;
+
+            &:hover {
+                color: #555;
+            }
+
+        }
+
+        p {
+            padding-top: 1em;
+
+        }
+
+        .editInput {
+            font-size: 0.8em;
+            font-family: 'Lato', sans-serif;
+            font-weight:400 ;
+        }
+
+    
+}
 #dashboard {
     
 //    background-color: rgba(22, 160, 133, 0.7);
@@ -786,6 +820,7 @@ footer {
         overflow-y: scroll;
     
     
+            
     .container {
         
         h1 {
@@ -816,13 +851,13 @@ footer {
                 color: #aaa;
             }
             
-            .column1, .column3 {
-                flex: 0 1;
-                width: 100%;
+            .column1 {
+                flex: 0 0 100%;
+                width: 75%;
                 
                 
                 h3 {
-                    padding: 0 2em 1em;
+                    padding: 2em 2em 1em;
                     font-size: 1em;
                     color: #289F7E;
                 }
@@ -842,14 +877,6 @@ footer {
             }
             
             
-            
-            #userBoards {
-                
-            }
-            
-            #userFollowing {
-                
-            }
             
             #rightside {
                 display: none;
@@ -899,9 +926,9 @@ footer {
                 
                 .tipsdiv {
                     display: none;
-                    padding: 5vw;
+                    padding: 5vh 5vw;
                     color: #AAA;
-                    height: 40vh;
+                    height: 30vh;
                     overflow-y: scroll;
                     
                     h3 {
@@ -1003,6 +1030,7 @@ footer {
                 display: flex;
                 flex-wrap: wrap;
                 padding-left: 2em;
+                width: 90vw;
                 
                 .boardslink {
                     position: relative;
@@ -1437,46 +1465,32 @@ footer {
             
             h2 {
                 color: #00B8A9;
+                display: inline;
             }
             
-            
-            input[type='submit'] {
-                display: inline-block;
-                width: 10em;
-                height: 2.5em;
-                outline: 0;
-                color: #f7f8f9;
-                border: 0;
-                border-radius: 0px 10px 0px 10px;
-                background-color: #00B8A9;
-            }
-            
-            input[type='text'] {
-                border: none;
+            i {
+                color: #00B8A9;
+                font-size: 0.8em;
+                padding-left: 0.5em;
+                box-sizing: border-box;
+                transition: all ease 0.1s;
                 
-                background: #f7f8f9;
-                font-size: 1em;
-                font-family: 'Lato', sans-serif;
-                font-weight: 300;
-
-                display: block;
-
-                height: 2.5em;
-                outline: 0;
-
-                width: 15em;
-                max-width: 15em;
-
-                padding: 0.5em 0;
-                overflow: hidden;
-                margin-bottom: 1em;
-
+                &:hover {
+                    cursor: pointer;
+                    color: #444;
+                }
             }
             
-            input.editInput {
+            
+            .editInput {
                 font-size: 0.8em;
                 font-family: 'Lato', sans-serif;
                 font-weight:400 ;
+            }
+            
+            p {
+                
+                padding-top: 1em;
             }
             
 
@@ -1582,6 +1596,39 @@ footer {
                 
                 
             }
+            
+            .trashicon {
+                margin-top: 0.5em;
+                position: relative;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: #dc483c;
+                transition: all ease 0.3s;
+                
+                &:hover {
+                    transform: scale(1.1);
+                    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.3);
+                }
+                
+                i {
+                    padding: 0;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    color: #f7f8f9;
+                    font-size: 1.5em;
+                }
+                
+                a {
+                    width: 100%;
+                    height: 100%;
+                    z-index: 3;
+                }
+                
+            }
+            
     
             
         }
@@ -1629,33 +1676,43 @@ footer {
         
     }
     
-    h2 {
-        color: #03C1EB;
-        padding-bottom: 0.5em;
-    }
     
-    p {
-        
-    }
+    
     
     li {
         position: relative;
         transition: all 0.3s ease;
+        
+        h2 {
+            color: #03C1EB;
+            margin-bottom: 1em;
+            display: inline;
+        }
+        
         i {
-            color: #777;
+            font-size: 0.8em;
+            color: #04a0dd;
             transition: all ease 0.3s;
+            padding-left: 0.5em;
+            
+            &:hover {
+                color: #555;
+            }
 
-            position: absolute;
-            right: 2em;
-            top: 50%;
-//            transform: translateY(-50%);
+        }
+        
+        p {
+            padding-top: 1em;
 
         }
 
-        i:hover {
-                color: #04a0dd;
+        .editInput {
+            font-size: 0.8em;
+            font-family: 'Lato', sans-serif;
+            font-weight:400 ;
         }
-    
+            
+
     }
     
     
@@ -2121,8 +2178,13 @@ footer {
 
         
         .columns {
-            
+            flex-direction: column;
             height: 100vh !important;
+        }
+        
+        .boardslinkdiv {
+            
+            width: auto !important;
         }
         
         #rightside {
@@ -2132,21 +2194,31 @@ footer {
                 display: block !important;
             }
         }
-        
-        .column1, .column3 {
-            flex: 0 0 50% !important;
-            width: 75% !important;
+//        
+//        .column1, .column3 {
+//            flex: 0 0 50%!important;
+//            width: 75% !important;
+//            overflow: scroll !important;
+//        }
+//        
+//
+//        .column2 {
+//            order: 2 !important;
+//            flex: 0 0 100% !important;
+//            width: 25% !important;
+//        }
+          
+        .column1 {
             overflow: scroll !important;
         }
         
 
+        
         .column2 {
-            order: 2 !important;
             flex: 0 0 100% !important;
             width: 25% !important;
+            
         }
-
-        
     }
     
     .headingtext {
@@ -2208,7 +2280,7 @@ footer {
 @media only screen and (min-width : 65em) {
     .slideout {
         
-        width: 22vw;
+        width: 23vw;
         
     }
 

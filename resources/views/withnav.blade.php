@@ -139,19 +139,29 @@
            
            @if(Auth::User()->id !== $board->user_id && Auth::User()->admin == 1)
            
-                <li>
-                    <h2>Clear all notes</h2>
-                    <br>
-                    <a href="{{url('board/'.$board->id.'/clear')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear board contents</a>
+                 
+            <li>
+                <h2>Clear all notes</h2>
+                <br>
+                <div class="trashicon">
+                    <a href="{{url('board/'.$board->id.'/clear')}}">
+                       <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </div>
 
-                </li>
+            </li>
 
-                <li>
-                    <h2>Delete Board</h2>
-                    <br>
-                    <a href="{{url('board/'.$board->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete board</a>
+            <li>
+                <h2>Delete Board</h2>
+                <br>
 
-                </li>
+                <div class="trashicon">
+                    <a href="{{url('board/'.$board->id.'/delete')}}">
+                       <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+            </li>
             
             
             @elseif(Auth::User()->id !== $board->user_id)
@@ -220,11 +230,10 @@
             <li>
                 
                 <h2>Edit Board Name</h2>
+                <i id="boardnameEdit" class="fa fa-pencil" aria-hidden="true"></i>
                 <br>
-                {!! Form::open(['url' => 'board/'.$board->id.'/update', 'method' => 'PUT']) !!}
-                    {{Form::text('name', $board->name, ['class' => 'editInput'])}}
-                    {{Form::submit('Save')}}
-                {!! Form::close() !!}
+                
+                <p id="boardnameTarget" class="editInput">{{$board->name}}</p>
                 
 
             </li>
@@ -233,11 +242,10 @@
             <li>
                 
                 <h2>Edit Board description</h2>
+                <i id="boarddesEdit" class="fa fa-pencil" aria-hidden="true"></i>
                 <br>
-                {!! Form::open(['url' => 'board/'.$board->id.'/update', 'method' => 'PUT']) !!}
-                    {{Form::textarea('description', $board->description, ['class' => 'editInput'])}}
-                    {{Form::submit('Save')}}
-                {!! Form::close() !!}
+                
+                <p id="boarddesTarget" class="editInput">{{$board->description}}</p>
                 
                 
 
@@ -272,19 +280,27 @@
             </li>
             
             
-            
             <li>
                 <h2>Clear all notes</h2>
                 <br>
-                <a href="{{url('board/'.$board->id.'/clear')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear board contents</a>
-                
+                <div class="trashicon">
+                    <a href="{{url('board/'.$board->id.'/clear')}}">
+                       <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+
             </li>
-            
+
             <li>
                 <h2>Delete Board</h2>
                 <br>
-                <a href="{{url('board/'.$board->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete board</a>
-                
+
+                <div class="trashicon">
+                    <a href="{{url('board/'.$board->id.'/delete')}}">
+                       <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </a>
+                </div>
+
             </li>
             
             @endif
@@ -304,20 +320,20 @@
             <ul>
                 <li>
                     <h2>Username</h2> 
-                    <p>{{Auth::User()->username}}</p> 
-                    <i class="fa fa-pencil" aria-hidden="true"></i>             
+                    <i class="fa fa-pencil edit" aria-hidden="true"></i> 
+                    <p>{{Auth::User()->username}}</p>             
                 </li>
                 
                 <li>
                     <h2>Name</h2>
+                    <i class="fa fa-pencil edit" aria-hidden="true"></i>
                     <p>{{Auth::User()->name}}</p>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </li>
                 
                 <li>
                     <h2>Email</h2>
+                    <i class="fa fa-pencil edit" aria-hidden="true"></i>
                     <p>{{Auth::User()->email}}</p>
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
                 </li>
                 
                 

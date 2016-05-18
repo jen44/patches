@@ -22,8 +22,8 @@ class BoardController extends Controller
 {
     
     public function __construct(){
-         $this->middleware('auth');
-         $this->middleware('auth.user', ['only' => ['showDashboard']]);
+//         $this->middleware('auth');
+//         $this->middleware('auth.user', ['only' => ['showDashboard']]);
     }
     
     
@@ -58,11 +58,11 @@ class BoardController extends Controller
         
     }
     
-    public function updateBoardBg(EditBackgroundRequest $request, $id) {
+    public function updateBoardBg(UploadBackgroundRequest $request, $id) {
         
-        $board = Board::find($id);
-        $board->fill($request->all());
-        $board->save();
+//        $board = Board::find($id);
+//        $board->fill($request->all());
+//        $board->save();
         
     }
     

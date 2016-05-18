@@ -410,20 +410,149 @@ $(function(){
 //        
 //        $('div#dropzonebox').find('i').dropzone({ 
 //            url: $("#public").html() + "/board/" + board_id + "/upload/background",
-//            filename: 'file'
+//            filename: 'file',
+//            sending:function(file, xhr, formData){
+//                console.log(file);
+//                formData.append("_token", $('#token').html());
+//            }
 //            });
 //
 //    } else {
 //        
 //        
 //    };
-//    
     
     
+    /* Board name and description edit */
     
-    
-    
+    var nameVal;
+    $('#settings').on('click', 'i#boardnameEdit', function(e){
+        
+            var p = $('#boardnameTarget');
+            e.stopPropagation();
+            nameVal = $(p).text();
+            $(p).text('');
 
+            $('<textarea class="editInput" style="font-size: 1em;">').val(nameVal).appendTo(p).focus();
+        
+            if(!$(this).next().is('i')){
+                
+                 $('<i id="crossName"class="fa fa-times" aria-hidden="true" style="font-size: 0.8em; color: #dc483c;">').insertAfter(this);
+                
+            }
+           
+        
+    }); 
+    
+    
+    /* onclick X */
+    
+    
+    $('#settings').on('click', 'i#crossName', function(e){
+        
+        var cross = $(this);
+        var pencil = $(this).parent();
+        var p = $('#boardnameTarget');
+        var input = $('#boardnameTarget > textarea');
+        var newVal = input.val();
+        var boardid = $('#boardid').html();
+        var url = $('#public').html() + '/board/' + boardid + '/update';
+
+        if(newVal == false){
+
+
+            p.text(nameVal);
+            cross.remove();
+            input.remove();
+
+
+        } else {
+
+            p.text(newVal);
+
+
+             var data = {
+                            name: newVal,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+
+            $.post(url, data, function(res){
+
+            });
+
+
+            input.remove();
+            cross.remove();
+
+            } 
+
+        });
+    
+    
+    
+   
+    var desVal;
+    $('#settings').one('click', 'i#boarddesEdit', function(e){
+        
+        var p = $('#boarddesTarget');
+        e.stopPropagation();
+        desVal = $(p).text();
+        $(p).text('');
+        
+        $('<textarea class="editInput" style="font-size: 1em;">').val(desVal).appendTo(p).focus();
+        $('<i id="crossDes"class="fa fa-times" aria-hidden="true" style="font-size: 0.8em; color: #dc483c;">').insertAfter(this);
+        
+    }); 
+    
+    
+    /* onclick cross */
+    
+    
+    $('#settings').on('click', 'i#crossDes', function(e){
+        
+        var cross = $(this);
+        var pencil = $(this).parent();
+        var p = $('#boarddesTarget');
+        var input = $('#boarddesTarget > textarea');
+        var newVal = input.val();
+        var boardid = $('#boardid').html();
+        var url = $('#public').html() + '/board/' + boardid + '/update';
+
+        if(newVal == false){
+
+
+            p.text(desVal);
+            input.remove();
+            cross.remove();
+
+
+        } else {
+
+            p.text(newVal);
+
+
+             var data = {
+                            description: newVal,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+
+            $.post(url, data, function(res){
+
+            });
+
+
+            input.remove();
+            cross.remove();
+
+            } 
+
+        });
+    
+    
     
     
     
@@ -453,49 +582,96 @@ $(function(){
     
     
     
-     
-    /* profile double click element to edit */
+    /* profile edit altogether */
+   
+    var oriVal;
+    $('.details').on('click', 'i.edit', function(e){
+//        console.log();
+        if($(this).next().is('p')){
+                
+            var p = $(this).next();
+            e.stopPropagation();
+            oriVal = $(p).text();
+            $(p).text('');
+
+            $('<textarea class="editInput" style="font-size: 1em;">').val(oriVal).appendTo(p).focus();
+            $('<i class="fa fa-times cross" aria-hidden="true" style="font-size: 0.8em; color: #dc483c;">').insertAfter(this);
+                
+        }
+        
+    }); 
     
-//
-//    var originalVal;
-//    $('.fa-pencil').on('click', function(){
-//        
-//        originalVal = $(this).text();
-//        $(this).text('');
-//        $('<input class="" type="text">').html(originalVal).appendTo(this).focus();
-//        
-//        
-//        
-//    });
-//    
-//    $('.note').on('focusout', 'h2 > input', function(){
-//        var note = $(this).parent().parent();
-//        var ele = $(this);
-//        var newTitle = ele.text();
-//        var newContent = note.find('p').text();
-//        var url = $('#public').html() + '/notes/' + note.attr('data-id');
-//        
-//        
-//        ele.parent().text(ele.val() || originalVal);
-//        
-//        var data = {
-//                        title: newTitle,
-//                        content: newContent,
-//                        _token: $('#token').html(),
-//                        _method: 'PUT'
-//                   };
-//        
-//        
-//        $.post(url, data, function(res){
-//            
-//        });
-//        
-//        
-//        ele.remove();
-//        
-//        
-//        
-//    });
+    
+    /* onclick cross */
+    
+    
+    $('.details').on('click', 'i.cross', function(e){
+        var cross = $(this);
+        var pencil = $(this).prev();
+        var p = pencil.next().next();
+        var input = p.find('textarea');
+        var newVal = input.val();
+        var userid = $('#userid').html();
+        var url = $('#public').html() + '/user/' + userid + '/update';
+        var h2 = pencil.prev();
+        
+        if(newVal == false){
+
+
+            p.text(oriVal);
+            input.remove();
+            cross.remove();
+
+
+        } else {
+
+            p.text(newVal);
+            var data;
+            
+            if(h2.text() == "Username"){
+                data = {
+                            username: newVal,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+                
+            }
+
+            if(h2.text() == "Name"){
+                data = {
+                            name: newVal,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+                
+            }
+            
+            if(h2.text() == "Email"){
+                data = {
+                            email: newVal,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+                
+            }
+            
+            
+////            
+//            console.log(data);
+
+            $.post(url, data, function(res){
+            });
+
+
+            input.remove();
+            cross.remove();
+
+        } 
+
+    });
     
     
     

@@ -333,10 +333,11 @@ header {
     transform: translate(-50%, -50%); }
     .description .container .innertext {
       text-align: center; }
-      .description .container .innertext h3 {
+      .description .container .innertext p {
+        font-family: 'lato', sans-serif;
         color: #444;
         font-size: 2em;
-        font-weight: 700; }
+        font-weight: 500; }
   .description img {
     position: absolute;
     width: 50%;
@@ -514,6 +515,27 @@ footer {
     #registerpage .inputbox a:visted {
       color: #D8973A; }
 
+.details h2 {
+  color: #03C1EB;
+  margin-bottom: 1em;
+  display: inline; }
+
+.details i {
+  font-size: 0.8em;
+  color: #04a0dd;
+  transition: all ease 0.3s;
+  padding-left: 0.5em; }
+  .details i:hover {
+    color: #555; }
+
+.details p {
+  padding-top: 1em; }
+
+.details .editInput {
+  font-size: 0.8em;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400; }
+
 #dashboard {
   background-color: #f7f8f9;
   overflow-y: scroll; }
@@ -540,13 +562,13 @@ footer {
       font-family: 'lato', sans-serif;
       font-weight: 400;
       color: #aaa; }
-    #dashboard .container .columns .column1, #dashboard .container .columns .column3 {
-      -webkit-flex: 0 1;
-      -ms-flex: 0 1;
-      flex: 0 1;
-      width: 100%; }
-      #dashboard .container .columns .column1 h3, #dashboard .container .columns .column3 h3 {
-        padding: 0 2em 1em;
+    #dashboard .container .columns .column1 {
+      -webkit-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      width: 75%; }
+      #dashboard .container .columns .column1 h3 {
+        padding: 2em 2em 1em;
         font-size: 1em;
         color: #289F7E; }
     #dashboard .container .columns .column1 h1 {
@@ -583,9 +605,9 @@ footer {
         margin: 0 auto; }
       #dashboard .container .columns #rightside .tipsdiv {
         display: none;
-        padding: 5vw;
+        padding: 5vh 5vw;
         color: #AAA;
-        height: 40vh;
+        height: 30vh;
         overflow-y: scroll; }
         #dashboard .container .columns #rightside .tipsdiv h3 {
           margin-bottom: 1em;
@@ -639,7 +661,8 @@ footer {
       -webkit-flex-wrap: wrap;
       -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-      padding-left: 2em; }
+      padding-left: 2em;
+      width: 90vw; }
       #dashboard .container .columns .boardslinkdiv .boardslink {
         position: relative;
         padding: 0 0.7em 0.7em 0; }
@@ -857,34 +880,23 @@ footer {
 #settings #accordion li {
   padding-right: 0.5em; }
   #settings #accordion li h2 {
-    color: #00B8A9; }
-  #settings #accordion li input[type='submit'] {
-    display: inline-block;
-    width: 10em;
-    height: 2.5em;
-    outline: 0;
-    color: #f7f8f9;
-    border: 0;
-    border-radius: 0px 10px 0px 10px;
-    background-color: #00B8A9; }
-  #settings #accordion li input[type='text'] {
-    border: none;
-    background: #f7f8f9;
-    font-size: 1em;
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-    display: block;
-    height: 2.5em;
-    outline: 0;
-    width: 15em;
-    max-width: 15em;
-    padding: 0.5em 0;
-    overflow: hidden;
-    margin-bottom: 1em; }
-  #settings #accordion li input.editInput {
+    color: #00B8A9;
+    display: inline; }
+  #settings #accordion li i {
+    color: #00B8A9;
+    font-size: 0.8em;
+    padding-left: 0.5em;
+    box-sizing: border-box;
+    transition: all ease 0.1s; }
+    #settings #accordion li i:hover {
+      cursor: pointer;
+      color: #444; }
+  #settings #accordion li .editInput {
     font-size: 0.8em;
     font-family: 'Lato', sans-serif;
     font-weight: 400; }
+  #settings #accordion li p {
+    padding-top: 1em; }
   #settings #accordion li textarea {
     border: none;
     background: #f7f8f9;
@@ -938,6 +950,31 @@ footer {
         padding: 0.35em 0.45em;
         color: #00B8A9;
         font-size: 3em; }
+  #settings #accordion li .trashicon {
+    margin-top: 0.5em;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #dc483c;
+    transition: all ease 0.3s; }
+    #settings #accordion li .trashicon:hover {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+      box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.3); }
+    #settings #accordion li .trashicon i {
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      color: #f7f8f9;
+      font-size: 1.5em; }
+    #settings #accordion li .trashicon a {
+      width: 100%;
+      height: 100%;
+      z-index: 3; }
 
 #profile .banner {
   position: relative;
@@ -964,21 +1001,26 @@ footer {
       height: 12vh;
       width: 12vh; }
 
-#profile h2 {
-  color: #03C1EB;
-  padding-bottom: 0.5em; }
-
 #profile li {
   position: relative;
   transition: all 0.3s ease; }
+  #profile li h2 {
+    color: #03C1EB;
+    margin-bottom: 1em;
+    display: inline; }
   #profile li i {
-    color: #777;
+    font-size: 0.8em;
+    color: #04a0dd;
     transition: all ease 0.3s;
-    position: absolute;
-    right: 2em;
-    top: 50%; }
-  #profile li i:hover {
-    color: #04a0dd; }
+    padding-left: 0.5em; }
+    #profile li i:hover {
+      color: #555; }
+  #profile li p {
+    padding-top: 1em; }
+  #profile li .editInput {
+    font-size: 0.8em;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400; }
 
 #profile li:hover {
   background-color: #e1f5ff; }
@@ -1244,21 +1286,19 @@ footer {
   #dashboard {
     overflow: hidden !important; }
     #dashboard .columns {
+      -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column;
       height: 100vh !important; }
+    #dashboard .boardslinkdiv {
+      width: auto !important; }
     #dashboard #rightside {
       display: block !important; }
       #dashboard #rightside .tipsdiv {
         display: block !important; }
-    #dashboard .column1, #dashboard .column3 {
-      -webkit-flex: 0 0 50% !important;
-      -ms-flex: 0 0 50% !important;
-      flex: 0 0 50% !important;
-      width: 75% !important;
+    #dashboard .column1 {
       overflow: scroll !important; }
     #dashboard .column2 {
-      -webkit-order: 2 !important;
-      -ms-flex-order: 2 !important;
-      order: 2 !important;
       -webkit-flex: 0 0 100% !important;
       -ms-flex: 0 0 100% !important;
       flex: 0 0 100% !important;
@@ -1287,7 +1327,7 @@ footer {
 /*for destop - inclusive*/
 @media only screen and (min-width: 65em) {
   .slideout {
-    width: 22vw; }
+    width: 23vw; }
   #modalbox {
     width: 20em !important;
     height: 12em !important; }

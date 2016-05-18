@@ -25,10 +25,6 @@ class EditUserRequest extends Request
     {
         return [
             //
-            'username' => 'required|unique',
-            'name'=>'required',
-            'email'=>'required',
-            'password'=>'required|confirmed'
         ];
     }
 }
