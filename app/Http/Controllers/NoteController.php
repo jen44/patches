@@ -46,8 +46,14 @@ class NoteController extends Controller
      public function editNoteXY(EditNoteXYRequest $request, $id) {
         //
         $note = Note::find($id);
-         $note->fill($request->all());
-        $note->save();
+         
+         if($note){
+             
+             $note->fill($request->all());
+            $note->save();
+             
+         }
+         
          
     }
     

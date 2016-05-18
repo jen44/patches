@@ -87,7 +87,7 @@
             <li>
                 
                 <h2>Created By</h2>
-                <p>{{$board->user_id}}</p>
+                <p>{{$board->user->username}}</p>
                 
 
             </li>

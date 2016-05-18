@@ -25,6 +25,11 @@ Route::get('noaccess', function(){
     
 });
 
+Route::get('newdash', function(){
+    return view('newdash');
+    
+});
+
 //show register form
 Route::get('register', 'UserController@showRegisterForm');
 

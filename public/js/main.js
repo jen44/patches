@@ -5,7 +5,7 @@ $(function(){
     $(document).scroll(function() {
 
         $('.headingtext').css('opacity', function() {
-            return 1 - ($(window).scrollTop() / 700);
+            return 1 - ($(window).scrollTop() / 350);
         });
 
       var dHeight = $(window).height();
@@ -511,7 +511,6 @@ $(function(){
 |
 */
     
-    
 
     /////////////* Create note on double click *////////////////
     
@@ -586,10 +585,12 @@ $(function(){
 
                         }); 
 
-                    }
-
-
+                    },
+                
                 }).appendTo('.draggables');
+            
+               
+
         });
         
         
@@ -659,14 +660,14 @@ $(function(){
     
     
 
-    var originalVal;
-    $('.note').on('dblclick', 'h2', function(e){
+        var originalVal;
+    $('.draggables').on('dblclick', 'h2', function(e){
         
         e.stopPropagation();
         originalVal = $(this).text();
         $(this).text('');
         
-        $('<input class="noteEdit" type="text">').val(originalVal).appendTo(this).focus();
+        $('<textarea class="noteEdit">').val(originalVal).appendTo(this).focus();
         
         
     });
@@ -676,7 +677,7 @@ $(function(){
     /* On Enter */
     
     
-    $('.note').on('keypress', 'h2 > input', function(e){
+    $('.draggables').on('keypress', 'h2 > textarea', function(e){
         
         if(e.which == 13) {
             // enter pressed
@@ -690,23 +691,33 @@ $(function(){
 
             var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
 
-            h2.text(newTitle);
+            if(ele.val() == false){
+            
+
+                h2.text(originalVal);
+                ele.remove();
 
 
+            } else {
 
-            var data = {
-                            title: newTitle,
-                            _token: $('#token').html(),
-                            _method: 'PUT'
-                       };
+                h2.text(newTitle);
 
 
-            $.post(url, data, function(res){
-                
-            });
+                 var data = {
+                                title: newTitle,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
 
 
-            ele.remove(); 
+                $.post(url, data, function(res){
+
+                });
+
+
+                ele.remove();
+
+            } 
             
         }
        
@@ -717,7 +728,7 @@ $(function(){
     
     /* On focusout */
     
-    $('.note').on('focusout', 'h2 > input', function(){
+    $('.draggables').on('focusout', 'h2 > textarea', function(){
         
         
         var note = $(this).parent().parent();
@@ -726,24 +737,33 @@ $(function(){
         var newTitle = ele.val();
         var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
         
-        h2.text(newTitle);
-        
-        
-        
-        var data = {
-                        title: newTitle,
-                        _token: $('#token').html(),
-                        _method: 'PUT'
-                   };
-        
-        
-        $.post(url, data, function(res){
+        if(ele.val() == false){
             
-        });
+            
+            h2.text(originalVal);
+            ele.remove();
+            
+            
+        } else {
+            
+            h2.text(newTitle);
         
         
-        ele.remove();
-        
+             var data = {
+                            title: newTitle,
+                            _token: $('#token').html(),
+                            _method: 'PUT'
+                       };
+
+
+            $.post(url, data, function(res){
+
+            });
+
+
+            ele.remove();
+            
+        }
         
     });
     
@@ -761,14 +781,14 @@ $(function(){
     
     
     
-    
-    $('.note').on('dblclick', 'p', function(e){
+    var pOriginalVal;
+    $('.draggables').on('dblclick', 'p', function(e){
         
         e.stopPropagation();
-        originalVal = $(this).text();
+        pOriginalVal = $(this).text();
         $(this).text('');
         
-        $('<input class="noteEdit" type="textarea">').val(originalVal).appendTo(this).focus();
+        $('<textarea class="noteEdit">').val(pOriginalVal).appendTo(this).focus();
         
         
     });
@@ -778,7 +798,7 @@ $(function(){
     /* On Enter */
     
     
-    $('.note').on('keypress', 'p > input', function(e){
+    $('.draggables').on('keypress', 'p > textarea', function(e){
         
         if(e.which == 13) {
             // enter pressed
@@ -791,10 +811,60 @@ $(function(){
             var newContent = ele.val();
 
             var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+            
+            if(ele.val() == false){
+            
 
-            p.text(newContent);
+                p.text(pOriginalVal);
+                ele.remove();
 
 
+            } else {
+
+               p.text(newContent);
+
+                var data = {
+                                content: newContent,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
+
+
+                $.post(url, data, function(res){
+
+                });
+
+
+                ele.remove(); 
+
+            }    
+        }
+
+    });
+    
+    
+    
+    /* On focusout */
+    
+    $('.draggables').on('focusout', 'p > textarea', function(){
+        
+        
+        var note = $(this).parent().parent();
+        var ele = $(this);
+        var p = ele.parent();
+        var newContent = ele.val();
+        var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
+        
+        if(ele.val() == false){
+            
+
+            p.text(pOriginalVal);
+            ele.remove();
+
+
+        } else {
+
+           p.text(newContent);
 
             var data = {
                             content: newContent,
@@ -804,47 +874,13 @@ $(function(){
 
 
             $.post(url, data, function(res){
-                
+
             });
 
 
             ele.remove(); 
-            
-        }
-       
-        
-    });
-    
-    
-    
-    /* On focusout */
-    
-    $('.note').on('focusout', 'p > input', function(){
-        
-        
-        var note = $(this).parent().parent();
-        var ele = $(this);
-        var p = ele.parent();
-        var newContent = ele.val();
-        var url = $('#public').html() + '/notes/' + note.attr('data-id') + '/update';
-        
-        p.text(newContent);
-        
-        
-        
-        var data = {
-                        content: newContent,
-                        _token: $('#token').html(),
-                        _method: 'PUT'
-                   };
-        
-        
-        $.post(url, data, function(res){
-            
-        });
-        
-        
-        ele.remove();
+
+        }    
         
         
     });
@@ -874,7 +910,7 @@ $(function(){
             $.get(url, data,function(res){
                 
             }); 
-
+            
             
             ui.draggable.remove();
         }

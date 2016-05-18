@@ -16,6 +16,12 @@ class Board extends Model
         return $this->hasMany('App\Models\Note');
     }
     
+    public function user(){
+        
+        return $this->belongsTo('App\Models\User');
+        
+    }
+    
     public function follower(){
         
         return $this->belongsToMany('');
