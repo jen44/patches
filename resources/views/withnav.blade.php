@@ -137,8 +137,25 @@
     <div id="settings" class="slideout">
         <ul id="accordion">
            
-           @if(Auth::User()->id !== $board->user_id)
+           @if(Auth::User()->id !== $board->user_id && Auth::User()->admin == 1)
            
+                <li>
+                    <h2>Clear all notes</h2>
+                    <br>
+                    <a href="{{url('board/'.$board->id.'/clear')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Clear board contents</a>
+
+                </li>
+
+                <li>
+                    <h2>Delete Board</h2>
+                    <br>
+                    <a href="{{url('board/'.$board->id.'/delete')}}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete board</a>
+
+                </li>
+            
+            
+            @elseif(Auth::User()->id !== $board->user_id)
+            
             <li>
                 <h2>Share this board</h2>
                 <div>
@@ -165,6 +182,7 @@
                       </i>
                 </div>
             </li>
+            
             
             
             @else

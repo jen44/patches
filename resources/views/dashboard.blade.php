@@ -112,7 +112,7 @@
                     
                     @if(Auth::User()->boards()->count() == 0)
                
-                        <span>You don't have any boards created yet!</span>
+                        <span class="nothing">You don't have any boards created yet!</span>
                
                     @else
                     
@@ -204,7 +204,7 @@
                    
                     @if(Auth::User()->boards()->count() == 0)
                
-                        <span>You are not following any board yet!</span>
+                        <span class="nothing">You are not following any board yet!</span>
                
                     @else
                     
@@ -239,12 +239,14 @@
             @else <!-- end of if not admin -->
                 
                 <div class="column1" id="adminBoards">
+                   
+                   <h1>Dashboard</h1>
                     <!-- Users boards -->
                     <h3>Boards</h3>
                     
                     @if(App\Models\Board::all()->count() == 0)
                
-                        <span>There are no boards</span>
+                        <span class="nothing">There are no boards</span>
                     
                     @else
                        
@@ -282,7 +284,8 @@
                        <a href="{{url('/')}}" class="noselect">Note.</a>
                     </div>
                     
-                    <p>Welcome, Admin {{Auth::User()->username}}!</p>
+                    <img src="{{asset('images/avatars/'.Auth::User()->avatar)}}" alt="">
+                    <p>Welcome, Admin <strong>{{Auth::User()->username}}</strong>!</p>
                     
                     
                     <div class="footer">
@@ -303,7 +306,7 @@
 
                         </ul>
 
-                        <p class="copyright">Copyright &copy; Note. 2016</p>
+                        <p class="copyright">Copyright &copy; <span>Note.</span> 2016</p>
                     </div>
                     
                 </div>
@@ -315,15 +318,15 @@
                     <h3>All Users</h3>
                     
                     
-                    @if(App\Models\Users::all()->count() == 0)
+                    @if(App\Models\User::all()->count() == 0)
                
-                        <span>There are no Users</span>
+                        <span class="nothing">There are no Users</span>
                     
                     @else   
                     
                     <div class="usersdiv">
                        
-                        @foreach(App\Models\Users::all() as $eachuser)
+                        @foreach(App\Models\User::all() as $eachuser)
                         <div class="popupProfile">
 
                         </div>

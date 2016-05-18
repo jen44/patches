@@ -1,4 +1,7 @@
 $(function(){
+    /* Refresh lands at scroll top */
+    $(this).scrollTop(0);
+    
     
     /* Scroll animations */
 
