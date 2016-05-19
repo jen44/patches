@@ -441,11 +441,12 @@ header {
         
         .innertext {
             text-align: center;
+            width: 80vw;
             
             p {
                 font-family: 'lato', sans-serif;
                 color: #444;
-                font-size: 2em;
+                font-size: 7vw;
                 font-weight: 500;
             }
             
@@ -552,10 +553,27 @@ footer {
 
 
 
+///////////////////* Login page regi page logo *///////////////////
 
 
+    .welcomelogo, 
+     .welcomelogo:visited, 
+     .welcomelogo:hover, 
+     .welcomelogo:active {
+        text-align: center;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0 1em;
+        color: #555;
 
-
+        font-family: 'raleway-bold',sans-serif;
+        text-transform: none;
+        text-decoration: none;
+        font-size: 13vh;
+//        text-shadow: 2px 2px rgba(0,0,0,0.3);
+    }
 
 
 
@@ -565,14 +583,18 @@ footer {
 
 
 #loginpage {
-    background-image: url('../images/backgrounds/diagnal-fabric.png');
+    background-image: url('../images/backgrounds/pattern.png');
     background-repeat: repeat;
+    
+    
        
     .inputbox {
             width: 15em;
             height: auto;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 20%;
+        
+         
 
         input {
             border: none;
@@ -654,8 +676,19 @@ footer {
 
 }
 
+
+    .welcomelogo, 
+     .welcomelogo:visited, 
+     .welcomelogo:hover, 
+     .welcomelogo:active {
+        top: 23vh;
+    }
+
+
+
+
 #registerpage {
-    background-image: url('../images/backgrounds/diagnal-fabric.png');
+    background-image: url('../images/backgrounds/pattern.png');
     background-repeat: repeat;
     
     
@@ -663,7 +696,7 @@ footer {
             width: 15em;
             height: auto;
             margin: auto;
-            margin-top: 10%;
+            margin-top: 8vh;
 
         input {
             border: none;
@@ -778,6 +811,79 @@ footer {
 
 
 /////////////////////////* Dashboard Style *///////////////////////////
+.userdeetsPop {
+    
+    position: fixed;
+    width: 30vw;
+    
+    top: -20em;
+    left: 30%;
+    transform: translateX(-50%);
+    z-index: 10;
+    
+    background-color: #f7f8f9;
+    padding: 2em;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 1px 1px 15px 1px rgba(0,0,0,0.2);
+    
+    transition: all ease-in-out 0.3s;
+    
+    opacity: 0;
+    
+    #deetsPop {
+        
+        h2 {
+            text-transform: none;
+            font-size: 2em;
+            color: #555;
+            margin-bottom: 1em;
+            
+        }
+        
+        .details {
+            
+            color: #289F7E !important;
+            
+           
+            
+            li {
+                padding: 1em 0;
+                
+                 h2 {
+                    text-transform: uppercase;
+                    font-size: 1em;
+                    margin-bottom: 1em;
+                    display: inline;
+                    color: #289F7E;
+
+                }
+                
+                i {
+                    font-size: 1em;
+                    color: #289F7E;
+                }
+                
+                p {
+                    padding-bottom: 1em;
+                }
+            }
+        }
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .details{
    
     
@@ -861,11 +967,7 @@ footer {
                     font-size: 1em;
                     color: #289F7E;
                 }
-            }
             
-            
-            .column1 {
-                
                 
                 h1 {
                     font-size: 2em;
@@ -874,7 +976,64 @@ footer {
                     
                     
                 }
+                
+
+                .usersdiv {
+                    padding: 0 1em;
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    width: 95%;
+                    
+                    
+                    .faces {
+                        
+                        padding: 1em;
+                        text-align: center;
+                        
+                        img {
+                            display: block;
+                            height: 12vh;
+                            width: 12vh;
+                            margin: 0 auto;
+                            
+                            border-radius: 50%;
+                            
+                            border: 4px solid rgba(0,0,0,0);
+                            transition: all ease 0.2s;
+                            filter:grayscale(1);
+                            
+                            &:hover {
+                                filter:grayscale(0);
+                                cursor: pointer;
+                                border: 4px solid #289F7E;
+                            }
+
+                        }
+
+                        .userdeets {
+                            
+                            ul {
+                                
+                                
+                                li {
+                                    font-family: 'lato', sans-serif;
+                                    font-weight: 400;
+                                    display: inline;
+                                    padding: 1em;
+                                }
+                                
+                            }
+                        }
+                        
+
+                    }
+                }
+                    
             }
+            
+            
+            
             
             
             
@@ -1818,9 +1977,11 @@ footer {
 
 
 .fadeIn{
+    
     top: 0;
     opacity: 1 !important;
 }
+
 
 
 

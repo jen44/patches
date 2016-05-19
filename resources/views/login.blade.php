@@ -4,9 +4,16 @@
 
 <section class="front" id="loginpage">
 
+      
+       <a href="{{url('/')}}" class="welcomelogo noselect" >Note.</a>
+  
    <div class="container">
+       
         
         <div class="inputbox">
+       
+           
+              
                {!! Form::open(['url' => 'login']) !!}
                 {{form::text('username', null, ['required' => 'required', 'placeholder' => 'Username'])}}
                 {!! $errors->first('username')!!}

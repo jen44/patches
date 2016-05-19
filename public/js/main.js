@@ -305,6 +305,17 @@ $(function(){
             $('.btn').removeClass('active-btn');
         }
         
+        if($('.modal').hasClass('fadeIn')){
+            
+            $('.modal').removeClass('fadeIn');
+            $('.btn').removeClass('active-btn');
+        }
+        
+//        if($('.userdeetsPop').hasClass('fadeIn')){
+//            
+//            $('.userdeetsPop').removeClass('fadeIn');
+//        }
+        
     });
     
 /*
@@ -321,6 +332,8 @@ $(function(){
             
 			$('#newboard-btn').addClass('active-btn');
             $('.modal').addClass('fadeIn');
+            
+            $('.userdeetsPop').removeClass('fadeIn');
             $('.slideout').removeClass('open');
 			$('#settings-btn').removeClass('active-btn');
 			$('#profile-btn').removeClass('active-btn');
@@ -339,6 +352,42 @@ $(function(){
     });
     
     
+/*
+|--------------------------------------------------------------------------
+| Admin Dashboard: User details pop up
+|--------------------------------------------------------------------------
+|
+*/   $('.faces>img').on('click', function(e){
+        
+        if($('.userdeetsPop').hasClass('fadeIn') == false){
+            
+            
+            $('.userdeetsPop').addClass('fadeIn');
+            $('.modal').removeClass('fadeIn');
+            $('.slideout').removeClass('open');
+			$('#settings-btn').removeClass('active-btn');
+			$('#profile-btn').removeClass('active-btn');
+			$('#info-btn').removeClass('active-btn');
+			$('#myboards-btn').removeClass('active-btn');
+            
+            
+        } else {
+            
+            $('.userdeetsPop').removeClass('fadeIn');
+        
+        }
+    
+        var userid = $(this).attr('data-id');
+        var username = $("ul").find("[data-name='user-username']");
+        var name = $("ul").find("[data-name='user-name']");
+        var email = $("ul").find("[data-name='user-email']");
+    
+        
+    
+    
+        
+        
+    });
     
     
     
@@ -378,7 +427,7 @@ $(function(){
         
         var newbg = $(this).attr('data-file');
         
-        var board_id = $('#board').attr('data-id');
+        var board_id = $('#boardid').html();
         
         var url = $('#public').html() + '/board/' + board_id + '/update/background';
         
@@ -389,7 +438,7 @@ $(function(){
                     };
      
         $.post(url, data,function(res){
-
+                
         }); 
 
         
@@ -571,7 +620,11 @@ $(function(){
     
     /* Avatar Upload */
     
-   var user_id = $('.avatar-upload').attr('data-id'); 
+    if($('.avatar-upload')){
+        
+        
+    
+    var user_id = $('.avatar-upload').attr('data-id'); 
         
         new AvatarUpload({
             el: document.querySelector('.avatar-upload'),
@@ -579,6 +632,7 @@ $(function(){
             uploadData :{_token : $('#token').html()}
             
         });
+    }
     
     
     

@@ -27,4 +27,8 @@ class Board extends Model
         return $this->belongsToMany('');
         
     }
+    
+    public function backgrounds(){
+        return $this->hasMany('App\Models\Background');
+    }
 }

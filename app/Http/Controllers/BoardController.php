@@ -13,8 +13,8 @@ use App\Models\Note;
 
 use App\Http\Requests\CreateBoardRequest;
 use App\Http\Requests\EditBoardRequest;
-use App\Http\Requests\UploadBackgroundRequest;
 use App\Http\Requests\EditBackgroundRequest;
+use App\Http\Requests\UploadBackgroundRequest;
 
 use Auth;
 
@@ -22,8 +22,8 @@ class BoardController extends Controller
 {
     
     public function __construct(){
-//         $this->middleware('auth');
-//         $this->middleware('auth.user', ['only' => ['showDashboard']]);
+         $this->middleware('auth');
+         $this->middleware('auth.user', ['only' => ['showDashboard']]);
     }
     
     
@@ -58,11 +58,11 @@ class BoardController extends Controller
         
     }
     
-    public function updateBoardBg(UploadBackgroundRequest $request, $id) {
+    public function updateBoardBg(EditBackgroundRequest $request, $id) {
         
-//        $board = Board::find($id);
-//        $board->fill($request->all());
-//        $board->save();
+        $board = Board::find($id);
+        $board->fill($request->all());
+        $board->save();
         
     }
     
@@ -90,8 +90,6 @@ class BoardController extends Controller
         $board = Board::find($id);
         $board->fill($request->all());
         $board->save();
-        
-        return redirect(URL::previous());
         
         
     }

@@ -332,11 +332,12 @@ header {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); }
     .description .container .innertext {
-      text-align: center; }
+      text-align: center;
+      width: 80vw; }
       .description .container .innertext p {
         font-family: 'lato', sans-serif;
         color: #444;
-        font-size: 2em;
+        font-size: 7vw;
         font-weight: 500; }
   .description img {
     position: absolute;
@@ -400,14 +401,31 @@ footer {
     font-size: 0.7em;
     font-family: 'lato', sans-serif; }
 
+.welcomelogo,
+.welcomelogo:visited,
+.welcomelogo:hover,
+.welcomelogo:active {
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 0 1em;
+  color: #555;
+  font-family: 'raleway-bold',sans-serif;
+  text-transform: none;
+  text-decoration: none;
+  font-size: 13vh; }
+
 #loginpage {
-  background-image: url("../images/backgrounds/diagnal-fabric.png");
+  background-image: url("../images/backgrounds/pattern.png");
   background-repeat: repeat; }
   #loginpage .inputbox {
     width: 15em;
     height: auto;
     margin: auto;
-    margin-top: 10%; }
+    margin-top: 20%; }
     #loginpage .inputbox input {
       border: none;
       background: #f7f8f9;
@@ -453,14 +471,20 @@ footer {
     #loginpage .inputbox a:visted {
       color: #D8973A; }
 
+.welcomelogo,
+.welcomelogo:visited,
+.welcomelogo:hover,
+.welcomelogo:active {
+  top: 23vh; }
+
 #registerpage {
-  background-image: url("../images/backgrounds/diagnal-fabric.png");
+  background-image: url("../images/backgrounds/pattern.png");
   background-repeat: repeat; }
   #registerpage .inputbox {
     width: 15em;
     height: auto;
     margin: auto;
-    margin-top: 10%; }
+    margin-top: 8vh; }
     #registerpage .inputbox input {
       border: none;
       background: #f7f8f9;
@@ -514,6 +538,41 @@ footer {
       color: #ce8114; }
     #registerpage .inputbox a:visted {
       color: #D8973A; }
+
+.userdeetsPop {
+  position: fixed;
+  width: 30vw;
+  top: -20em;
+  left: 30%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 10;
+  background-color: #f7f8f9;
+  padding: 2em;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.2);
+  transition: all ease-in-out 0.3s;
+  opacity: 0; }
+  .userdeetsPop #deetsPop h2 {
+    text-transform: none;
+    font-size: 2em;
+    color: #555;
+    margin-bottom: 1em; }
+  .userdeetsPop #deetsPop .details {
+    color: #289F7E !important; }
+    .userdeetsPop #deetsPop .details li {
+      padding: 1em 0; }
+      .userdeetsPop #deetsPop .details li h2 {
+        text-transform: uppercase;
+        font-size: 1em;
+        margin-bottom: 1em;
+        display: inline;
+        color: #289F7E; }
+      .userdeetsPop #deetsPop .details li i {
+        font-size: 1em;
+        color: #289F7E; }
+      .userdeetsPop #deetsPop .details li p {
+        padding-bottom: 1em; }
 
 .details h2 {
   color: #03C1EB;
@@ -571,10 +630,45 @@ footer {
         padding: 2em 2em 1em;
         font-size: 1em;
         color: #289F7E; }
-    #dashboard .container .columns .column1 h1 {
-      font-size: 2em;
-      color: #555;
-      padding: 1em 1em; }
+      #dashboard .container .columns .column1 h1 {
+        font-size: 2em;
+        color: #555;
+        padding: 1em 1em; }
+      #dashboard .container .columns .column1 .usersdiv {
+        padding: 0 1em;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-flex-direction: row;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        width: 95%; }
+        #dashboard .container .columns .column1 .usersdiv .faces {
+          padding: 1em;
+          text-align: center; }
+          #dashboard .container .columns .column1 .usersdiv .faces img {
+            display: block;
+            height: 12vh;
+            width: 12vh;
+            margin: 0 auto;
+            border-radius: 50%;
+            border: 4px solid transparent;
+            transition: all ease 0.2s;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1); }
+            #dashboard .container .columns .column1 .usersdiv .faces img:hover {
+              -webkit-filter: grayscale(0);
+              filter: grayscale(0);
+              cursor: pointer;
+              border: 4px solid #289F7E; }
+          #dashboard .container .columns .column1 .usersdiv .faces .userdeets ul li {
+            font-family: 'lato', sans-serif;
+            font-weight: 400;
+            display: inline;
+            padding: 1em; }
     #dashboard .container .columns #rightside {
       display: none;
       position: relative;

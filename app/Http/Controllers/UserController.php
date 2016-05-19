@@ -66,6 +66,12 @@ class UserController extends Controller
     
     
     
+    //Follow user
+    
+    
+    
+    
+    
     
     
     

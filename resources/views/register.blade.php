@@ -3,6 +3,10 @@
 @section('content')
 
     <section class="front" id="registerpage">
+           
+           
+                <a href="{{url('/')}}" class="welcomelogo noselect">Note.</a>
+           
             <div id='registerbox' class="inputbox">
                 {!! Form::open(['url' => 'register']) !!}
                     {{form::text('username', null, ['placeholder' => 'Username'])}}

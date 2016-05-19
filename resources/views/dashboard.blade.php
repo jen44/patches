@@ -35,7 +35,38 @@
         </nav>
     </header>
 
+    
+    <section class="userdeetsPop">
+       <div id="deetsPop" class="">
+            <h2>User detail</h2>
+            
+            <div class="details">
+                <ul>
+                    <li>
+                        <h2>Username</h2> 
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i> 
+                        <p data-name="user-username"></p>             
+                    </li>
 
+                    <li>
+                        <h2>Name</h2>
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
+                        <p data-name="user-name"></p>
+                    </li>
+
+                    <li>
+                        <h2>Email</h2>
+                        <i class="fa fa-pencil edit" aria-hidden="true"></i>
+                        <p data-name="user-email"></p>
+                    </li>
+
+
+                </ul>
+            </div>
+
+        </div>    
+
+    </section>
 
     <section class="modal">
        <div id="modalbox" class="">
@@ -281,22 +312,24 @@
                
                         <span class="nothing">There are no Users</span>
                     
-                    @else   
+                    @else
                     
                     <div class="usersdiv">
-                       
-                        @foreach(App\Models\User::all() as $eachuser)
-                        <div class="popupProfile">
+                      
+                       @foreach(App\Models\User::all() as $eachuser)   
+                    
+                        <div class="faces">
+                            <img src="{{asset('images/avatars/'.$eachuser->avatar)}}" data-id="{{$eachuser->id}}">
                             <p>{{$eachuser->username}}</p>
                         </div>
+                        
                         @endforeach
                         
                     </div>
-                        
+                    
                     @endif
                     
                 </div>
-                
                 
                 <div class="column2" id="rightside">
                     <!-- Help / social -->
