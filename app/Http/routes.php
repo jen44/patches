@@ -26,6 +26,13 @@ Route::get('whoops', function(){
 });
 
 
+//About
+Route::get('about', function(){
+    return view('about');
+    
+});
+
+
 //show register form
 Route::get('register', 'UserController@showRegisterForm');
 
@@ -63,7 +70,7 @@ Route::get('logout', 'LoginController@logout');
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['middleware' => ['web']], function () {
+Route::group(['middleware' => ['auth']], function () {
     
     
                             /**********

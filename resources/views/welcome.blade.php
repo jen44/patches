@@ -40,10 +40,7 @@
                        <li>
                            <a href="{{url('logout')}}">Logout</a>
                        </li>
-                       
-                        <li>
-                           <a href="{{url('contact')}}">Contact</a>
-                       </li>                      
+                                     
                                                
                       @else
                        <li>
@@ -58,9 +55,6 @@
                            <a href="{{url('login')}}">Login</a>
                        </li>
                        
-                        <li>
-                           <a href="{{url('contact')}}">Contact</a>
-                       </li> 
                       @endif
 
                    </ul>
@@ -70,20 +64,23 @@
            
        </header>
        
-        <div class="headingtext">
+        <div class="headingtext noselect">
             <h1>Note.</h1>
             <h2>A little idea-sharing playground for everyone.</h2>
         </div>
+        
+        
+        <i id="scrolldown" class="fa fa-angle-double-down bounce" aria-hidden="true"></i>
     </div>
 </section>
 
 
-<section class="description">
+<section id="about" class="description">
   
   
    
     <div class="container">
-        <div class="innertext">
+        <div class="innertext noselect">
             <p>Create boards, make notes, link stuff and more!</p>
         </div>
         
@@ -104,27 +101,35 @@
 
 <footer>
     <div class="container">
-           <h1 id="footerText">Keep in touch!</h1>
-           
+        <h1 id="footerText">Keep in touch!</h1>
+
             <ul class="social">
-                
-              <li>
-                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
-              </li>
 
-              <li>
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-              </li>
+                <li>
+                   <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}" class="facebook">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    </a>
+                </li>
 
-              <li>
-                  <i class="fa fa-google-plus" aria-hidden="true"></i>
-              </li>
-                
-                
+               
+                <li>
+                    <a href="https://twitter.com/home?status={{Request::url()}}" class="twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+
+               
+                <li> 
+                    <a href="https://plus.google.com/share?url={{Request::url()}}" class="google-plus">
+                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    </a>
+                </li>
+
+
             </ul>
-            
-            
-            <p class="copyright">Copyright &copy; Note. 2016</p>
+
+
+        <p class="copyright">Copyright &copy; Note. 2016</p>
     </div>
     
 </footer>

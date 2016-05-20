@@ -43,8 +43,12 @@ class BoardController extends Controller
     
       public function showDashboard($id){
         
-
+       
+            
         $user = Auth::User();
+        
+          
+          
         $boards = Board::paginate(3);
         return view('dashboard', compact('board'));
     }
@@ -52,9 +56,15 @@ class BoardController extends Controller
     public function showIndivBoard($id) {
         
         $board = Board::find($id);
-        return view('board', compact('board'));
-//        return $board->id;
         
+        if($board == false){
+            return view('404');
+            
+        }else {
+            
+            return view('board', compact('board'));
+    //        return $board->id;
+        }
         
     }
     

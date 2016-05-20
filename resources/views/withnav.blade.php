@@ -4,29 +4,31 @@
     <meta charset="UTF-8">
     <title>Notes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{{asset('css/opentip.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/avatar.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 </head>
 <body>
-    
+
+
 <header class="sidenav">
     <nav class="navicons">
         <div class="icons" id="top">
            
-            <a href="{{url('dashboard/'.Auth::User()->id)}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
+            <a href="{{url('dashboard/'.Auth::User()->id)}}"><i class="fa fa-tachometer" aria-hidden="true" id="dashboard-btn" name="dashboard" data-ot="My Dashboard" data-ot-style="glass" data-ot-tipJoint="left"></i></a>
             
-            <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards"></i>
+            <i class="fa fa-clone btn" aria-hidden="true" id="myboards-btn" name="My Boards" data-ot="My Boards" data-ot-style="glass" data-ot-tipJoint="left"></i>
             
-            <i class="fa fa-info-circle btn" aria-hidden="true" id="info-btn" name="Board info"></i>
+            <i class="fa fa-info-circle btn" aria-hidden="true" id="info-btn" name="Board info" data-ot="Board Information" data-ot-style="glass" data-ot-tipJoint="left"></i>
             
-            <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
+            <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board" data-ot="New Board" data-ot-style="glass" data-ot-tipJoint="left"></i>
             
-            <i class="fa fa-cog btn" aria-hidden="true" id="settings-btn" name="Settings"></i>
+            <i class="fa fa-cog btn" aria-hidden="true" id="settings-btn" name="Settings" data-ot="Settings" data-ot-style="glass" data-ot-tipJoint="left"></i>
             
            @if(Auth::User()->id !== $board->user_id)
                
-            <i class="fa fa-heart btn" aria-hidden="true" id="follow-btn" name="Follow"></i>
+            <i class="fa fa-heart btn" aria-hidden="true" id="follow-btn" name="Follow" data-ot="Follow this Board" data-ot-style="glass" data-ot-tipJoint="left"></i>
                
            
            @endif
@@ -40,9 +42,9 @@
         
         
         <div class="icons" id="bottom">
-            <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
+            <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile" data-ot="Profile" data-ot-style="glass" data-ot-joint="left"></i>
             
-            <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
+            <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout" data-ot="Logout" data-ot-style="glass" data-ot-tipJoint="left"></i></a>
             
         </div>
     
@@ -134,7 +136,7 @@
         </ul>
     </div>
     
-    <div id="settings" class="slideout">
+    <div id="settings" class="slideout scrollbar-green">
         <ul id="accordion">
            
            @if(Auth::User()->id !== $board->user_id && Auth::User()->admin == 1)
@@ -168,29 +170,21 @@
             
             <li>
                 <h2>Share this board</h2>
-                <div>
-                   <br>
+               <div class="social">
                    
-                      <i class="fa fa-facebook-square" aria-hidden="true">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}" class="facebook">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    </a>
 
-                          <a href=""></a>
+                    <a href="https://twitter.com/home?status={{Request::url()}}" class="twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
 
-                       </i>
-
-
-                      <i class="fa fa-twitter" aria-hidden="true">
-
-                        <a href=""></a>
-
-                      </i>
-
-
-                      <i class="fa fa-google-plus" aria-hidden="true">
-
-                            <a href=""></a>
-
-                      </i>
-                </div>
+                    <a href="https://plus.google.com/share?url={{Request::url()}}" class="google-plus">
+                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    </a>
+               </div>
+                
             </li>
             
             
@@ -215,10 +209,12 @@
 
                     @endif
                 @endforeach
+<!--
                    
                     <div id="dropzonebox">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </div>
+-->
 
                 </div>
                 
@@ -231,7 +227,7 @@
                 
                 <h2>Edit Board Name</h2>
                 <i id="boardnameEdit" class="fa fa-pencil" aria-hidden="true"></i>
-                <br>
+<!--                <br>-->
                 
                 <p id="boardnameTarget" class="editInput">{{$board->name}}</p>
                 
@@ -243,7 +239,7 @@
                 
                 <h2>Edit Board description</h2>
                 <i id="boarddesEdit" class="fa fa-pencil" aria-hidden="true"></i>
-                <br>
+<!--                <br>-->
                 
                 <p id="boarddesTarget" class="editInput">{{$board->description}}</p>
                 
@@ -253,30 +249,26 @@
            
             
              <li>
+               
                 <h2>Share this board</h2>
-                <div>
-                   <br>
-                   
-                      <i class="fa fa-facebook-square" aria-hidden="true">
+                <div class="social">
+                    
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{Request::url()}}" class="facebook">
+                        <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                    </a>
 
-                          <a href=""></a>
+                   <a href="https://twitter.com/home?status={{Request::url()}}" class="twitter">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
 
-                       </i>
-
-
-                      <i class="fa fa-twitter" aria-hidden="true">
-
-                        <a href=""></a>
-
-                      </i>
-
-
-                      <i class="fa fa-google-plus" aria-hidden="true">
-
-                            <a href=""></a>
-
-                      </i>
+                    <a href="https://plus.google.com/share?url={{Request::url()}}" class="google-plus">
+                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    </a> 
+                
+                    
+                    
                 </div>
+                
             </li>
             
             
@@ -373,6 +365,8 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.noty.packaged.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/opentip-jquery.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/dropzone.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>

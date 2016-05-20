@@ -53,6 +53,42 @@ body {
 header {
   z-index: 4; }
 
+.error-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(22, 160, 133, 0.8);
+  z-index: 10; }
+  .error-container .error-content {
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center; }
+    .error-container .error-content span {
+      font-size: 1.5em;
+      font-weight: 400; }
+    .error-container .error-content i {
+      font-weight: 100;
+      font-size: 5em;
+      color: #f7f8f9; }
+    .error-container .error-content p {
+      font-size: 1.2em;
+      padding: 1em 0;
+      line-height: 2em;
+      font-family: 'lato', sans-serif;
+      font-weight: 300;
+      color: #f7f8f9; }
+    .error-container .error-content a, .error-container .error-content a:visited {
+      color: #eee;
+      font-family: 'lato', sans-serif;
+      font-weight: 300;
+      transition: all ease 0.3s; }
+
 .hero {
   height: 100vh;
   width: 100vw;
@@ -317,6 +353,40 @@ header {
         font-size: 1.5em;
         color: #555;
         text-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.5); }
+    .hero .container #scrolldown {
+      position: absolute;
+      left: 48%;
+      bottom: 1em;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      font-size: 4em;
+      color: #f7f8f9;
+      cursor: pointer; }
+    .hero .container .bounce {
+      -webkit-animation: bounce 2s infinite;
+      animation: bounce 2s infinite; }
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px); }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px); } }
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0); }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px); }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px); } }
 
 .description {
   z-index: 3;
@@ -337,7 +407,7 @@ header {
       .description .container .innertext p {
         font-family: 'lato', sans-serif;
         color: #444;
-        font-size: 7vw;
+        font-size: 1.5em;
         font-weight: 500; }
   .description img {
     position: absolute;
@@ -372,25 +442,20 @@ footer {
     transform: translateX(-50%); }
     footer .social li {
       display: inline-block;
-      width: 2.5em;
+      width: 2em;
       padding: 0 0.5em;
       box-sizing: border-box; }
-      footer .social li i {
-        font-size: 2em;
+      footer .social li a {
+        font-size: 1em;
         color: #CCC;
-        transition: all 0.3s ease; }
-    footer .social li:nth-child(1) > i:hover {
-      color: #3765A3; }
-    footer .social li:nth-child(2) > i:hover {
-      color: #55ACEE; }
-    footer .social li:nth-child(3) > i:hover {
-      color: #DC483C; }
-    footer .social li:nth-child(1) > i:active {
-      color: #3765A3; }
-    footer .social li:nth-child(2) > i:active {
-      color: #55ACEE; }
-    footer .social li:nth-child(3) > i:active {
-      color: #DC483C; }
+        transition: all 0.3s ease;
+        cursor: pointer; }
+        footer .social li a.facebook:hover {
+          color: #3765A3; }
+        footer .social li a.twitter:hover {
+          color: #55ACEE; }
+        footer .social li a.google-plus:hover {
+          color: #DC483C; }
   footer .copyright {
     position: absolute;
     bottom: 1em;
@@ -401,31 +466,30 @@ footer {
     font-size: 0.7em;
     font-family: 'lato', sans-serif; }
 
-.welcomelogo,
-.welcomelogo:visited,
-.welcomelogo:hover,
-.welcomelogo:active {
-  text-align: center;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  padding: 0 1em;
-  color: #555;
-  font-family: 'raleway-bold',sans-serif;
-  text-transform: none;
-  text-decoration: none;
-  font-size: 13vh; }
-
 #loginpage {
   background-image: url("../images/backgrounds/pattern.png");
   background-repeat: repeat; }
+  #loginpage .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 50vh; }
+    #loginpage .container .welcomelogo,
+    #loginpage .container .welcomelogo:visited,
+    #loginpage .container .welcomelogo:hover,
+    #loginpage .container .welcomelogo:active {
+      color: #555;
+      font-family: 'raleway-bold',sans-serif;
+      text-transform: none;
+      text-decoration: none;
+      font-size: 13vh; }
   #loginpage .inputbox {
+    margin: 2em auto;
     width: 15em;
-    height: auto;
-    margin: auto;
-    margin-top: 20%; }
+    height: auto; }
     #loginpage .inputbox input {
       border: none;
       background: #f7f8f9;
@@ -471,20 +535,29 @@ footer {
     #loginpage .inputbox a:visted {
       color: #D8973A; }
 
-.welcomelogo,
-.welcomelogo:visited,
-.welcomelogo:hover,
-.welcomelogo:active {
-  top: 23vh; }
-
 #registerpage {
   background-image: url("../images/backgrounds/pattern.png");
   background-repeat: repeat; }
+  #registerpage .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 75vh; }
+    #registerpage .container .welcomelogo,
+    #registerpage .container .welcomelogo:visited,
+    #registerpage .container .welcomelogo:hover,
+    #registerpage .container .welcomelogo:active {
+      color: #555;
+      font-family: 'raleway-bold',sans-serif;
+      text-transform: none;
+      text-decoration: none;
+      font-size: 13vh; }
   #registerpage .inputbox {
     width: 15em;
-    height: auto;
-    margin: auto;
-    margin-top: 8vh; }
+    margin-top: 10vh; }
     #registerpage .inputbox input {
       border: none;
       background: #f7f8f9;
@@ -706,7 +779,8 @@ footer {
         #dashboard .container .columns #rightside .tipsdiv h3 {
           margin-bottom: 1em;
           font-size: 1em;
-          font-family: 'raleway-bold', sans-serif; }
+          font-family: 'raleway-bold', sans-serif;
+          color: #d7983a; }
         #dashboard .container .columns #rightside .tipsdiv .tips {
           font-family: 'lato', sans-serif;
           font-weight: 400;
@@ -729,21 +803,17 @@ footer {
           -webkit-flex-direction: row;
           -ms-flex-direction: row;
           flex-direction: row; }
-          #dashboard .container .columns #rightside .footer .social li i {
-            color: #DDD;
-            transition: all ease 0.1s; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(1) > i:hover {
-            color: #3765A3; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(1) > i:active {
-            color: #3765A3; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(2) > i:hover {
-            color: #55ACEE; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(2) > i:active {
-            color: #55ACEE; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(4) > i :hover {
-            color: #DC483C !important; }
-          #dashboard .container .columns #rightside .footer .social li:nth-child(4) > i :active {
-            color: #DC483C !important; }
+          #dashboard .container .columns #rightside .footer .social li a {
+            font-size: 1em;
+            color: #CCC;
+            transition: all 0.3s ease;
+            cursor: pointer; }
+            #dashboard .container .columns #rightside .footer .social li a.facebook:hover {
+              color: #3765A3; }
+            #dashboard .container .columns #rightside .footer .social li a.twitter:hover {
+              color: #55ACEE; }
+            #dashboard .container .columns #rightside .footer .social li a.google-plus:hover {
+              color: #DC483C; }
         #dashboard .container .columns #rightside .footer .copyright {
           font-size: 0.8em; }
           #dashboard .container .columns #rightside .footer .copyright span {
@@ -804,20 +874,18 @@ footer {
         #dashboard .container .columns .boardslinkdiv .boardslink p {
           padding: 1em 0; }
 
-::-webkit-scrollbar {
-  width: 5px; }
-
-/* Track */
-::-webkit-scrollbar-track {
-  border-radius: 10px; }
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #BBB; }
-
-::-webkit-scrollbar-thumb:window-inactive {
-  background: #AAA; }
+.scrollbar-green {
+  /* Track */
+  /* Handle */ }
+  .scrollbar-green ::-webkit-scrollbar {
+    width: 10px; }
+  .scrollbar-green ::-webkit-scrollbar-track {
+    border-radius: 10px; }
+  .scrollbar-green ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #289F7E; }
+  .scrollbar-green ::-webkit-scrollbar-thumb:window-inactive {
+    background: #BBB; }
 
 .sidenav {
   height: 100vh;
@@ -976,13 +1044,13 @@ footer {
   #settings #accordion li h2 {
     color: #00B8A9;
     display: inline; }
-  #settings #accordion li i {
+  #settings #accordion li i.fa-pencil {
     color: #00B8A9;
     font-size: 0.8em;
-    padding-left: 0.5em;
+    padding: 0 0.5em;
     box-sizing: border-box;
     transition: all ease 0.1s; }
-    #settings #accordion li i:hover {
+    #settings #accordion li i.fa-pencil:hover {
       cursor: pointer;
       color: #444; }
   #settings #accordion li .editInput {
@@ -997,7 +1065,6 @@ footer {
     font-size: 0.8em;
     font-family: 'Lato', sans-serif;
     font-weight: 400;
-    outline: none;
     width: 15em;
     max-width: 15em;
     padding: 0.5em 0;
@@ -1005,23 +1072,6 @@ footer {
     margin-bottom: 1em;
     height: 2.5em;
     max-height: auto; }
-  #settings #accordion li div i {
-    color: #AAA;
-    font-size: 2em;
-    margin-right: 0.3em;
-    transition: all ease 0.3s; }
-  #settings #accordion li div i:nth-child(2):hover {
-    color: #3765A3; }
-  #settings #accordion li div i:nth-child(3):hover {
-    color: #55ACEE; }
-  #settings #accordion li div i:nth-child(4):hover {
-    color: #DC483C; }
-  #settings #accordion li div i:nth-child(2):active {
-    color: #3765A3; }
-  #settings #accordion li div i:nth-child(3):active {
-    color: #55ACEE; }
-  #settings #accordion li div i:nth-child(4):active {
-    color: #DC483C; }
   #settings #accordion li .bgoptions {
     float: left; }
     #settings #accordion li .bgoptions img {
@@ -1033,17 +1083,21 @@ footer {
       transition: all ease 0.2s; }
     #settings #accordion li .bgoptions img.bgcurrent {
       border: 3px solid #00B8A9; }
-    #settings #accordion li .bgoptions #dropzonebox {
-      border: 3px dashed #00B8A9;
-      height: 5em;
-      width: 5em;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all ease 0.2s; }
-      #settings #accordion li .bgoptions #dropzonebox i {
-        padding: 0.35em 0.45em;
-        color: #00B8A9;
-        font-size: 3em; }
+  #settings #accordion li .social a {
+    width: 42px;
+    height: 42px;
+    font-size: 2em;
+    color: #CCC;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 3; }
+    #settings #accordion li .social a.facebook:hover {
+      color: #3765A3; }
+    #settings #accordion li .social a.twitter:hover {
+      color: #55ACEE; }
+    #settings #accordion li .social a.google-plus:hover {
+      color: #DC483C; }
   #settings #accordion li .trashicon {
     margin-top: 0.5em;
     position: relative;
@@ -1066,8 +1120,9 @@ footer {
       color: #f7f8f9;
       font-size: 1.5em; }
     #settings #accordion li .trashicon a {
-      width: 100%;
-      height: 100%;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
       z-index: 3; }
 
 #profile .banner {
@@ -1093,7 +1148,8 @@ footer {
     #profile .banner .avatar-upload img {
       border-radius: 50%;
       height: 12vh;
-      width: 12vh; }
+      width: 12vh;
+      transition: all ease 0.2s; }
 
 #profile li {
   position: relative;
@@ -1145,7 +1201,6 @@ footer {
     font-family: 'Lato', sans-serif;
     font-weight: 700;
     height: 2.5em;
-    outline: 0;
     width: 15em;
     max-width: 15em;
     margin: auto;
@@ -1170,7 +1225,12 @@ footer {
     color: #EEE;
     border-radius: 0px 10px 0px 10px;
     background-color: #B61AAE;
-    transition: all ease 0.3s; }
+    transition: all ease 0.3s;
+    cursor: pointer; }
+    .modal input[type='submit']:hover {
+      background-color: #940F8D; }
+    .modal input[type='submit']:hover {
+      background-color: #940F8D; }
 
 .fadeIn {
   top: 0;
@@ -1278,14 +1338,24 @@ footer {
         margin: 0.5em;
         padding: 1em;
         overflow: auto; }
+        #board .container .draggables .note h2 {
+          text-transform: none;
+          font-family: 'lato', sans-serif;
+          font-size: 1em;
+          font-weight: 400;
+          display: block; }
         #board .container .draggables .note h3 {
+          text-transform: none;
+          font-family: 'lato', sans-serif;
+          font-size: 0.8em;
+          font-weight: 400;
+          color: #666;
           display: block; }
         #board .container .draggables .note p {
           display: block;
           font-size: 0.8em;
-          font-weight: 700;
+          font-weight: 400;
           font-family: 'lato', sans-serif;
-          color: #333;
           margin-top: 1em;
           transition: all 0.3s ease; }
         #board .container .draggables .note img {
@@ -1367,6 +1437,8 @@ footer {
 @media only screen and (min-width: 26em) {
   .slideout {
     width: 45vw; }
+  #registerpage .container {
+    height: 60vh !important; }
   #modalbox {
     width: 20em !important;
     height: 12em !important; }
@@ -1377,6 +1449,8 @@ footer {
 @media only screen and (min-width: 45em) {
   .slideout {
     width: 35vw; }
+  .innertext p {
+    font-size: 3em !important; }
   #dashboard {
     overflow: hidden !important; }
     #dashboard .columns {
@@ -1421,7 +1495,12 @@ footer {
 /*for destop - inclusive*/
 @media only screen and (min-width: 65em) {
   .slideout {
-    width: 23vw; }
+    width: 23vw;
+    left: -27em !important; }
+  .open {
+    left: 50px !important; }
+  #registerpage .container {
+    height: 50vh !important; }
   #modalbox {
     width: 20em !important;
     height: 12em !important; }

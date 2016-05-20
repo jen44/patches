@@ -5,9 +5,11 @@
 <section class="front" id="loginpage">
 
       
-       <a href="{{url('/')}}" class="welcomelogo noselect" >Note.</a>
   
    <div class="container">
+      
+      
+       <a href="{{url('/')}}" class="welcomelogo noselect" >Note.</a>
        
         
         <div class="inputbox">

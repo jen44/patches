@@ -1,6 +1,21 @@
 $(function(){
+    
+    
+    /* scroll down arrow  on click */
+    
+    $('.bounce').on('click', function(){
+        
+        $('html,body').animate({
+            scrollTop: $('#about').offset().top},
+            'ease-in-out');
+    });
+    
+    
+    
     /* Refresh lands at scroll top */
     $(this).scrollTop(0);
+    
+    
     
     
     /* Scroll animations */
@@ -52,6 +67,20 @@ $(function(){
             }
         });
     
+              
+    /* Toggle with overlay click */
+        
+        $('.dropdown').on('click', function(e){
+            
+            if(menu.hasClass('showNav')){
+                menu.removeClass('showNav');
+                el.addClass("hamburger-from-cross");
+                el.removeClass("hamburger-to-cross");
+                
+            }
+                
+        });
+    
         
     });
 
@@ -68,6 +97,7 @@ $(function(){
 |--------------------------------------------------------------------------
 |
 */
+    
     
     
     /* My Boards slide out*/
@@ -494,7 +524,7 @@ $(function(){
     }); 
     
     
-    /* onclick X */
+    /* onclick X submit */
     
     
     $('#settings').on('click', 'i#crossName', function(e){
@@ -537,6 +567,54 @@ $(function(){
 
             } 
 
+        });
+    
+    
+    /* on focusout submit */
+    
+    
+      $('#settings').on('focusout', 'textarea', function(e){
+                
+                var input = $(this);
+                var cross = $('i#crossName');
+                var pencil = cross.prev();
+                var p = input.parent();
+                var newVal = input.val();
+                var boardid = $('#boardid').html();
+                var url = $('#public').html() + '/board/' + boardid + '/update';
+
+                if(newVal == false){
+
+
+                    p.text(nameVal);
+                    cross.remove();
+                    input.remove();
+
+
+                } else {
+
+                    p.text(newVal);
+
+
+                     var data = {
+                                    name: newVal,
+                                    _token: $('#token').html(),
+                                    _method: 'PUT'
+                               };
+
+
+                    $.post(url, data, function(res){
+
+                    });
+
+
+                    input.remove();
+                    cross.remove();
+
+                } 
+
+            
+       
         });
     
     
@@ -597,11 +675,56 @@ $(function(){
             input.remove();
             cross.remove();
 
-            } 
+        } 
 
-        });
+    });
     
     
+     
+    /* on focusout submit */
+    
+    
+    $('#settings').on('focusout', 'textarea', function(e){
+      
+            var input = $(this);
+            var cross = $('i#crossName');
+            var pencil = cross.prev();
+            var p = input.parent();
+            var newVal = input.val();
+            var boardid = $('#boardid').html();
+            var url = $('#public').html() + '/board/' + boardid + '/update';
+
+            if(newVal == false){
+
+
+                p.text(desVal);
+                input.remove();
+                cross.remove();
+
+
+            } else {
+
+                p.text(newVal);
+
+
+                 var data = {
+                                description: newVal,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
+
+
+                $.post(url, data, function(res){
+
+                });
+
+
+                input.remove();
+                cross.remove();
+
+            } 
+        
+    });
     
     
     
@@ -656,7 +779,7 @@ $(function(){
     }); 
     
     
-    /* onclick cross */
+    /* onclick cross  submit */
     
     
     $('.details').on('click', 'i.cross', function(e){
@@ -713,9 +836,6 @@ $(function(){
             }
             
             
-////            
-//            console.log(data);
-
             $.post(url, data, function(res){
             });
 
@@ -728,11 +848,79 @@ $(function(){
     });
     
     
+     
+    /* On focusout submit */
     
     
-    
-    
-    
+    $('.details').on('focusout', 'textarea', function(e){
+        
+     
+            var input = $(this);
+            var p = input.parent();
+            var cross = p.prev();
+            var pencil = cross.prev();
+            var newVal = input.val();
+            var userid = $('#userid').html();
+            var url = $('#public').html() + '/user/' + userid + '/update';
+            var h2 = pencil.prev();
+        
+        
+
+            if(newVal == false){
+
+
+                p.text(oriVal);
+                input.remove();
+                cross.remove();
+
+
+            } else {
+
+                p.text(newVal);
+                var data;
+
+                if(h2.text() == "Username"){
+                    data = {
+                                username: newVal,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
+
+
+                }
+
+                if(h2.text() == "Name"){
+                    data = {
+                                name: newVal,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
+
+
+                }
+
+                if(h2.text() == "Email"){
+                    data = {
+                                email: newVal,
+                                _token: $('#token').html(),
+                                _method: 'PUT'
+                           };
+
+
+                }
+
+
+                $.post(url, data, function(res){
+                });
+
+
+                input.remove();
+                cross.remove();
+
+            } 
+        
+
+    });
     
     
     

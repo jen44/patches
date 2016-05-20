@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Notes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="{{asset('css/opentip.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/avatar.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -14,9 +15,9 @@
         <nav class="navicons">
            <div class="icons" id="top">
 
-                <a href="{{url('/')}}"><i class="fa fa-paper-plane-o" aria-hidden="true" id="home-btn" name="home"></i></a>
+                <a href="{{url('/')}}"><i class="fa fa-home" aria-hidden="true" name="home" data-ot="Home" data-ot-style="glass" data-ot-tipJoint="left"></i></a>
 
-                <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board"></i>
+                <i class="fa fa-plus-square-o btn" aria-hidden="true" id="newboard-btn" name="New Board" data-ot="New Board" data-ot-style="glass" data-ot-tipJoint="left"></i>
 
             </div>
 
@@ -25,11 +26,11 @@
                 
                 @if(Auth::User()->admin !== 1)
                 
-                <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile"></i>
+                <i class="fa fa-user btn" aria-hidden="true" id="profile-btn" name="Profile" data-ot="Profile" data-ot-style="glass" data-ot-tipJoint="left"></i>
                 
                 @endif
 
-                <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout"></i></a>
+                <a href="{{url('logout')}}"><i class="fa fa-sign-out btn" aria-hidden="true" name="logout" data-ot="Logout" data-ot-style="glass" data-ot-tipJoint="left"></i></a>
 
             </div>
         </nav>
@@ -210,7 +211,7 @@
                 </div>
                 
                 
-                <div class="column2" id="rightside">
+                <div class="column2 scrollbar-light" id="rightside">
                     <!-- Help / social -->
                     
                     <div class="logo">
@@ -243,17 +244,27 @@
                         
                         <ul class="social">
 
-                          <li>
-                              <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                          </li>
+                         
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://note.jenny.shim.yoobee.net.nz" class="facebook">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                          <li>
-                              <i class="fa fa-twitter" aria-hidden="true"></i>
-                          </li>
 
-                          <li>
-                              <i class="fa fa-google-plus" aria-hidden="true"></i>
-                          </li>
+                            <li>
+                                <a href="https://twitter.com/home?status=http://note.jenny.shim.yoobee.net.nz" class="twitter">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+
+                            <li> 
+                                <a href="https://plus.google.com/share?url=http://note.jenny.shim.yoobee.net.nz" class="google-plus">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
 
                         </ul>
                         
@@ -346,17 +357,26 @@
                         
                         <ul class="social">
 
-                          <li>
-                              <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                          </li>
 
-                          <li>
-                              <i class="fa fa-twitter" aria-hidden="true"></i>
-                          </li>
+                            <li>
+                                <a href="https://www.facebook.com/sharer/sharer.php?u=http://note.jenny.shim.yoobee.net.nz" class="facebook">
+                                    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
-                          <li>
-                              <i class="fa fa-google-plus" aria-hidden="true"></i>
-                          </li>
+
+                            <li>
+                                <a href="https://twitter.com/home?status=http://note.jenny.shim.yoobee.net.nz" class="twitter">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </li>
+
+
+                            <li> 
+                                <a href="https://plus.google.com/share?url=http://note.jenny.shim.yoobee.net.nz" class="google-plus">
+                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                </a>
+                            </li>
 
                         </ul>
 
@@ -379,6 +399,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/vue/1.0.21/vue.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.noty.packaged.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/opentip-jquery.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
     

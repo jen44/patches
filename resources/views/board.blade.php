@@ -5,7 +5,7 @@
    <div class="content">
         <i class="fa fa-frown-o" aria-hidden="true"></i>
         <p><span>Sorry, love!</span><br>Our boards aren't compatible with mobile devices just yet.<br>We apologize for the inconvenience! <br>Please try again on your desktop.</p>
-        <a href="{{URL::previous()}}">Go back</a>
+        <a href="{{url('dashboard/'.Auth::User()->id)}}">Go back</a>
        
    </div>
 </div>
